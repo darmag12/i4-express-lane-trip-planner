@@ -1,0 +1,11 @@
+{
+  // convert new js syntax to older syntax to work on older browsers
+  "presets": [
+    [
+      "@babel/presets-env",
+      {
+        "modules": false
+      }
+    ]
+  ]
+}

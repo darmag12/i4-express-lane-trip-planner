@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trip Planner</title>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <section class="col-12 text-center">
+        <h1>Map Your Trip</h1>
+        <p>I4 express lane trip planner</p>
+      </section>
+
+      <section class="row">
+        <!---BEGINING OF FORM-->
+        <form class="col-6 form">
+          <div class="col-6 form__select-direction">
+            <span class="step-number">1</span>
+            <p>Which direction will you be traveling?</p>
+            <select
+              class="form-select form-select-lg mb-3"
+              aria-label=".form-select-lg"
+            >
+              <option selected>Select Direction...</option>
+              <option value="1">Eastbound</option>
+              <option value="2">Westbound</option>
+            </select>
+          </div>
+        </form>
+        <!---END OF FORM-->
+
+        <!---BEGINING OF MAP-->
+        <div id="map"></div>
+        <!---END OF FORM-->
+      </section>
+    </div>
+  </body>
+  <script type="module" defer src="./app.js"></script>
+</html>
