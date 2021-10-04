@@ -1,4 +1,5 @@
-import { eastWestBounds } from '../data.js';
+import { eastWestBounds } from './data.js';
+import './index.css';
 
 // This is set to an environment variable
 // let appKey = ;
@@ -6,19 +7,12 @@ import { eastWestBounds } from '../data.js';
 // eastWestBounds.forEach(element => {
 //   console.log(element);
 // });
-const apiKey = process.env.API_KEY;
-console.log(apiKey);
-console.log('Hi');
-// {
-//     "private": true,
-//     "scripts": {
-//       "start": "webpack serve",
-//       "watch": "webpack --watch",
-//       "build": "webpack"
-//     },
-//     "devDependencies": {
-//       "webpack": "^5.56.1",
-//       "webpack-cli": "^4.8.0",
-//       "webpack-dev-server": "^4.3.0"
-//     }
-//   }
+// const apiKey = process.env.API_KEY;
+// console.log(apiKey);
+console.log('Hi There');
+// "private": true,
+// "scripts": {
+//   "start": "webpack serve",
+//   "watch": "webpack --watch",
+//   "build": "webpack"
+// },
