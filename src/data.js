@@ -5,7 +5,7 @@ export const eastWestBounds = [
     id: 'a',
     title: 'Daytona Beach/DeLand/Lake Mary',
     coords: [
-      { eLat: 0, eLng: -1 },
+      { eLat: 28.460239, eLng: -81.471128 },
       { wLat: 0, wLng: -1 },
     ],
   },
@@ -13,15 +13,17 @@ export const eastWestBounds = [
     id: 'b',
     title: 'S.R. 434 (Mile 94)',
     coords: [
-      { eLat: 0, eLng: -1 },
-      { wLat: 0, wLng: -1 },
+      { eLat: 28.69082, eLng: -81.38862 },
+
+      { wLat: 28.69071, wLng: -81.3888 },
     ],
   },
   {
     id: 'c',
     title: 'Central Pkwy. (Mile 93)',
     coords: [
-      { eLat: 0, eLng: -1 },
+      { eLat: 28, eLng: -81 },
+
       { wLat: 0, wLng: -1 },
     ],
   },
@@ -29,32 +31,35 @@ export const eastWestBounds = [
     id: 'd',
     title: 'S.R. 436 (Mile 92)',
     coords: [
-      { eLat: 0, eLng: -1 },
-      { wLat: 0, wLng: -1 },
+      { eLat: 28.66228, eLng: -81.38845 },
+      { wLat: 28.66207, wLng: -81.38864 },
     ],
   },
   {
     id: 'e',
     title: 'Maitland Blvd. (S.R. 414) (Mile 90)',
     coords: [
-      { eLat: 0, eLng: -1 },
-      { wLat: 0, wLng: -1 },
+      { eLat: 28.63129, eLng: -81.38746 },
+
+      { wLat: 28.63176, wLng: -81.38773 },
     ],
   },
   {
     id: 'f',
     title: 'Lee Road (S.R. 423) (Mile 88)',
     coords: [
-      { eLat: 0, eLng: -1 },
-      { wLat: 0, wLng: -1 },
+      { eLat: 28.60602, eLng: -81.38638 },
+
+      { wLat: 28.60593, wLng: -81.38659 },
     ],
   },
   {
     id: 'g',
     title: 'Fairbanks Ave. (Mile 87)',
     coords: [
-      { eLat: 0, eLng: -1 },
-      { wLat: 0, wLng: -1 },
+      { eLat: 28.59316, eLng: -81.38203 },
+
+      { wLat: 28.59301, wLng: -81.38218 },
     ],
   },
   {
