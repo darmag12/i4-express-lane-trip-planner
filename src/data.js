@@ -58,7 +58,6 @@ export const eastWestBounds = [
     title: 'Fairbanks Ave. (Mile 87)',
     coords: [
       { eLat: 28.59316, eLng: -81.38203 },
-
       { wLat: 28.59301, wLng: -81.38218 },
     ],
   },
@@ -74,24 +73,26 @@ export const eastWestBounds = [
     id: 'i',
     title: 'Princeton St. (Mile 85)',
     coords: [
-      { eLat: 0, eLng: -1 },
-      { wLat: 0, wLng: -1 },
+      { eLat: 28.57141, eLng: -81.37566 },
+      { wLat: 28.57121, wLng: -81.37587 },
     ],
   },
   {
     id: 'j',
     title: 'Ivanhoe Blvd. (Mile 84)',
     coords: [
-      { eLat: 0, eLng: -1 },
-      { wLat: 0, wLng: -1 },
+      { eLat: 28.56, eLng: -81.37994 },
+
+      { wLat: 28.55984, wLng: -81.38067 },
     ],
   },
   {
     id: 'k',
     title: 'Colonial Drive (S.R. 50) (Mile 84)',
     coords: [
-      { eLat: 0, eLng: -1 },
-      { wLat: 0, wLng: -1 },
+      { eLat: 28.55321, eLng: -81.38207 },
+
+      { wLat: 28.55298, wLng: -81.38254 },
     ],
   },
   {
