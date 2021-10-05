@@ -25,12 +25,20 @@
       </section>
 
       <section class="row">
-        <!---BEGINING OF FORM-->
-        <form class="col-6 form">
+        <!---BEGINNING OF FORM-->
+        <form class="col-6 form-container">
+          <div>
+            <h3>LEARN YOUR ROUTE</h3>
+            <p>Select the direction you will be traveling then click on the access points to see detailed maps of Express Lanes entries and exits.</p>
+          </div>
+          <!----Beginning of direction selection--->
           <div class="col-6 form__select-direction">
+            <div class="step">
             <span class="step-number">1</span>
             <p>Which direction will you be traveling?</p>
+            </div>
             <select
+            data-direction="direction"
               class="form-select form-select-lg mb-3"
               aria-label=".form-select-lg"
             >
@@ -39,12 +47,30 @@
               <option value="2">Westbound</option>
             </select>
           </div>
+          <!----End of direction selection--->
+
+          <!---Beginning of entry/exit points selections-->
+          <div class="col-6 form__select-direction">
+            <div class="step">
+            <span class="step-number">2</span>
+            <p>Choose your <span data-direction-text></span> entry and exit points</p>
+            </div>
+            <select
+              class="form-select form-select-lg mb-3"
+              aria-label=".form-select-lg"
+            >
+              <option selected>Select Entry...</option>
+              <p><option value="w">Tampa/Lakeland/Kissimmee</option><p>
+            </select>
+          </div>
+          <!---End of entry/exit points selections-->
+        </form>
         </form>
         <!---END OF FORM-->
 
         <!---BEGINING OF MAP-->
-        <div id="map"></div>
-        <!---END OF FORM-->
+        <div class="col-6" id="map"></div>
+        <!---END OF MAP-->
       </section>
     </div>
   </body>

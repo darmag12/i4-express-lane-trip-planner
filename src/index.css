@@ -76,6 +76,9 @@ select {
 /* END OF CSS RESET */
 
 /* STYLES BEGIN HERE! */
+.form__select-direction .step {
+  display: flex;
+}
 .step-number {
   border: 3px solid #0857c3;
   color: #0857c3;
@@ -84,4 +87,10 @@ select {
   line-height: 24px;
   text-align: center;
   width: 30px;
+  margin-right: 20px;
+}
+
+#map {
+  height: 90vh;
+  /* width: 100%; */
 }
