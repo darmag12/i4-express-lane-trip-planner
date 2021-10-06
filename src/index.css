@@ -76,6 +76,10 @@ select {
 /* END OF CSS RESET */
 
 /* STYLES BEGIN HERE! */
+.hide {
+  display: none;
+}
+
 .form__select-direction .step {
   display: flex;
 }

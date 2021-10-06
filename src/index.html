@@ -32,7 +32,7 @@
             <p>Select the direction you will be traveling then click on the access points to see detailed maps of Express Lanes entries and exits.</p>
           </div>
           <!----Beginning of direction selection--->
-          <div class="col-6 form__select-direction">
+          <div class="col-6 form__select-direction-one">
             <div class="step">
             <span class="step-number">1</span>
             <p>Which direction will you be traveling?</p>
@@ -50,18 +50,27 @@
           <!----End of direction selection--->
 
           <!---Beginning of entry/exit points selections-->
-          <div class="col-6 form__select-direction">
+          <div class="col-6 form__select-direction-two hide">
             <div class="step">
             <span class="step-number">2</span>
             <p>Choose your <span data-direction-text></span> entry and exit points</p>
             </div>
-            <select
+            <select data-entry
               class="form-select form-select-lg mb-3"
               aria-label=".form-select-lg"
             >
               <option selected>Select Entry...</option>
-              <p><option value="w">Tampa/Lakeland/Kissimmee</option><p>
+              <p ><p>
             </select>
+
+            <select data-exit
+            class="form-select form-select-lg mb-3"
+            aria-label=".form-select-lg"
+          >
+            <option selected>Select Exit...</option>
+            <p ><p>
+          </select>
+
           </div>
           <!---End of entry/exit points selections-->
         </form>

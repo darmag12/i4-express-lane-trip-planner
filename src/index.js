@@ -1,30 +1,20 @@
+import { dir } from 'async';
 import { eastWestBounds } from './data.js';
 import './index.css';
 
 // This is set to an environment variable
-// let appKey = ;
-
-eastWestBounds.forEach(element => {
-  console.log(element);
-});
 const apiKey = process.env.API_KEY;
-console.log(apiKey);
-
-// "private": true,
-// "scripts": {
-//   "start": "webpack serve",
-//   "watch": "webpack --watch",
-//   "build": "webpack"
-// },
 
 // Variables
-let appKey = 'AIzaSyBXlrpB1sbqwFV3Ka2r1dYvgGoyPDLlGC4';
 
 // Contains All the DOM elements
 const domElements = {
   mapContainerStr: document.getElementById('map'),
   directionStr: document.querySelector('[data-direction]'),
   directionTextStr: document.querySelector('[data-direction-text]'),
+  secondStepStr: document.querySelector('.form__select-direction-two'),
+  entryPointStr: document.querySelector('[data-entry]'),
+  exitPointStr: document.querySelector('[data-exit]'),
 };
 
 let map;
@@ -36,7 +26,7 @@ const orlandoCod = { lat: 28.5384, lng: -81.3789 };
 
 // Created the script tag & set the appropriate attributes
 let script = document.createElement('script');
-script.src = `https://maps.googleapis.com/maps/api/js?key=${appKey}&libraries=geometry&callback=initMap`;
+script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=geometry&callback=initMap`;
 script.async = true;
 
 // Attached callback function to the `window` object
@@ -72,29 +62,10 @@ window.initMap = function () {
   map = new google.maps.Map(domElements.mapContainerStr, options);
   map.setTilt();
 
-  locations = [
-    {
-      title: 'I-4 Westbound Rest Area',
-      location: { lat: 28.703015, lng: -81.3869928 },
-    },
-    {
-      title: 'Polk County Rest Area I-4 Westbound',
-      location: { lat: 28.172558, lng: -81.767027 },
-    },
-    {
-      title: 'Polk County Rest Area I-4 Eastbound',
-      location: { lat: 28.1676031, lng: -81.7730702 },
-    },
-    {
-      title: "Love's Travel Stop",
-      location: { lat: 28.1551445, lng: -81.8186561 },
-    },
-  ];
-
   infoWindow = new google.maps.InfoWindow();
 
   // loop through each location and create a new marker for each one
-  locations.forEach((location, i) => {
+  eastWestBounds.forEach((location, i) => {
     // marker variables
     let title;
     let position;
@@ -155,17 +126,59 @@ window.initMap = function () {
     }
   }
 
+  // Gets direction from user input East or West
   function getDirection(e) {
     let directionValue = parseInt(e.target.value, 10);
     directionValue ? getRoutes(directionValue) : null;
   }
 
+  // Gets routes corresponding to the direction selected
   function getRoutes(directionVal) {
-    let dirBound;
+    // display step number 2
+    domElements.secondStepStr.classList.remove('hide');
+
+    let dirBound = '';
     if (directionVal === 1) {
-      // display second step
       //make entry points dynamic
-      domElements.directionTextStr.insertAdjacentText('beforeend', dirBound);
+      if (dirBound === '' || dirBound === 'Westbound') {
+        domElements.directionTextStr.textContent = 'Eastbound';
+      } else {
+        //reset to empty string
+        domElements.directionTextStr.textContent = '';
+      }
+    } else {
+      // entry point set to westbound
+      domElements.directionTextStr.textContent = 'Westbound';
+    }
+
+    displayRoutes(directionVal);
+  }
+
+  // Display routes UI
+  function displayRoutes(dirVal) {
+    let wbExclude = ['n', 'v'];
+    let ebExclude = ['c', 'h', 'm'];
+
+    let boundPoints, boundPoint;
+
+    if (dirVal === 1) {
+      boundPoints = eastWestBounds.filter(road => !ebExclude.includes(road.id));
+      for (boundPoint of boundPoints) {
+        const myOptions = document.createElement('option');
+        myOptions.value = boundPoint.id;
+        myOptions.text = boundPoint.title;
+
+        domElements.entryPointStr.add(myOptions);
+      }
+    } else {
+      boundPoints = eastWestBounds.filter(road => !wbExclude.includes(road.id));
+      for (boundPoint of boundPoints) {
+        const myOptions = document.createElement('option');
+        myOptions.value = boundPoint.id;
+        myOptions.text = boundPoint.title;
+
+        domElements.entryPointStr.add(myOptions);
+      }
     }
   }
 

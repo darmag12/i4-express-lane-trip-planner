@@ -2,6 +2,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -10,6 +11,10 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
+  },
+
+  resolve: {
+    fallback: { console: false },
   },
 
   module: {
@@ -40,5 +45,9 @@ module.exports = {
 
     new MiniCssExtractPlugin(),
     new Dotenv(),
+
+    new NodePolyfillPlugin({
+      excludeAliases: ['console'],
+    }),
   ],
 };
