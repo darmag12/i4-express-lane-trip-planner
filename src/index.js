@@ -1,4 +1,3 @@
-import { dir } from 'async';
 import { eastWestBounds } from './data.js';
 import './index.css';
 
@@ -98,7 +97,7 @@ window.initMap = function () {
   }); // end of forEach loop
 
   domElements.directionStr.addEventListener('change', getDirection);
-
+  domElements.entryPointStr.addEventListener('change', getExits);
   // domElements.showListingsStr.addEventListener('click', showRoutes);
   // domElements.hideListingsStr.addEventListener('click', hideListings);
 
@@ -134,7 +133,7 @@ window.initMap = function () {
 
   // Gets routes corresponding to the direction selected
   function getRoutes(directionVal) {
-    // display step number 2
+    // display step number 2 by removing the class that's hiding it
     domElements.secondStepStr.classList.remove('hide');
 
     let dirBound = '';
@@ -160,26 +159,54 @@ window.initMap = function () {
     let ebExclude = ['c', 'h', 'm'];
 
     let boundPoints, boundPoint;
-
+    // checking if user selected eastbound then displaying
+    // all eastbound entry and exit points
     if (dirVal === 1) {
-      boundPoints = eastWestBounds.filter(road => !ebExclude.includes(road.id));
-      for (boundPoint of boundPoints) {
-        const myOptions = document.createElement('option');
-        myOptions.value = boundPoint.id;
-        myOptions.text = boundPoint.title;
+      boundPoints = eastWestBounds
+        .filter(road => !ebExclude.includes(road.id))
+        .reverse();
+      removeAllChildNodes(domElements.entryPointStr);
 
-        domElements.entryPointStr.add(myOptions);
-      }
+      // loops through all the roads and outputs option elements
+      boundsIterator(boundPoints);
     } else {
+      // checking if user selected westbound then displaying
+      // all westbound entry and exit points
       boundPoints = eastWestBounds.filter(road => !wbExclude.includes(road.id));
-      for (boundPoint of boundPoints) {
-        const myOptions = document.createElement('option');
-        myOptions.value = boundPoint.id;
-        myOptions.text = boundPoint.title;
+      removeAllChildNodes(domElements.entryPointStr);
 
-        domElements.entryPointStr.add(myOptions);
+      // loops through all the roads and outputs option elements
+      boundsIterator(boundPoints);
+    }
+
+    // removes all child nodes except the selected one
+    function removeAllChildNodes(parent) {
+      while (!parent.lastChild.id) {
+        parent.removeChild(parent.lastChild);
       }
     }
+
+    // A function that contains a for..of loop
+    function boundsIterator(points) {
+      for (boundPoint of points) {
+        domElements.entryPointStr.insertAdjacentHTML(
+          'beforeend',
+          `
+        <option value="${boundPoint.id}">${boundPoint.title}</option>
+        
+        `
+        );
+      }
+    }
+  }
+
+  // gets respective exits
+  function getExits(e) {
+    let boundPoints;
+    // get the values of each entry point
+    console.log(e.target.value);
+    // filter the values and return respective exits
+    // display exit points in the UI
   }
 
   function showRoutes() {
