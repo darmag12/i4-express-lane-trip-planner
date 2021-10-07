@@ -202,10 +202,48 @@ window.initMap = function () {
 
   // gets respective exits
   function getExits(e) {
-    let boundPoints;
+    let boundPoints, selectedPoint, allIds;
+    allIds = [
+      'a',
+      'b',
+      'c',
+      'd',
+      'e',
+      'f',
+      'g',
+      'h',
+      'i',
+      'j',
+      'k',
+      'l',
+      'm',
+      'n',
+      'o',
+      'p',
+      'q',
+      'r',
+      's',
+      't',
+      'u',
+      'v',
+      'w',
+    ];
     // get the values of each entry point
-    console.log(e.target.value);
+    selectedPoint = e.target.value;
     // filter the values and return respective exits
+    // if value === a,b,c or d display f,j,m,o,r,t,u,w
+    // if value === e display j,m,o,r,t,u,w
+    // if value === f,g,h,i,j,k,l display t,u,w
+    // if value === m display r,t,u,w
+    // if value === o,p display t,u,w
+    // if value === p,q,r,s,t display no exit
+    // if value === u display w
+
+    // eastbound
+    // if value === w,v,u,t,s display p,o,m,e,d,c,a
+    // if value === r,q,p,o,l,k,i,g,f display d,c,a
+    // if value === n,j display e,d,c,a
+    // if value === e,d,b display no exit
     // display exit points in the UI
   }
 
