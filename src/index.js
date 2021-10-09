@@ -16,7 +16,7 @@ const domElements = {
 
 let map;
 let directionValue;
-let locations;
+let allEntryCoords;
 let marker;
 let infoWindow;
 let bounds;
@@ -30,6 +30,8 @@ script.async = true;
 // Attached callback function to the `window` object
 window.initMap = function () {
   let markers = [];
+  let eastMarkers = [];
+  let westMarkers = [];
   // Creates a styles array to use with the map.
   let styles = [
     {
@@ -61,39 +63,6 @@ window.initMap = function () {
   map.setTilt();
 
   infoWindow = new google.maps.InfoWindow();
-
-  // loop through each location and create a new marker for each one
-  eastWestBounds.forEach((location, i) => {
-    // marker variables
-    let title;
-    let position;
-
-    title = location.title;
-    position = location.location;
-
-    // new marker instance
-    marker = new google.maps.Marker({
-      position: position,
-      label: {
-        text: '\ue63d', // always start with \u then the icon code
-        fontFamily: 'Material Icons',
-        color: '#ffffff',
-        className: 'rest-area-icons',
-        fontSize: '18px',
-      },
-      title: title,
-      animation: google.maps.Animation.DROP,
-      id: i,
-    });
-
-    // Push each marker into the markers array
-    markers.push(marker);
-
-    // Added click event listener on the marker
-    marker.addListener('click', function () {
-      populateInfoWindow(this, infoWindow);
-    });
-  }); // end of forEach loop
 
   domElements.directionStr.addEventListener('change', getDirection);
   domElements.entryPointStr.addEventListener('change', getExits);
@@ -188,6 +157,21 @@ window.initMap = function () {
         
         `
         );
+        // eastWestCoords = {boundPoint.coords};
+        // markerCreator(boundPoint.title, boundpoint)
+        if (directionValue === 1) {
+          allEntryCoords = boundPoint.coords.east;
+          hideMarkers();
+          markerCreator(boundPoint.title, allEntryCoords);
+          showPoints();
+        } else {
+          allEntryCoords = boundPoint.coords.west;
+          hideMarkers();
+          markerCreator(boundPoint.title, allEntryCoords);
+          showPoints();
+        }
+
+        // console.log(eastCoords);
       }
     }
   }
@@ -335,18 +319,6 @@ window.initMap = function () {
 
       console.log(boundPointsExits);
     }
-
-    function showRoutes() {
-      // created a new instance of the boundary object
-      bounds = new google.maps.LatLngBounds();
-      // Extends the boundaries of the map for each marker
-      markers.forEach(mark => {
-        // console.log(mark);
-        mark.setMap(map);
-        bounds.extend(mark.position);
-      });
-      map.fitBounds(bounds);
-    }
   }
 
   //===========REUSED FUNCTIONS==================//
@@ -354,6 +326,69 @@ window.initMap = function () {
   function removeAllChildNodes(parent) {
     while (!parent.lastChild.id) {
       parent.removeChild(parent.lastChild);
+    }
+  }
+
+  // creates markers
+  function markerCreator(title, position) {
+    // new marker instance
+    marker = new google.maps.Marker({
+      position: position,
+      label: {
+        text: '\ue63d', // always start with \u then the icon code
+        fontFamily: 'Material Icons',
+        color: '#ffffff',
+        className: 'rest-area-icons',
+        fontSize: '18px',
+      },
+      title: title,
+      animation: google.maps.Animation.DROP,
+      // id: i,
+    });
+
+    // Push each marker into the markers array
+    directionValue === 1 ? eastMarkers.push(marker) : westMarkers.push(marker);
+
+    // marker.addListener('click', function () {
+    //   populateInfoWindow(this, infoWindow);
+    // });
+
+    console.log(marker);
+  }
+
+  // clears then sets bounds of the markers
+  function showPoints() {
+    // created a new instance of the boundary object
+    bounds = new google.maps.LatLngBounds();
+    // Extends the boundaries of the map for each marker
+    if (directionValue === 1) {
+      eastMarkers.forEach(mark => {
+        mark.setMap(map);
+        bounds.extend(mark.position);
+      });
+    } else {
+      westMarkers.forEach(mark => {
+        mark.setMap(map);
+        bounds.extend(mark.position);
+      });
+    }
+    map.fitBounds(bounds);
+  }
+
+  // Hides the markers
+  function hideMarkers() {
+    if (directionValue === 2) {
+      eastMarkers.forEach(mark => {
+        mark.setMap(null);
+      });
+
+      eastMarkers = [];
+    } else {
+      westMarkers.forEach(mark => {
+        mark.setMap(null);
+      });
+
+      westMarkers = [];
     }
   }
 };
