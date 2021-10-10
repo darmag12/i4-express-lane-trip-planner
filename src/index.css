@@ -98,3 +98,14 @@ select {
   height: 90vh;
   /* width: 100%; */
 }
+
+/* Styles for map labels */
+.labels {
+  color: #000;
+  background-color: #73c2fb;
+  border: 1px solid #3b7bd4;
+  font-size: 12px;
+  text-align: start;
+  white-space: nowrap;
+  padding: 5px;
+}
