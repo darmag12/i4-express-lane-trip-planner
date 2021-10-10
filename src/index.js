@@ -1,8 +1,10 @@
 import { eastWestBounds } from './data.js';
+import MarkerWithLabel from '@googlemaps/markerwithlabel';
 import './index.css';
 
 // This is set to an environment variable
 const apiKey = process.env.API_KEY;
+// console.log(apiKey);
 
 // Contains All the DOM elements
 const domElements = {
@@ -11,13 +13,14 @@ const domElements = {
   directionTextStr: document.querySelector('[data-direction-text]'),
   secondStepStr: document.querySelector('.form__select-direction-two'),
   entryPointStr: document.querySelector('[data-entry]'),
-  exitPointStr: document.querySelector('[data-exit]'),
+  exitPointStr: document.querySelector('[data-exit]')
 };
 
 let map;
 let directionValue;
 let allEntryCoords;
 let marker;
+let allMarkers;
 let infoWindow;
 let bounds;
 const orlandoCod = { lat: 28.5384, lng: -81.3789 };
@@ -28,7 +31,7 @@ script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=ge
 script.async = true;
 
 // Attached callback function to the `window` object
-window.initMap = function () {
+window.initMap = function() {
   let markers = [];
   let eastMarkers = [];
   let westMarkers = [];
@@ -37,14 +40,14 @@ window.initMap = function () {
     {
       featureType: 'road.highway',
       elementType: 'geometry',
-      stylers: [{ color: '#424242' }, { lightness: 20 }],
+      stylers: [{ color: '#424242' }, { lightness: 20 }]
     },
 
     {
       featureType: 'road.highway.controlled_access',
       elementType: 'geometry',
-      stylers: [{ color: '#FFAB40' }, { lightness: 20 }],
-    },
+      stylers: [{ color: '#FFAB40' }, { lightness: 20 }]
+    }
   ];
 
   // JS API is loaded and available
@@ -54,8 +57,8 @@ window.initMap = function () {
     styles: styles,
     mapTypeControl: true,
     mapTypeControlOptions: {
-      mapTypeIds: ['roadmap', 'terrain', 'hybrid', 'satellite'],
-    },
+      mapTypeIds: ['roadmap', 'terrain', 'hybrid', 'satellite']
+    }
     // mapId: '9ffa16729c1a3c66'
   };
 
@@ -162,12 +165,12 @@ window.initMap = function () {
         if (directionValue === 1) {
           allEntryCoords = boundPoint.coords.east;
           hideMarkers();
-          markerCreator(boundPoint.title, allEntryCoords);
+          markerCreator(boundPoint.title, allEntryCoords, boundPoint.id);
           showPoints();
         } else {
           allEntryCoords = boundPoint.coords.west;
           hideMarkers();
-          markerCreator(boundPoint.title, allEntryCoords);
+          markerCreator(boundPoint.title, allEntryCoords, boundPoint.id);
           showPoints();
         }
 
@@ -197,12 +200,14 @@ window.initMap = function () {
         case 'd':
           exitPointsArr = ['f', 'j', 'm', 'o', 'r', 't', 'u', 'w'];
           removeAllChildNodes(domElements.exitPointStr);
+          removeMarkersFromMap(exitPointsArr);
           exitIterator(exitPointsArr);
           break;
 
         case 'e':
           exitPointsArr = ['j', 'm', 'o', 'r', 't', 'u', 'w'];
           removeAllChildNodes(domElements.exitPointStr);
+          removeMarkersFromMap(exitPointsArr);
           exitIterator(exitPointsArr);
           break;
 
@@ -217,6 +222,7 @@ window.initMap = function () {
         case 'p':
           exitPointsArr = ['t', 'u', 'w'];
           removeAllChildNodes(domElements.exitPointStr);
+          removeMarkersFromMap(exitPointsArr);
           exitIterator(exitPointsArr);
           break;
 
@@ -317,7 +323,7 @@ window.initMap = function () {
         );
       }
 
-      console.log(boundPointsExits);
+      // console.log(boundPointsExits);
     }
   }
 
@@ -330,20 +336,40 @@ window.initMap = function () {
   }
 
   // creates markers
-  function markerCreator(title, position) {
+  function markerCreator(title, position, id) {
+    // Custom Marker
+    const svgMarker = {
+      path:
+        'M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z',
+      fillColor: '#0857c3',
+      fillOpacity: 0.6,
+      strokeWeight: 0,
+      rotation: 0,
+      scale: 1,
+      anchor: new google.maps.Point(10, 20)
+    };
+
+    // new label instance
+    // new MarkerWithLabel({
+    //   position: position,
+    //   clickable: true,
+    //   map: map,
+    //   labelContent: title, // can also be HTMLElement
+    //   // labelAnchor: new google.maps.Point(-21, 3),
+    //   labelClass: 'labels', // the CSS class for the label
+    //   labelStyle: { opacity: 1.0 }
+    // });
     // new marker instance
-    marker = new google.maps.Marker({
+    marker = new MarkerWithLabel({
       position: position,
-      label: {
-        text: '\ue63d', // always start with \u then the icon code
-        fontFamily: 'Material Icons',
-        color: '#ffffff',
-        className: 'rest-area-icons',
-        fontSize: '18px',
-      },
+      clickable: true,
       title: title,
-      animation: google.maps.Animation.DROP,
-      // id: i,
+      labelContent: title, // can also be HTMLElement
+      labelClass: 'labels', // the CSS class for the label
+      labelStyle: { opacity: 1.0 },
+      icon: svgMarker,
+      id: id,
+      animation: google.maps.Animation.DROP
     });
 
     // Push each marker into the markers array
@@ -352,8 +378,6 @@ window.initMap = function () {
     // marker.addListener('click', function () {
     //   populateInfoWindow(this, infoWindow);
     // });
-
-    console.log(marker);
   }
 
   // clears then sets bounds of the markers
@@ -390,6 +414,14 @@ window.initMap = function () {
 
       westMarkers = [];
     }
+  }
+
+  // function that loops all the markers
+  function removeMarkersFromMap(arr) {
+    let filteredMarkers;
+    allMarkers = eastMarkers.concat(westMarkers);
+    filteredMarkers = allMarkers.filter(mark => arr.includes(mark.id));
+    console.log(filteredMarkers);
   }
 };
 
