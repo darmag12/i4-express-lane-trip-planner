@@ -13,7 +13,7 @@ const domElements = {
   directionTextStr: document.querySelector('[data-direction-text]'),
   secondStepStr: document.querySelector('.form__select-direction-two'),
   entryPointStr: document.querySelector('[data-entry]'),
-  exitPointStr: document.querySelector('[data-exit]')
+  exitPointStr: document.querySelector('[data-exit]'),
 };
 
 let map;
@@ -31,7 +31,7 @@ script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=ge
 script.async = true;
 
 // Attached callback function to the `window` object
-window.initMap = function() {
+window.initMap = function () {
   let markers = [];
   let eastMarkers = [];
   let westMarkers = [];
@@ -40,14 +40,14 @@ window.initMap = function() {
     {
       featureType: 'road.highway',
       elementType: 'geometry',
-      stylers: [{ color: '#424242' }, { lightness: 20 }]
+      stylers: [{ color: '#424242' }, { lightness: 20 }],
     },
 
     {
       featureType: 'road.highway.controlled_access',
       elementType: 'geometry',
-      stylers: [{ color: '#FFAB40' }, { lightness: 20 }]
-    }
+      stylers: [{ color: '#FFAB40' }, { lightness: 20 }],
+    },
   ];
 
   // JS API is loaded and available
@@ -57,8 +57,8 @@ window.initMap = function() {
     styles: styles,
     mapTypeControl: true,
     mapTypeControlOptions: {
-      mapTypeIds: ['roadmap', 'terrain', 'hybrid', 'satellite']
-    }
+      mapTypeIds: ['roadmap', 'terrain', 'hybrid', 'satellite'],
+    },
     // mapId: '9ffa16729c1a3c66'
   };
 
@@ -92,7 +92,7 @@ window.initMap = function() {
         // }
       }
       // Open the infowindow on the correct marker.
-      infoWind.open(map, marker);
+      // infoWind.open(map, marker);
     }
   }
 
@@ -181,6 +181,10 @@ window.initMap = function() {
 
   // gets respective exits
   function getExits(e) {
+    // westMarkers.forEach(mark => {
+    //   mark.setMap(null);
+    // });
+
     let boundPointsExits, boundPointExit, selectedPoint, exitPointsArr;
     // get the values of each entry point
     selectedPoint = e.target.value;
@@ -200,15 +204,15 @@ window.initMap = function() {
         case 'd':
           exitPointsArr = ['f', 'j', 'm', 'o', 'r', 't', 'u', 'w'];
           removeAllChildNodes(domElements.exitPointStr);
-          removeMarkersFromMap(exitPointsArr);
           exitIterator(exitPointsArr);
+          toggleMarkersFromMap(exitPointsArr);
           break;
 
         case 'e':
           exitPointsArr = ['j', 'm', 'o', 'r', 't', 'u', 'w'];
           removeAllChildNodes(domElements.exitPointStr);
-          removeMarkersFromMap(exitPointsArr);
           exitIterator(exitPointsArr);
+          toggleMarkersFromMap(exitPointsArr);
           break;
 
         case 'f':
@@ -222,14 +226,15 @@ window.initMap = function() {
         case 'p':
           exitPointsArr = ['t', 'u', 'w'];
           removeAllChildNodes(domElements.exitPointStr);
-          removeMarkersFromMap(exitPointsArr);
           exitIterator(exitPointsArr);
+          toggleMarkersFromMap(exitPointsArr);
           break;
 
         case 'm':
           exitPointsArr = ['r', 't', 'u', 'w'];
           removeAllChildNodes(domElements.exitPointStr);
           exitIterator(exitPointsArr);
+          toggleMarkersFromMap(exitPointsArr);
           break;
 
         case 'q':
@@ -238,12 +243,14 @@ window.initMap = function() {
         case 't':
           removeAllChildNodes(domElements.exitPointStr);
           exitIterator(exitPointsArr);
+          toggleMarkersFromMap(exitPointsArr);
           break;
 
         case 'u':
           exitPointsArr = ['w'];
           removeAllChildNodes(domElements.exitPointStr);
           exitIterator(exitPointsArr);
+          toggleMarkersFromMap(exitPointsArr);
           break;
       }
     } else {
@@ -256,6 +263,7 @@ window.initMap = function() {
           exitPointsArr = ['p', 'o', 'm', 'e', 'd', 'c', 'a'];
           removeAllChildNodes(domElements.exitPointStr);
           exitIterator(exitPointsArr);
+          toggleMarkersFromMap(exitPointsArr);
           break;
 
         case 'r':
@@ -270,6 +278,7 @@ window.initMap = function() {
           exitPointsArr = ['d', 'c', 'a'];
           removeAllChildNodes(domElements.exitPointStr);
           exitIterator(exitPointsArr);
+          toggleMarkersFromMap(exitPointsArr);
           break;
 
         case 'n':
@@ -277,6 +286,7 @@ window.initMap = function() {
           exitPointsArr = ['e', 'd', 'c', 'a'];
           removeAllChildNodes(domElements.exitPointStr);
           exitIterator(exitPointsArr);
+          toggleMarkersFromMap(exitPointsArr);
           break;
 
         case 'e':
@@ -284,6 +294,7 @@ window.initMap = function() {
         case 'b':
           removeAllChildNodes(domElements.exitPointStr);
           exitIterator(exitPointsArr);
+          toggleMarkersFromMap(exitPointsArr);
           break;
       }
     }
@@ -339,14 +350,13 @@ window.initMap = function() {
   function markerCreator(title, position, id) {
     // Custom Marker
     const svgMarker = {
-      path:
-        'M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z',
+      path: 'M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z',
       fillColor: '#0857c3',
       fillOpacity: 0.6,
       strokeWeight: 0,
       rotation: 0,
       scale: 1,
-      anchor: new google.maps.Point(10, 20)
+      anchor: new google.maps.Point(10, 20),
     };
 
     // new label instance
@@ -369,7 +379,7 @@ window.initMap = function() {
       labelStyle: { opacity: 1.0 },
       icon: svgMarker,
       id: id,
-      animation: google.maps.Animation.DROP
+      animation: google.maps.Animation.DROP,
     });
 
     // Push each marker into the markers array
@@ -382,46 +392,75 @@ window.initMap = function() {
 
   // clears then sets bounds of the markers
   function showPoints() {
+    // checks for the direction selected then calls showmarkers function to display the respective markers
+    if (directionValue === 1) {
+      showMarkers(eastMarkers);
+    } else {
+      showMarkers(westMarkers);
+    }
+    // map.fitBounds(bounds);
+  }
+
+  // Loops and displays markers (created to practice DRY)
+  function showMarkers(arr) {
     // created a new instance of the boundary object
     bounds = new google.maps.LatLngBounds();
-    // Extends the boundaries of the map for each marker
-    if (directionValue === 1) {
-      eastMarkers.forEach(mark => {
-        mark.setMap(map);
-        bounds.extend(mark.position);
-      });
-    } else {
-      westMarkers.forEach(mark => {
-        mark.setMap(map);
-        bounds.extend(mark.position);
-      });
-    }
+    // Sets markers and extends the boundaries of the map for each marker
+    arr.forEach(mark => {
+      mark.setMap(map);
+      bounds.extend(mark.position);
+    });
+
     map.fitBounds(bounds);
   }
 
   // Hides the markers
   function hideMarkers() {
     if (directionValue === 2) {
-      eastMarkers.forEach(mark => {
-        mark.setMap(null);
-      });
-
+      // takes in an array of markers then deletes them
+      deleteMarkers(eastMarkers);
       eastMarkers = [];
     } else {
-      westMarkers.forEach(mark => {
-        mark.setMap(null);
-      });
-
+      // takes in an array of markers then deletes them
+      deleteMarkers(westMarkers);
       westMarkers = [];
     }
   }
 
+  // sets all markers to null/deletes markers
+  function deleteMarkers(arr) {
+    arr.forEach(mark => {
+      mark.setMap(null);
+    });
+  }
+
   // function that loops all the markers
-  function removeMarkersFromMap(arr) {
+  function toggleMarkersFromMap(arr) {
     let filteredMarkers;
-    allMarkers = eastMarkers.concat(westMarkers);
-    filteredMarkers = allMarkers.filter(mark => arr.includes(mark.id));
-    console.log(filteredMarkers);
+    if (arr) {
+      allMarkers = eastMarkers.concat(westMarkers);
+      filteredMarkers = allMarkers.filter(mark => arr.includes(mark.id));
+      if (directionValue === 1) {
+        // delete current markers
+        deleteMarkers(eastMarkers);
+        // show new markers
+        showMarkers(filteredMarkers);
+        // reset filtered markers
+        filteredMarkers = [];
+      } else {
+        // delete current markers
+        deleteMarkers(westMarkers);
+        // show new markers
+        showMarkers(filteredMarkers);
+        // reset filtered markers
+        filteredMarkers = [];
+      }
+    } else {
+      // don't display any markers
+      deleteMarkers(eastMarkers);
+      deleteMarkers(westMarkers);
+    }
+    // console.log(allMarkers);
   }
 };
 
