@@ -383,6 +383,7 @@ window.initMap = function () {
     });
 
     // Push each marker into the markers array
+    // markers.push(marker);
     directionValue === 1 ? eastMarkers.push(marker) : westMarkers.push(marker);
 
     // marker.addListener('click', function () {
