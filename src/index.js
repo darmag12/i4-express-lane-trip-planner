@@ -17,8 +17,11 @@ const domElements = {
 };
 
 let map;
+// let boundPoints;
 let directionValue;
+let selectedEntryPoint;
 let allEntryCoords;
+let allExitCoords;
 let marker;
 let allMarkers;
 let infoWindow;
@@ -126,52 +129,59 @@ window.initMap = function () {
 
   // Display routes UI
   function displayRoutes(dirVal) {
-    let wbExclude = ['n', 'v'];
-    let ebExclude = ['c', 'h', 'm'];
+    let boundPointsEntries, boundPointEntry, wbExclude, ebExclude;
 
-    let boundPoints, boundPoint;
+    wbExclude = ['n', 'v'];
+    ebExclude = ['c', 'h', 'm'];
+
     // checking if user selected eastbound then displaying
     // all eastbound entry and exit points
     if (dirVal === 1) {
-      boundPoints = eastWestBounds
+      boundPointsEntries = eastWestBounds
         .filter(road => !ebExclude.includes(road.id))
         .reverse();
       removeAllChildNodes(domElements.entryPointStr);
 
-      // loops through all the roads and outputs option elements
-      boundsIterator(boundPoints);
+      // loops through all the entry roads and outputs option elements
+      boundsIterator(boundPointsEntries);
     } else {
       // checking if user selected westbound then displaying
       // all westbound entry and exit points
-      boundPoints = eastWestBounds.filter(road => !wbExclude.includes(road.id));
+      boundPointsEntries = eastWestBounds.filter(
+        road => !wbExclude.includes(road.id)
+      );
       removeAllChildNodes(domElements.entryPointStr);
 
       // loops through all the roads and outputs option elements
-      boundsIterator(boundPoints);
+      boundsIterator(boundPointsEntries);
     }
 
     // A function that contains a for..of loop
     function boundsIterator(points) {
-      for (boundPoint of points) {
+      for (boundPointEntry of points) {
         domElements.entryPointStr.insertAdjacentHTML(
           'beforeend',
           `
-        <option value="${boundPoint.id}">${boundPoint.title}</option>
+        <option value="${boundPointEntry.id}">${boundPointEntry.title}</option>
         
         `
         );
-        // eastWestCoords = {boundPoint.coords};
-        // markerCreator(boundPoint.title, boundpoint)
+
         if (directionValue === 1) {
-          allEntryCoords = boundPoint.coords.east;
-          hideMarkers();
-          markerCreator(boundPoint.title, allEntryCoords, boundPoint.id);
-          showPoints();
+          allEntryCoords = boundPointEntry.coords.east;
+          // hides, shows then displays markers by calling three different functions
+          hideCreateShowMarkers(
+            boundPointEntry.title,
+            allEntryCoords,
+            boundPointEntry.id
+          );
         } else {
-          allEntryCoords = boundPoint.coords.west;
-          hideMarkers();
-          markerCreator(boundPoint.title, allEntryCoords, boundPoint.id);
-          showPoints();
+          allEntryCoords = boundPointEntry.coords.west;
+          hideCreateShowMarkers(
+            boundPointEntry.title,
+            allEntryCoords,
+            boundPointEntry.id
+          );
         }
 
         // console.log(eastCoords);
@@ -181,13 +191,11 @@ window.initMap = function () {
 
   // gets respective exits
   function getExits(e) {
-    // westMarkers.forEach(mark => {
-    //   mark.setMap(null);
-    // });
-
-    let boundPointsExits, boundPointExit, selectedPoint, exitPointsArr;
+    let boundPointsExits, boundPointExit, exitPointsArr;
     // get the values of each entry point
-    selectedPoint = e.target.value;
+    selectedEntryPoint = e.target.value;
+    // displayRoutes(directionValue);
+
     // filter the values and return respective exits
     // if value === a,b,c or d display f,j,m,o,r,t,u,w
     // if value === e display j,m,o,r,t,u,w
@@ -197,7 +205,7 @@ window.initMap = function () {
     // if value === q,r,s,t display no exit
     // if value === u display w
     if (directionValue === 2) {
-      switch (selectedPoint) {
+      switch (selectedEntryPoint) {
         case 'a':
         case 'b':
         case 'c':
@@ -254,7 +262,7 @@ window.initMap = function () {
           break;
       }
     } else {
-      switch (selectedPoint) {
+      switch (selectedEntryPoint) {
         case 'w':
         case 'v':
         case 'u':
@@ -323,6 +331,24 @@ window.initMap = function () {
           
           `
           );
+
+          if (directionValue === 1) {
+            allExitCoords = boundPointExit.coords.east;
+            // hides, creates and shows new markers by calling 3 different functions
+            hideCreateShowMarkers(
+              boundPointExit.title,
+              allExitCoords,
+              boundPointExit.id
+            );
+          } else {
+            allExitCoords = boundPointExit.coords.west;
+            // hides, creates and shows new markers by calling 3 different functions
+            hideCreateShowMarkers(
+              boundPointExit.title,
+              allExitCoords,
+              boundPointExit.id
+            );
+          }
         }
       } else {
         domElements.exitPointStr.insertAdjacentHTML(
@@ -333,8 +359,6 @@ window.initMap = function () {
           `
         );
       }
-
-      // console.log(boundPointsExits);
     }
   }
 
@@ -462,6 +486,13 @@ window.initMap = function () {
       deleteMarkers(westMarkers);
     }
     // console.log(allMarkers);
+  }
+
+  // responsible for removing creating and showing new markers
+  function hideCreateShowMarkers(title, coords, id) {
+    hideMarkers();
+    markerCreator(title, coords, id);
+    showPoints();
   }
 };
 
