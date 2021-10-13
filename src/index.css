@@ -76,6 +76,13 @@ select {
 /* END OF CSS RESET */
 
 /* STYLES BEGIN HERE! */
+:root {
+  --label-entry-color: #73c2fb;
+  --label-exit-color: #ff6347;
+  --label-entry-border-color: #40afff;
+  --label-exit-border-color: #ff5132;
+}
+
 .hide {
   display: none;
 }
@@ -102,10 +109,30 @@ select {
 /* Styles for map labels */
 .labels {
   color: #000;
-  background-color: #73c2fb;
-  border: 1px solid #3b7bd4;
+  background-color: var(--label-entry-color);
+  border-top: 1px solid var(--label-entry-border-color);
+  border-bottom: 1px solid var(--label-entry-border-color);
+  border-right: 1px solid var(--label-entry-border-color);
   font-size: 12px;
   text-align: start;
   white-space: nowrap;
   padding: 5px;
+  margin: -12px 0 30px 15px;
+  position: relative;
+  /* transform: rotate(180deg); */
+}
+
+.labels::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -12px;
+  top: 0;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+
+  border-right: 12px solid var(--label-entry-color);
 }

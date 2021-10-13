@@ -14,6 +14,7 @@ const domElements = {
   secondStepStr: document.querySelector('.form__select-direction-two'),
   entryPointStr: document.querySelector('[data-entry]'),
   exitPointStr: document.querySelector('[data-exit]'),
+  labelsClassStr: document.querySelectorAll('.labels'),
 };
 
 let map;
@@ -24,6 +25,7 @@ let allEntryCoords;
 let allExitCoords;
 let marker;
 let allMarkers;
+let filteredMarkers;
 let infoWindow;
 let bounds;
 const orlandoCod = { lat: 28.5384, lng: -81.3789 };
@@ -191,6 +193,7 @@ window.initMap = function () {
 
   // gets respective exits
   function getExits(e) {
+    changeColor();
     let boundPointsExits, boundPointExit, exitPointsArr;
     // get the values of each entry point
     selectedEntryPoint = e.target.value;
@@ -376,10 +379,10 @@ window.initMap = function () {
     const svgMarker = {
       path: 'M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z',
       fillColor: '#0857c3',
-      fillOpacity: 0.6,
+      fillOpacity: 0.5,
       strokeWeight: 0,
       rotation: 0,
-      scale: 1,
+      scale: 0,
       anchor: new google.maps.Point(10, 20),
     };
 
@@ -393,6 +396,7 @@ window.initMap = function () {
     //   labelClass: 'labels', // the CSS class for the label
     //   labelStyle: { opacity: 1.0 }
     // });
+
     // new marker instance
     marker = new MarkerWithLabel({
       position: position,
@@ -461,10 +465,11 @@ window.initMap = function () {
 
   // function that loops all the markers
   function toggleMarkersFromMap(arr) {
-    let filteredMarkers;
     if (arr) {
+      console.log(filteredMarkers);
       allMarkers = eastMarkers.concat(westMarkers);
       filteredMarkers = allMarkers.filter(mark => arr.includes(mark.id));
+      console.log(filteredMarkers);
       if (directionValue === 1) {
         // delete current markers
         deleteMarkers(eastMarkers);
@@ -485,7 +490,6 @@ window.initMap = function () {
       deleteMarkers(eastMarkers);
       deleteMarkers(westMarkers);
     }
-    // console.log(allMarkers);
   }
 
   // responsible for removing creating and showing new markers
@@ -493,6 +497,15 @@ window.initMap = function () {
     hideMarkers();
     markerCreator(title, coords, id);
     showPoints();
+  }
+
+  // change label colors
+  function changeColor() {
+    // domElements.labelsClassStr.style.setProperty(
+    //   '--label-entry-color',
+    //   '--label-exit-color'
+    // );
+    console.log(domElements.labelsClassStr);
   }
 };
 
