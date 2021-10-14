@@ -18,7 +18,6 @@ const domElements = {
 };
 
 let map;
-// let boundPoints;
 let directionValue;
 let selectedEntryPoint;
 let allEntryCoords;
@@ -28,6 +27,9 @@ let allMarkers;
 let filteredMarkers;
 let infoWindow;
 let bounds;
+let labelExitColor;
+let westLabels;
+let eastLabels;
 const orlandoCod = { lat: 28.5384, lng: -81.3789 };
 
 // Created the script tag & set the appropriate attributes
@@ -74,8 +76,6 @@ window.initMap = function () {
 
   domElements.directionStr.addEventListener('change', getDirection);
   domElements.entryPointStr.addEventListener('change', getExits);
-  // domElements.showListingsStr.addEventListener('click', showRoutes);
-  // domElements.hideListingsStr.addEventListener('click', hideListings);
 
   function populateInfoWindow(marker, infoWind) {
     if (infoWind.marker != marker) {
@@ -131,6 +131,12 @@ window.initMap = function () {
 
   // Display routes UI
   function displayRoutes(dirVal) {
+    // reset entrypoints
+    selectedEntryPoint = null;
+    // changes color, and position of the labels based on the directions
+    changeColor();
+
+    // variables only available in this scope
     let boundPointsEntries, boundPointEntry, wbExclude, ebExclude;
 
     wbExclude = ['n', 'v'];
@@ -177,6 +183,7 @@ window.initMap = function () {
             allEntryCoords,
             boundPointEntry.id
           );
+          showPoints();
         } else {
           allEntryCoords = boundPointEntry.coords.west;
           hideCreateShowMarkers(
@@ -184,6 +191,7 @@ window.initMap = function () {
             allEntryCoords,
             boundPointEntry.id
           );
+          showPoints();
         }
 
         // console.log(eastCoords);
@@ -193,10 +201,15 @@ window.initMap = function () {
 
   // gets respective exits
   function getExits(e) {
-    changeColor();
-    let boundPointsExits, boundPointExit, exitPointsArr;
     // get the values of each entry point
     selectedEntryPoint = e.target.value;
+
+    // change label color
+    changeColor();
+
+    // variables accesible within this scope
+    let boundPointsExits, boundPointExit, exitPointsArr;
+
     // displayRoutes(directionValue);
 
     // filter the values and return respective exits
@@ -386,24 +399,13 @@ window.initMap = function () {
       anchor: new google.maps.Point(10, 20),
     };
 
-    // new label instance
-    // new MarkerWithLabel({
-    //   position: position,
-    //   clickable: true,
-    //   map: map,
-    //   labelContent: title, // can also be HTMLElement
-    //   // labelAnchor: new google.maps.Point(-21, 3),
-    //   labelClass: 'labels', // the CSS class for the label
-    //   labelStyle: { opacity: 1.0 }
-    // });
-
     // new marker instance
     marker = new MarkerWithLabel({
       position: position,
       clickable: true,
       title: title,
       labelContent: title, // can also be HTMLElement
-      labelClass: 'labels', // the CSS class for the label
+      labelClass: `${eastLabels} ${westLabels} ${labelExitColor}`, // the CSS class for the label
       labelStyle: { opacity: 1.0 },
       icon: svgMarker,
       id: id,
@@ -466,10 +468,9 @@ window.initMap = function () {
   // function that loops all the markers
   function toggleMarkersFromMap(arr) {
     if (arr) {
-      console.log(filteredMarkers);
       allMarkers = eastMarkers.concat(westMarkers);
       filteredMarkers = allMarkers.filter(mark => arr.includes(mark.id));
-      console.log(filteredMarkers);
+      // console.log(filteredMarkers);
       if (directionValue === 1) {
         // delete current markers
         deleteMarkers(eastMarkers);
@@ -496,16 +497,37 @@ window.initMap = function () {
   function hideCreateShowMarkers(title, coords, id) {
     hideMarkers();
     markerCreator(title, coords, id);
-    showPoints();
   }
 
   // change label colors
   function changeColor() {
-    // domElements.labelsClassStr.style.setProperty(
-    //   '--label-entry-color',
-    //   '--label-exit-color'
-    // );
-    console.log(domElements.labelsClassStr);
+    if (directionValue === 1) {
+      // if eastbound is selected, remove westlabels styles,
+      // set eastbound lable styles,
+      // reset the exit label styles
+      westLabels = '';
+      eastLabels = 'eastlabels';
+      labelExitColor = '';
+      // ternary for checking if an entry point was selected
+      // if so, in this case
+      // set labelExitColor to eastbound exit labels styles
+      selectedEntryPoint
+        ? (labelExitColor = 'exiteast')
+        : (labelExitColor = '');
+    } else {
+      // if westbound is selected, remove eastlabels styles,
+      // set westbound lable styles,
+      // reset the exit label styles
+      eastLabels = '';
+      westLabels = 'westlabels';
+      labelExitColor = '';
+      // ternary for checking if an entry point was selected
+      // if so, in this case
+      // set labelExitColor to westbound exit labels styles
+      selectedEntryPoint
+        ? (labelExitColor = 'exitwest')
+        : (labelExitColor = '');
+    }
   }
 };
 

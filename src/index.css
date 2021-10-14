@@ -77,10 +77,11 @@ select {
 
 /* STYLES BEGIN HERE! */
 :root {
-  --label-entry-color: #73c2fb;
-  --label-exit-color: #ff6347;
-  --label-entry-border-color: #40afff;
-  --label-exit-border-color: #ff5132;
+  --label-entry-color: #33b66f;
+  --label-exit-color: #7f3f98;
+  --label-entry-border-color: #33b66e60;
+  --label-exit-border-color: #7f3f9860;
+  --label-font-color: rgb(255, 255, 255);
 }
 
 .hide {
@@ -106,13 +107,13 @@ select {
   /* width: 100%; */
 }
 
-/* Styles for map labels */
-.labels {
-  color: #000;
+/* Styles for eastbound labels */
+.eastlabels {
+  color: var(--label-font-color);
   background-color: var(--label-entry-color);
-  border-top: 1px solid var(--label-entry-border-color);
-  border-bottom: 1px solid var(--label-entry-border-color);
-  border-right: 1px solid var(--label-entry-border-color);
+  border-top: 0.5px solid var(--label-entry-border-color);
+  border-bottom: 0.5px solid var(--label-entry-border-color);
+  border-right: 0.5px solid var(--label-entry-border-color);
   font-size: 12px;
   text-align: start;
   white-space: nowrap;
@@ -122,7 +123,7 @@ select {
   /* transform: rotate(180deg); */
 }
 
-.labels::before {
+.eastlabels::before {
   content: '';
   display: block;
   position: absolute;
@@ -135,4 +136,58 @@ select {
   border-bottom: 12px solid transparent;
 
   border-right: 12px solid var(--label-entry-color);
+}
+
+/* Styles for westbound labels */
+.westlabels {
+  color: var(--label-font-color);
+  background-color: var(--label-entry-color);
+  border-top: 0.5px solid var(--label-entry-border-color);
+  border-bottom: 0.5px solid var(--label-entry-border-color);
+  border-left: 0.5px solid var(--label-entry-border-color);
+  font-size: 12px;
+  text-align: start;
+  white-space: nowrap;
+  padding: 5px;
+  margin: -12px 0 30px -10px;
+  position: relative;
+  transform: translateX(-100%);
+}
+
+.westlabels::before {
+  content: '';
+  display: block;
+  position: absolute;
+  right: -11.4px;
+  top: 0;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 12px solid var(--label-entry-color);
+}
+
+/* styles for the exit labels eastbound */
+.exiteast {
+  background-color: var(--label-exit-color) !important;
+  border-top: 0.5px solid var(--label-exit-border-color) !important;
+  border-bottom: 0.5px solid var(--label-exit-border-color) !important;
+  border-right: 0.5px solid var(--label-exit-border-color) !important;
+}
+
+.exiteast::before {
+  border-right: 12px solid var(--label-exit-color);
+}
+
+/* styles for the exit labels westbound */
+.exitwest {
+  background-color: var(--label-exit-color) !important;
+  border-top: 0.5px solid var(--label-exit-border-color) !important;
+  border-bottom: 0.5px solid var(--label-exit-border-color) !important;
+  border-left: 0.5px solid var(--label-exit-border-color) !important;
+}
+
+.exitwest::before {
+  border-left: 12px solid var(--label-exit-color);
 }
