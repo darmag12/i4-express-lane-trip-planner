@@ -80,24 +80,27 @@ window.initMap = function () {
   function populateInfoWindow(marker, infoWind) {
     if (infoWind.marker != marker) {
       // Clear the infowindow content to give the streetview time to load.
-      // infoWind.setContent('');
-      // infoWind.marker = marker;
-      // infoWind.addListener('closeclick', function () {
-      //   infoWind.marker = null;
-      // });
-      function getStreetView(data, status) {
-        // if (true) {
-        //   infoWind.setContent(
-        //     `<div>${marker.title}</div><div id="pano"></div>`
-        //   );
-        // } else {
-        //   infoWind.setContent(
-        //     `<div>${marker.title}</div><div>No Steet View Found ):</div>`
-        //   );
-        // }
+      infoWind.setContent('');
+      infoWind.marker = marker;
+      infoWind.addListener('closeclick', function () {
+        infoWind.marker = null;
+      });
+
+      // setting the entrypoints value to the respective ids
+      domElements.entryPointStr.value = marker.id;
+      selectedEntryPoint = marker.id;
+      // getExits();
+
+      if (true) {
+        infoWind.setContent(`<div>${marker.title}</div><div id="pano"></div>`);
+      } else {
+        infoWind.setContent(
+          `<div>${marker.title}</div><div>No Steet View Found ):</div>`
+        );
       }
+
       // Open the infowindow on the correct marker.
-      // infoWind.open(map, marker);
+      infoWind.open(map, marker);
     }
   }
 
@@ -202,7 +205,10 @@ window.initMap = function () {
   // gets respective exits
   function getExits(e) {
     // get the values of each entry point
-    selectedEntryPoint = e.target.value;
+    if (e) {
+      selectedEntryPoint = e.target.value;
+    }
+    console.log(selectedEntryPoint);
 
     // change label color
     changeColor();
@@ -416,9 +422,9 @@ window.initMap = function () {
     // markers.push(marker);
     directionValue === 1 ? eastMarkers.push(marker) : westMarkers.push(marker);
 
-    // marker.addListener('click', function () {
-    //   populateInfoWindow(this, infoWindow);
-    // });
+    marker.addListener('click', function () {
+      populateInfoWindow(this, infoWindow);
+    });
   }
 
   // clears then sets bounds of the markers
@@ -465,7 +471,8 @@ window.initMap = function () {
     });
   }
 
-  // function that loops all the markers
+  // function that loops all the markers and filters it's ids to match
+  // the items in the array in the argument
   function toggleMarkersFromMap(arr) {
     if (arr) {
       allMarkers = eastMarkers.concat(westMarkers);
