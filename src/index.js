@@ -87,9 +87,18 @@ window.initMap = function () {
       });
 
       // setting the entrypoints value to the respective ids
-      domElements.entryPointStr.value = marker.id;
-      selectedEntryPoint = marker.id;
-      // getExits();
+      // this function only runs the code inside it once
+      function sayHello() {
+        domElements.entryPointStr.value = marker.id;
+        selectedEntryPoint = marker.id;
+        map.fitBounds(bounds);
+        getExits();
+        console.log('hello');
+      }
+
+      function helloOnce() {
+        if (!selectedEntryPoint) sayHello();
+      }
 
       if (true) {
         infoWind.setContent(`<div>${marker.title}</div><div id="pano"></div>`);
@@ -101,6 +110,7 @@ window.initMap = function () {
 
       // Open the infowindow on the correct marker.
       infoWind.open(map, marker);
+      helloOnce();
     }
   }
 
@@ -142,8 +152,8 @@ window.initMap = function () {
     // variables only available in this scope
     let boundPointsEntries, boundPointEntry, wbExclude, ebExclude;
 
-    wbExclude = ['n', 'v'];
-    ebExclude = ['c', 'h', 'm'];
+    wbExclude = ['n', 'v', 'w'];
+    ebExclude = ['c', 'h', 'm', 'a'];
 
     // checking if user selected eastbound then displaying
     // all eastbound entry and exit points
