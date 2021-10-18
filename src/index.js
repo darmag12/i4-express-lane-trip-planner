@@ -20,6 +20,9 @@ const domElements = {
 let map;
 let directionValue;
 let selectedEntryPoint;
+let selectedExitPoint;
+let selectedEntryExit;
+let directionPoints;
 let allEntryCoords;
 let allExitCoords;
 let marker;
@@ -27,6 +30,7 @@ let allMarkers;
 let filteredMarkers;
 let infoWindow;
 let bounds;
+let iconColor;
 let labelExitColor;
 let westLabels;
 let eastLabels;
@@ -75,7 +79,8 @@ window.initMap = function () {
   infoWindow = new google.maps.InfoWindow();
 
   domElements.directionStr.addEventListener('change', getDirection);
-  domElements.entryPointStr.addEventListener('change', getExits);
+  domElements.entryPointStr.addEventListener('change', getEntry);
+  domElements.exitPointStr.addEventListener('change', getExit);
 
   function populateInfoWindow(marker, infoWind) {
     if (infoWind.marker != marker) {
@@ -86,18 +91,18 @@ window.initMap = function () {
         infoWind.marker = null;
       });
 
-      // setting the entrypoints value to the respective ids
-      // this function only runs the code inside it once
-      function sayHello() {
+      // setting the entrypoints value to the respective ids then call
+      // getEntry()
+      function setEntryPointOnClick() {
         domElements.entryPointStr.value = marker.id;
         selectedEntryPoint = marker.id;
-        map.fitBounds(bounds);
-        getExits();
-        console.log('hello');
+        getEntry();
       }
 
-      function helloOnce() {
-        if (!selectedEntryPoint) sayHello();
+      // this function only runs the code inside it once
+      function execOnce() {
+        // check if selectedEntryPoin is NOT true then call setEntry
+        if (!selectedEntryPoint) setEntryPointOnClick();
       }
 
       if (true) {
@@ -110,7 +115,7 @@ window.initMap = function () {
 
       // Open the infowindow on the correct marker.
       infoWind.open(map, marker);
-      helloOnce();
+      execOnce(); // runs once
     }
   }
 
@@ -144,7 +149,7 @@ window.initMap = function () {
 
   // Display routes UI
   function displayRoutes(dirVal) {
-    // reset entrypoints
+    // reset entry points
     selectedEntryPoint = null;
     // changes color, and position of the labels based on the directions
     changeColor();
@@ -190,7 +195,7 @@ window.initMap = function () {
 
         if (directionValue === 1) {
           allEntryCoords = boundPointEntry.coords.east;
-          // hides, shows then displays markers by calling three different functions
+          // hides, shows then displays markers by calling two different functions
           hideCreateShowMarkers(
             boundPointEntry.title,
             allEntryCoords,
@@ -212,8 +217,8 @@ window.initMap = function () {
     }
   }
 
-  // gets respective exits
-  function getExits(e) {
+  // gets entry points and displays respective exits for the selected entry
+  function getEntry(e) {
     // get the values of each entry point
     if (e) {
       selectedEntryPoint = e.target.value;
@@ -394,6 +399,24 @@ window.initMap = function () {
     }
   }
 
+  // this function gets exit points selected by the user
+  function getExit(e) {
+    // set the value of the exit points
+    selectedExitPoint = e.target.value;
+    selectedEntryExit = [selectedEntryPoint, selectedExitPoint];
+    console.log(selectedExitPoint);
+    // display only markers for the entry and exit point selected
+    // loop all markers and filter
+    directionPoints = allMarkers.filter(mark =>
+      selectedEntryExit.includes(mark.id)
+    );
+    // hide current markers
+    deleteMarkers(allMarkers);
+    console.log(directionPoints);
+    // only display entry and exit point markers
+    showMarkers(directionPoints);
+  }
+
   //===========REUSED FUNCTIONS==================//
   // removes all child nodes except the selected one
   function removeAllChildNodes(parent) {
@@ -407,11 +430,11 @@ window.initMap = function () {
     // Custom Marker
     const svgMarker = {
       path: 'M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z',
-      fillColor: '#0857c3',
-      fillOpacity: 0.5,
+      fillColor: iconColor,
+      fillOpacity: 0.8,
       strokeWeight: 0,
       rotation: 0,
-      scale: 0,
+      scale: 1,
       anchor: new google.maps.Point(10, 20),
     };
 
@@ -485,7 +508,11 @@ window.initMap = function () {
   // the items in the array in the argument
   function toggleMarkersFromMap(arr) {
     if (arr) {
-      allMarkers = eastMarkers.concat(westMarkers);
+      allMarkers = removeDuplicates(
+        eastMarkers.concat(westMarkers),
+        it => it.id
+      );
+      // let allMarkersFiltered = uniqChar(allMarkers, it => it.id);
       filteredMarkers = allMarkers.filter(mark => arr.includes(mark.id));
       // console.log(filteredMarkers);
       if (directionValue === 1) {
@@ -518,6 +545,12 @@ window.initMap = function () {
 
   // change label colors
   function changeColor() {
+    // checks if any direction is selected then toggle icon colors
+    // accordingly
+    if (directionValue) {
+      iconColor = '';
+      selectedEntryPoint ? (iconColor = '#7f3f98') : (iconColor = '#33b66f');
+    }
     if (directionValue === 1) {
       // if eastbound is selected, remove westlabels styles,
       // set eastbound lable styles,
@@ -545,6 +578,11 @@ window.initMap = function () {
         ? (labelExitColor = 'exitwest')
         : (labelExitColor = '');
     }
+  }
+
+  // function that removes duplicate objects from an array
+  function removeDuplicates(data, key) {
+    return [...new Map(data.map(x => [key(x), x])).values()];
   }
 };
 
