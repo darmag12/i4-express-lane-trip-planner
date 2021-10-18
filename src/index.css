@@ -102,6 +102,10 @@ select {
   margin-right: 20px;
 }
 
+.form-view {
+  margin: 30px 0;
+}
+
 #map {
   height: 90vh;
   /* width: 100%; */

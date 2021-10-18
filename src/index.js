@@ -14,7 +14,7 @@ const domElements = {
   secondStepStr: document.querySelector('.form__select-direction-two'),
   entryPointStr: document.querySelector('[data-entry]'),
   exitPointStr: document.querySelector('[data-exit]'),
-  labelsClassStr: document.querySelectorAll('.labels'),
+  viewRouteStr: document.querySelector('[data-view]'),
 };
 
 let map;
@@ -34,6 +34,8 @@ let iconColor;
 let labelExitColor;
 let westLabels;
 let eastLabels;
+let directionsService;
+let directionsRenderer;
 const orlandoCod = { lat: 28.5384, lng: -81.3789 };
 
 // Created the script tag & set the appropriate attributes
@@ -77,10 +79,13 @@ window.initMap = function () {
   map.setTilt();
 
   infoWindow = new google.maps.InfoWindow();
+  directionsService = new google.maps.DirectionsService();
+  directionsRenderer = new google.maps.DirectionsRenderer();
 
   domElements.directionStr.addEventListener('change', getDirection);
   domElements.entryPointStr.addEventListener('change', getEntry);
   domElements.exitPointStr.addEventListener('change', getExit);
+  domElements.viewRouteStr.addEventListener('click', viewRoute);
 
   function populateInfoWindow(marker, infoWind) {
     if (infoWind.marker != marker) {
@@ -417,6 +422,41 @@ window.initMap = function () {
     showMarkers(directionPoints);
   }
 
+  // this function gets draws a line on the map to view the route
+  function viewRoute() {
+    function calcRoute() {
+      // set the start and end points
+      let start = directionPoints[0].position;
+      let end = directionPoints[1].position;
+      // set our request object
+      let request = {
+        origin: start,
+        destination: end,
+        travelMode: 'DRIVING',
+      };
+      // get the route of our start and end points
+      directionsService.route(request, function (result, status) {
+        if (status == 'OK') {
+          // set our direction render options
+          directionsRenderer.setOptions({
+            map: map,
+            directions: result,
+            suppressMarkers: true,
+            polylineOptions: {
+              strokeColor: '#1E90FF',
+              strokeOpacity: 1,
+              strokeWeight: 5,
+            },
+          });
+        } else {
+          window.alert('Route request failed due to ' + status);
+        }
+      });
+    }
+
+    calcRoute();
+  }
+
   //===========REUSED FUNCTIONS==================//
   // removes all child nodes except the selected one
   function removeAllChildNodes(parent) {
@@ -583,6 +623,14 @@ window.initMap = function () {
   // function that removes duplicate objects from an array
   function removeDuplicates(data, key) {
     return [...new Map(data.map(x => [key(x), x])).values()];
+  }
+
+  function addLine() {
+    flightPath.setMap(map);
+  }
+
+  function removeLine() {
+    flightPath.setMap(null);
   }
 };
 
