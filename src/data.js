@@ -1,12 +1,11 @@
 // List of all the westbound roads
-
 export const eastWestBounds = [
   {
     id: 'a',
     title: 'Daytona Beach/DeLand/Lake Mary',
     coords: {
-      east: { lat: 28.712332, lng: -81.378978 },
-      west: { lat: 28.71238, lng: -81.37876 },
+      east: { lat: 28.71238, lng: -81.37876 },
+      west: { lat: 28.712332, lng: -81.378978 },
     },
   },
   {
@@ -14,7 +13,7 @@ export const eastWestBounds = [
     title: 'S.R. 434 (Mile 94)',
     coords: {
       east: { lat: 28.69082, lng: -81.38862 },
-      west: { lat: 28.69071, lng: -81.3888 },
+      west: { lat: 28.69063, lng: -81.38897 },
     },
   },
   {
@@ -102,7 +101,7 @@ export const eastWestBounds = [
     title: 'South St. (Mile 82)',
     coords: {
       east: { lat: 28.53847, lng: -81.38203 },
-      west: { lat: 28.53842, lng: -81.38267 },
+      west: { lat: 28.53842, lng: -81.38272 },
     },
   },
   {

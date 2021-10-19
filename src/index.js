@@ -15,6 +15,9 @@ const domElements = {
   entryPointStr: document.querySelector('[data-entry]'),
   exitPointStr: document.querySelector('[data-exit]'),
   viewRouteStr: document.querySelector('[data-view]'),
+  popupContainerStr: document.querySelector('[data-instruction-popup]'),
+  popupContentStr: document.querySelector('[data-instruction-popup-content]'),
+  popupCloseStr: document.querySelector('[data-instruction-popup-close]'),
 };
 
 let map;
@@ -28,7 +31,6 @@ let allExitCoords;
 let marker;
 let allMarkers;
 let filteredMarkers;
-let infoWindow;
 let bounds;
 let iconColor;
 let labelExitColor;
@@ -78,7 +80,8 @@ window.initMap = function () {
   map = new google.maps.Map(domElements.mapContainerStr, options);
   map.setTilt();
 
-  infoWindow = new google.maps.InfoWindow();
+  // infoWindow = new google.maps.InfoWindow();
+  // Instanciating Direction Service and Direction Renderer
   directionsService = new google.maps.DirectionsService();
   directionsRenderer = new google.maps.DirectionsRenderer();
 
@@ -87,14 +90,10 @@ window.initMap = function () {
   domElements.exitPointStr.addEventListener('change', getExit);
   domElements.viewRouteStr.addEventListener('click', viewRoute);
 
-  function populateInfoWindow(marker, infoWind) {
-    if (infoWind.marker != marker) {
-      // Clear the infowindow content to give the streetview time to load.
-      infoWind.setContent('');
-      infoWind.marker = marker;
-      infoWind.addListener('closeclick', function () {
-        infoWind.marker = null;
-      });
+  function populateInfoWindow(marker) {
+    if (marker) {
+      // display popup when a marker is clicked
+      displayPopup();
 
       // setting the entrypoints value to the respective ids then call
       // getEntry()
@@ -109,17 +108,6 @@ window.initMap = function () {
         // check if selectedEntryPoin is NOT true then call setEntry
         if (!selectedEntryPoint) setEntryPointOnClick();
       }
-
-      if (true) {
-        infoWind.setContent(`<div>${marker.title}</div><div id="pano"></div>`);
-      } else {
-        infoWind.setContent(
-          `<div>${marker.title}</div><div>No Steet View Found ):</div>`
-        );
-      }
-
-      // Open the infowindow on the correct marker.
-      infoWind.open(map, marker);
       execOnce(); // runs once
     }
   }
@@ -134,6 +122,12 @@ window.initMap = function () {
   function getRoutes(directionVal) {
     // display step number 2 by removing the class that's hiding it
     domElements.secondStepStr.classList.remove('hide');
+
+    // reset exit dropdown if there's any value
+    resetDropDown(domElements.exitPointStr);
+
+    // hide view route button
+    domElements.viewRouteStr.classList.add('hide');
 
     let dirBound = '';
     if (directionVal === 1) {
@@ -154,8 +148,15 @@ window.initMap = function () {
 
   // Display routes UI
   function displayRoutes(dirVal) {
+    // reset previous routes
+    directionsRenderer.setMap(null);
+
     // reset entry points
     selectedEntryPoint = null;
+
+    // clear the exit dropdown
+    removeAllChildNodes(domElements.exitPointStr);
+
     // changes color, and position of the labels based on the directions
     changeColor();
 
@@ -228,7 +229,12 @@ window.initMap = function () {
     if (e) {
       selectedEntryPoint = e.target.value;
     }
-    console.log(selectedEntryPoint);
+
+    // reset previous routes
+    directionsRenderer.setMap(null);
+
+    // hide view route button
+    domElements.viewRouteStr.classList.add('hide');
 
     // change label color
     changeColor();
@@ -406,10 +412,16 @@ window.initMap = function () {
 
   // this function gets exit points selected by the user
   function getExit(e) {
+    // reset previous routes
+    directionsRenderer.setMap(null);
+
+    // show view route button after user selects an exit
+    domElements.viewRouteStr.classList.remove('hide');
+
     // set the value of the exit points
     selectedExitPoint = e.target.value;
     selectedEntryExit = [selectedEntryPoint, selectedExitPoint];
-    console.log(selectedExitPoint);
+
     // display only markers for the entry and exit point selected
     // loop all markers and filter
     directionPoints = allMarkers.filter(mark =>
@@ -417,44 +429,64 @@ window.initMap = function () {
     );
     // hide current markers
     deleteMarkers(allMarkers);
-    console.log(directionPoints);
+
     // only display entry and exit point markers
     showMarkers(directionPoints);
   }
 
   // this function gets draws a line on the map to view the route
   function viewRoute() {
-    function calcRoute() {
-      // set the start and end points
-      let start = directionPoints[0].position;
-      let end = directionPoints[1].position;
-      // set our request object
-      let request = {
-        origin: start,
-        destination: end,
-        travelMode: 'DRIVING',
-      };
-      // get the route of our start and end points
-      directionsService.route(request, function (result, status) {
-        if (status == 'OK') {
-          // set our direction render options
-          directionsRenderer.setOptions({
-            map: map,
-            directions: result,
-            suppressMarkers: true,
-            polylineOptions: {
-              strokeColor: '#1E90FF',
-              strokeOpacity: 1,
-              strokeWeight: 5,
-            },
-          });
-        } else {
-          window.alert('Route request failed due to ' + status);
-        }
-      });
-    }
+    // set the start and end points
+    let start = directionPoints[0].position;
+    let end = directionPoints[1].position;
+    // set our request object
+    let request = {
+      origin: start,
+      destination: end,
+      travelMode: 'DRIVING',
+    };
+    // get the route of our start and end points
+    directionsService.route(request, function (result, status) {
+      if (status == 'OK') {
+        // set our direction render
+        directionsRenderer.setOptions({
+          map: map,
+          directions: result,
+          suppressMarkers: true,
+          polylineOptions: {
+            strokeColor: '#1E90FF',
+            strokeOpacity: 1,
+            strokeWeight: 5,
+          },
+        });
+      } else {
+        window.alert('Route request failed due to ' + status);
+      }
+    });
+  }
 
-    calcRoute();
+  // function incharge of displaying modal
+  function displayPopup() {
+    // Get the modal
+    let modal = domElements.popupContainerStr;
+
+    // Get the <span> element that closes the modal
+    let span = domElements.popupCloseStr;
+
+    // When the user clicks on the button, open the modal
+    modal.style.display = 'block';
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      modal.style.display = 'none';
+    };
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    };
   }
 
   //===========REUSED FUNCTIONS==================//
@@ -482,7 +514,7 @@ window.initMap = function () {
     marker = new MarkerWithLabel({
       position: position,
       clickable: true,
-      title: title,
+      title: `<h3 id="myBtn">${title}</h3>`,
       labelContent: title, // can also be HTMLElement
       labelClass: `${eastLabels} ${westLabels} ${labelExitColor}`, // the CSS class for the label
       labelStyle: { opacity: 1.0 },
@@ -496,7 +528,7 @@ window.initMap = function () {
     directionValue === 1 ? eastMarkers.push(marker) : westMarkers.push(marker);
 
     marker.addListener('click', function () {
-      populateInfoWindow(this, infoWindow);
+      populateInfoWindow(this);
     });
   }
 
@@ -625,12 +657,9 @@ window.initMap = function () {
     return [...new Map(data.map(x => [key(x), x])).values()];
   }
 
-  function addLine() {
-    flightPath.setMap(map);
-  }
-
-  function removeLine() {
-    flightPath.setMap(null);
+  // function that resets drop downs to default
+  function resetDropDown(item) {
+    item.selectedIndex = 0;
   }
 };
 
