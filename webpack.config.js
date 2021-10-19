@@ -17,25 +17,6 @@ module.exports = {
     fallback: { console: false },
   },
 
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
-      },
-
-      {
-        test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
-      },
-    ],
-  },
-
-  devtool: 'source-map',
-
   plugins: [
     new HtmlWebPackPlugin({
       template: 'src/index.html',
@@ -50,4 +31,36 @@ module.exports = {
       excludeAliases: ['console'],
     }),
   ],
+
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+
+      {
+        test: /\.html$/,
+        use: ['html-loader'],
+      },
+
+      {
+        test: /\.(svg|png|jpg|gif)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name][ext]',
+        },
+      },
+
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+    ],
+  },
+
+  devtool: 'source-map',
 };
