@@ -77,10 +77,10 @@ select {
 
 /* STYLES BEGIN HERE! */
 :root {
-  --label-entry-color: #33b66f;
-  --label-exit-color: #7f3f98;
-  --label-entry-border-color: #33b66e60;
-  --label-exit-border-color: #7f3f9860;
+  --label-entry-color: #36b76f;
+  --label-exit-color: #41bedf;
+  --label-entry-border-color: #36b77060;
+  --label-exit-border-color: #41bddf60;
   --label-font-color: rgb(255, 255, 255);
 }
 

@@ -44,16 +44,16 @@ export const eastWestBounds = [
     id: 'f',
     title: 'Lee Road (S.R. 423) (Mile 88)',
     coords: {
-      east: { lat: 28.60602, lng: -81.38638 },
-      west: { lat: 28.60593, lng: -81.38659 },
+      east: { lat: 28.60599, lng: -81.38628 },
+      west: { lat: 28.60592, lng: -81.38669 },
     },
   },
   {
     id: 'g',
     title: 'Fairbanks Ave. (Mile 87)',
     coords: {
-      east: { lat: 28.59316, lng: -81.38203 },
-      west: { lat: 28.59301, lng: -81.38218 },
+      east: { lat: 28.5932, lng: -81.38191 },
+      west: { lat: 28.593, lng: -81.38237 },
     },
   },
   {

@@ -1,5 +1,6 @@
 import { eastWestBounds } from './data.js';
 import MarkerWithLabel from '@googlemaps/markerwithlabel';
+import { styles } from './mapstyles.js';
 import './index.css';
 
 // This is set to an environment variable
@@ -50,26 +51,12 @@ window.initMap = function () {
   let markers = [];
   let eastMarkers = [];
   let westMarkers = [];
-  // Creates a styles array to use with the map.
-  let styles = [
-    {
-      featureType: 'road.highway',
-      elementType: 'geometry',
-      stylers: [{ color: '#424242' }, { lightness: 20 }],
-    },
 
-    {
-      featureType: 'road.highway.controlled_access',
-      elementType: 'geometry',
-      stylers: [{ color: '#FFAB40' }, { lightness: 20 }],
-    },
-  ];
-
-  // JS API is loaded and available
+  // Setting up the map options
   let options = {
     center: orlandoCod,
     zoom: 13,
-    styles: styles,
+    styles: styles, // comes from mapstyles.js
     mapTypeControl: true,
     mapTypeControlOptions: {
       mapTypeIds: ['roadmap', 'terrain', 'hybrid', 'satellite'],
@@ -77,6 +64,7 @@ window.initMap = function () {
     // mapId: '9ffa16729c1a3c66'
   };
 
+  // instanciate new map object
   map = new google.maps.Map(domElements.mapContainerStr, options);
   map.setTilt();
 
@@ -103,19 +91,33 @@ window.initMap = function () {
         getEntry();
       }
 
+      // setting the exitpoints value to the respective ids then call
+      // getExit()
+      if (selectedEntryPoint) {
+        function setExitPointOnClick() {
+          domElements.exitPointStr.value = marker.id;
+          selectedExitPoint = marker.id;
+          getExit();
+        }
+
+        setExitPointOnClick();
+      }
+
       // this function only runs the code inside it once
-      function execOnce() {
-        // check if selectedEntryPoin is NOT true then call setEntry
+      function execOnceEntry() {
+        // check if selectedEntryPoint is NOT true then call setEntry
         if (!selectedEntryPoint) setEntryPointOnClick();
       }
-      execOnce(); // runs once
+
+      execOnceEntry(); // runs once
     }
   }
 
   // Gets direction from user input East or West
   function getDirection(e) {
     directionValue = parseInt(e.target.value, 10);
-    directionValue ? getRoutes(directionValue) : null;
+    // call getroutes if direction is true else reload/clear everything
+    directionValue ? getRoutes(directionValue) : location.reload();
   }
 
   // Gets routes corresponding to the direction selected
@@ -151,8 +153,10 @@ window.initMap = function () {
     // reset previous routes
     directionsRenderer.setMap(null);
 
-    // reset entry points
+    // reset entry point
     selectedEntryPoint = null;
+    // reset exit point
+    selectedExitPoint = null;
 
     // clear the exit dropdown
     removeAllChildNodes(domElements.exitPointStr);
@@ -412,14 +416,17 @@ window.initMap = function () {
 
   // this function gets exit points selected by the user
   function getExit(e) {
+    if (e) {
+      // set the value of the exit points if event is true
+      selectedExitPoint = e.target.value;
+    }
     // reset previous routes
     directionsRenderer.setMap(null);
 
     // show view route button after user selects an exit
     domElements.viewRouteStr.classList.remove('hide');
 
-    // set the value of the exit points
-    selectedExitPoint = e.target.value;
+    // store the ids of the selected entry and exit point
     selectedEntryExit = [selectedEntryPoint, selectedExitPoint];
 
     // display only markers for the entry and exit point selected
@@ -456,7 +463,7 @@ window.initMap = function () {
           polylineOptions: {
             strokeColor: '#1E90FF',
             strokeOpacity: 1,
-            strokeWeight: 5,
+            strokeWeight: 3,
           },
         });
       } else {
@@ -514,7 +521,7 @@ window.initMap = function () {
     marker = new MarkerWithLabel({
       position: position,
       clickable: true,
-      title: `<h3 id="myBtn">${title}</h3>`,
+      title: title,
       labelContent: title, // can also be HTMLElement
       labelClass: `${eastLabels} ${westLabels} ${labelExitColor}`, // the CSS class for the label
       labelStyle: { opacity: 1.0 },
@@ -617,11 +624,15 @@ window.initMap = function () {
 
   // change label colors
   function changeColor() {
+    // setting icon color variables
+    let greenColor = '#36b76f';
+    let blueColor = '#41bedf';
+
     // checks if any direction is selected then toggle icon colors
     // accordingly
     if (directionValue) {
       iconColor = '';
-      selectedEntryPoint ? (iconColor = '#7f3f98') : (iconColor = '#33b66f');
+      selectedEntryPoint ? (iconColor = blueColor) : (iconColor = greenColor);
     }
     if (directionValue === 1) {
       // if eastbound is selected, remove westlabels styles,
