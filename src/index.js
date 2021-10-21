@@ -100,7 +100,13 @@ window.initMap = function () {
           getExit();
         }
 
-        setExitPointOnClick();
+        // this function only runs the code inside it once
+        function execOnceExit() {
+          // check if selectedEntryPoint is NOT true then call setEntry
+          if (!selectedExitPoint) setExitPointOnClick();
+        }
+
+        execOnceExit(); // only runs once
       }
 
       // this function only runs the code inside it once
