@@ -81,6 +81,7 @@ select {
 /* STYLES BEGIN HERE! */
 :root {
   --route-icon-color: #1e90ff;
+  --steps-icon-color: #0857c3;
   --label-entry-color: #36b76f;
   --label-exit-color: #41bedf;
   --label-entry-border-color: #36b77060;
@@ -115,8 +116,9 @@ option {
 }
 
 .map-header-title h1 {
-  color: #0857c3;
+  color: var(--steps-icon-color);
   font-size: 3em;
+  line-height: 1.4;
 }
 
 /* INFO SECTION STYLES */
@@ -194,6 +196,12 @@ option {
   margin-bottom: 20px;
   padding: 10px;
 }
+
+.form-description h3 {
+  padding-bottom: 5px;
+  color: var(--steps-icon-color);
+}
+
 .form__select-direction-one .step,
 .form__select-direction-two .step {
   display: flex;
@@ -206,8 +214,8 @@ option {
 }
 
 .step-number {
-  border: 3px solid #0857c3;
-  color: #0857c3;
+  border: 3px solid var(--steps-icon-color);
+  color: var(--steps-icon-color);
   display: block;
   height: 30px;
   line-height: 24px;
@@ -223,7 +231,7 @@ option {
 /* END OF FORM STYLES */
 
 #map {
-  height: 90vh;
+  height: 80vh;
   /* width: 100%; */
 }
 
@@ -325,6 +333,8 @@ option {
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  animation: popup 0.7s;
+  transition: all 0.7s ease-in-out;
 }
 
 /* Modal Content/Box */
@@ -354,4 +364,17 @@ option {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+/* CSS ANIMATION kEYFRAMES */
+@keyframes popup {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
