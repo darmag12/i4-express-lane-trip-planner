@@ -1,3 +1,6 @@
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,600;1,200;1,300&display=swap');
+
 /* Basic CSS Reset */
 /* Box sizing rules */
 *,
@@ -77,6 +80,7 @@ select {
 
 /* STYLES BEGIN HERE! */
 :root {
+  --route-icon-color: #1e90ff;
   --label-entry-color: #36b76f;
   --label-exit-color: #41bedf;
   --label-entry-border-color: #36b77060;
@@ -84,13 +88,123 @@ select {
   --label-font-color: rgb(255, 255, 255);
 }
 
+html,
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+}
+
+p,
+option {
+  font-weight: 300;
+}
+
 .hide {
   display: none;
 }
 
-.form__select-direction .step {
-  display: flex;
+/* Map header title styles */
+.map-header-title {
+  margin: 20px 0;
 }
+
+.map-header-title h1 {
+  color: #0857c3;
+  font-size: 3em;
+}
+
+/* INFO SECTION STYLES */
+.info-section {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 1em;
+  padding: 30px;
+  margin: 30px 0;
+}
+
+.info-section .entry-icon {
+  color: var(--label-font-color);
+  background-color: var(--label-entry-color);
+  border-top: 0.5px solid var(--label-entry-border-color);
+  border-bottom: 0.5px solid var(--label-entry-border-color);
+  border-right: 0.5px solid var(--label-entry-border-color);
+  padding: 10px 30px;
+  /* margin: 10px; */
+  position: relative;
+}
+
+.info-section .entry-icon::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -22px;
+  top: 0;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  border-top: 22px solid transparent;
+  border-bottom: 22px solid transparent;
+  border-right: 22px solid var(--label-entry-color);
+}
+
+.info-section .exit-icon {
+  color: var(--label-font-color);
+  background-color: var(--label-exit-color);
+  border-top: 0.5px solid var(--label-exit-border-color);
+  border-bottom: 0.5px solid var(--label-exit-border-color);
+  border-left: 0.5px solid var(--label-exit-border-color);
+  padding: 10px 30px;
+  /* margin: 10px; */
+  position: relative;
+}
+
+.info-section .exit-icon::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -22px;
+  top: 0;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  border-top: 22px solid transparent;
+  border-bottom: 22px solid transparent;
+  border-right: 22px solid var(--label-exit-color);
+}
+
+.info-section .route-icon {
+  color: var(--label-font-color);
+  background-color: var(--route-icon-color);
+  border-radius: 25px;
+  padding: 10px 30px;
+  /* margin: 10px; */
+  position: relative;
+}
+
+/* END OF INFO SECTION STYLES */
+
+/* BEGINNING OF FORM STYLES */
+.form-description {
+  margin-bottom: 20px;
+  padding: 10px;
+}
+.form__select-direction-one .step,
+.form__select-direction-two .step {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0;
+}
+
+.form__select-direction-two {
+  margin: 60px 0;
+}
+
 .step-number {
   border: 3px solid #0857c3;
   color: #0857c3;
@@ -105,6 +219,8 @@ select {
 .form-view {
   margin: 30px 0;
 }
+
+/* END OF FORM STYLES */
 
 #map {
   height: 90vh;
