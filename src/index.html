@@ -34,7 +34,7 @@
         <!-- END OF INFO SECTION -->
 
         <!---BEGINNING OF FORM-->
-        <form class="col-6 form-container">
+        <form class="col-md-6 col-sm-12 form-container">
           <div class="form-description">
             <h3>LEARN YOUR ROUTE</h3>
             <p>
@@ -44,7 +44,7 @@
             </p>
           </div>
           <!----Beginning of direction selection--->
-          <div class="col-6 form__select-direction-one">
+          <div class="col-md-6 col-sm-12 form__select-direction-one">
             <div class="step">
               <span class="step-number">1</span>
               <p>Which direction will you be traveling?</p>
@@ -62,7 +62,7 @@
           <!----End of direction selection--->
 
           <!---Beginning of entry/exit points selections-->
-          <div class="col-6 form__select-direction-two hide">
+          <div class="col-md-6 col-sm-12 form__select-direction-two hide">
             <div class="step">
               <span class="step-number">2</span>
               <p>
@@ -75,7 +75,7 @@
               class="form-select form-select-lg mb-3"
               aria-label=".form-select-lg"
             >
-              <option id="selected" selected>Select Entry...</option>
+              <option id="selectEntry" selected>Select Entry...</option>
             </select>
 
             <select
@@ -83,7 +83,7 @@
               class="form-select form-select-lg mb-3"
               aria-label=".form-select-lg"
             >
-              <option id="selected" selected>Select Exit...</option>
+              <option id="selectExit" selected>Select Exit...</option>
             </select>
           </div>
           <!---End of entry/exit points selections-->
@@ -109,13 +109,13 @@
           <div data-instruction-popup-content class="instructionpopup-content">
             <span data-instruction-popup-close class="close">&times;</span>
             <div class="row">
-              <div class="col-md-6 popup-img">
+              <div class="col-md-6 col-sm-12 popup-img">
                 <img
                   src="./assets/central-pkwy-and-434-entry-exit.png"
                   alt=""
                 />
               </div>
-              <div class="col-md-6 popup-instructions">
+              <div class="col-md-6 col-sm-12 popup-instructions">
                 <p>Some instructions here...</p>
                 <p>Some other instructions here...</p>
                 <p>Maybe here as well...</p>
@@ -126,7 +126,7 @@
         <!-- END MODAL -->
 
         <!---BEGINING OF MAP-->
-        <div class="col-6" id="map"></div>
+        <div class="col-md-6 col-sm-12" id="map"></div>
         <!---END OF MAP-->
       </section>
     </div>
