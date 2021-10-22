@@ -19,6 +19,9 @@ const domElements = {
   popupContainerStr: document.querySelector('[data-instruction-popup]'),
   popupContentStr: document.querySelector('[data-instruction-popup-content]'),
   popupCloseStr: document.querySelector('[data-instruction-popup-close]'),
+  popupMapInstructionsStr: document.querySelector(
+    '[data-instruction-popup-info]'
+  ),
 };
 
 let map;
@@ -39,6 +42,8 @@ let westLabels;
 let eastLabels;
 let directionsService;
 let directionsRenderer;
+let mapInstructions;
+let instructionsData;
 const orlandoCod = { lat: 28.5384, lng: -81.3789 };
 
 // Created the script tag & set the appropriate attributes
@@ -82,6 +87,10 @@ window.initMap = function () {
     if (marker) {
       // display popup when a marker is clicked
       displayPopup();
+
+      // display map instructions
+      populatePopup(marker.id);
+      console.log(marker.id);
 
       // setting the entrypoints value to the respective ids then call
       // getEntry()
@@ -502,11 +511,60 @@ window.initMap = function () {
     };
   }
 
+  // function for displaying map instructions inside the popup
+  function populatePopup(markerID) {
+    // loop through the data
+    // access the instruction object
+    // loop the instruction object
+    // output all the instuctions in html form
+    mapInstructions = eastWestBounds.map(inst => {
+      return inst.instructions;
+    });
+
+    for (instructionsData of mapInstructions) {
+      // console.log(instructionsData.title);
+      // output all the titles
+      if (markerID === instructionsData.id) {
+        removeAllChildren(domElements.popupMapInstructionsStr);
+        domElements.popupMapInstructionsStr.insertAdjacentHTML(
+          'beforeend',
+          `<h5>${instructionsData.title} <br></h5>
+          `
+        );
+
+        // loops all the entry info then outputs them as html elements
+        instructionsData.entry.map(ent => {
+          domElements.popupMapInstructionsStr.insertAdjacentHTML(
+            'beforeend',
+            `
+          <p><strong>ENTRY: </strong>${ent}<br></p>`
+          );
+        });
+
+        // loops all the exit info then outputs them as html elements
+        instructionsData.exit.map(ext => {
+          domElements.popupMapInstructionsStr.insertAdjacentHTML(
+            'beforeend',
+            `
+          <p><br><strong>EXIT: </strong>${ext}</p>`
+          );
+        });
+      }
+    }
+  }
+
   //===========REUSED FUNCTIONS==================//
   // removes all child nodes except the selected one
   function removeAllChildNodes(parent) {
     while (!parent.lastChild.id) {
       parent.removeChild(parent.lastChild);
+    }
+  }
+
+  // removes all child elements with no exceptions
+  function removeAllChildren(parent) {
+    while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
     }
   }
 
