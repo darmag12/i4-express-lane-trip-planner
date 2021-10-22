@@ -678,10 +678,6 @@ window.initMap = function () {
   function resetDropDown(item) {
     item.selectedIndex = 0;
   }
-
-  // function that takes you to a different section on a page when
-  // when triggered
-  function jumpToSection() {}
 };
 
 // Appended the 'script' element to 'head'
