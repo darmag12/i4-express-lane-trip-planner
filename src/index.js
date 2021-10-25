@@ -85,13 +85,6 @@ window.initMap = function () {
 
   function populateInfoWindow(marker) {
     if (marker) {
-      // display popup when a marker is clicked
-      displayPopup();
-
-      // display map instructions
-      populatePopup(marker.id);
-      console.log(marker.id);
-
       // setting the entrypoints value to the respective ids then call
       // getEntry()
       function setEntryPointOnClick() {
@@ -125,6 +118,13 @@ window.initMap = function () {
       }
 
       execOnceEntry(); // runs once
+
+      // display popup when a marker is clicked
+      displayPopup();
+
+      // display map instructions
+      populatePopup(marker.id);
+      // console.log(marker.id);
     }
   }
 
@@ -525,36 +525,64 @@ window.initMap = function () {
       // console.log(instructionsData.title);
       // output all the titles
       if (markerID === instructionsData.id) {
-        removeAllChildren(domElements.popupMapInstructionsStr);
-        domElements.popupMapInstructionsStr.insertAdjacentHTML(
-          'beforeend',
-          `<h5>${instructionsData.title} <br></h5>
-          `
-        );
+        // checks if the selected entry point matches the id of the current
+        // element in the loop
+        if (selectedEntryPoint === instructionsData.id) {
+          // removes all elements then adds respective title
+          removeAddElementsForPopup(
+            instructionsData.title,
+            domElements.popupMapInstructionsStr
+          );
 
-        // loops all the entry info then outputs them as html elements
-        instructionsData.entry.map(ent => {
-          domElements.popupMapInstructionsStr.insertAdjacentHTML(
-            'beforeend',
-            `
+          // loops all the entry info then outputs them as html elements
+          instructionsData.entry.map(ent => {
+            domElements.popupMapInstructionsStr.insertAdjacentHTML(
+              'beforeend',
+              `
           <p><br><strong>ENTRY: </strong>${ent}</p>`
+            );
+          });
+        } else {
+          console.log('No entry selected');
+        }
+        // checks if the selected exit point matches the id of the current
+        // element in the loop
+        if (selectedExitPoint === instructionsData.id) {
+          // removes all elements then adds respective title
+          removeAddElementsForPopup(
+            instructionsData.title,
+            domElements.popupMapInstructionsStr
           );
-        });
 
-        // loops all the exit info then outputs them as html elements
-        instructionsData.exit.map(ext => {
-          domElements.popupMapInstructionsStr.insertAdjacentHTML(
-            'beforeend',
-            `
-          <p><br><strong>EXIT: </strong>${ext}</p>`
-          );
-        });
+          // loops all the exit info then outputs them as html elements
+          instructionsData.exit.map(ext => {
+            domElements.popupMapInstructionsStr.insertAdjacentHTML(
+              'beforeend',
+              `
+              <p><br><strong>EXIT: </strong>${ext}</p>`
+            );
+          });
+          console.log(selectedExitPoint);
+        } else {
+          console.log('No selected exits');
+          console.log(selectedExitPoint);
+        }
       }
     }
   }
 
   //===========REUSED FUNCTIONS==================//
-  // removes all child nodes except the selected one
+  // removes all children elements then adds the road name
+  function removeAddElementsForPopup(title, parent) {
+    removeAllChildren(parent);
+    domElements.popupMapInstructionsStr.insertAdjacentHTML(
+      'beforeend',
+      `<h5>${title} <br></h5>
+          `
+    );
+  }
+
+  // removes all child nodes except the selected one with an ID
   function removeAllChildNodes(parent) {
     while (!parent.lastChild.id) {
       parent.removeChild(parent.lastChild);
