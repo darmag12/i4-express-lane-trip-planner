@@ -537,7 +537,7 @@ window.initMap = function () {
           domElements.popupMapInstructionsStr.insertAdjacentHTML(
             'beforeend',
             `
-          <p><strong>ENTRY: </strong>${ent}<br></p>`
+          <p><br><strong>ENTRY: </strong>${ent}</p>`
           );
         });
 
