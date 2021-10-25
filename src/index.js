@@ -244,6 +244,9 @@ window.initMap = function () {
 
   // gets entry points and displays respective exits for the selected entry
   function getEntry(e) {
+    // reset selected exit point
+    selectedExitPoint = null;
+
     // get the values of each entry point
     if (e) {
       selectedEntryPoint = e.target.value;
