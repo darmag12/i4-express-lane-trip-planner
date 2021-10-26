@@ -182,8 +182,8 @@ window.initMap = function () {
     // variables only available in this scope
     let boundPointsEntries, boundPointEntry, wbExclude, ebExclude;
 
-    wbExclude = ['n', 'v', 'w'];
-    ebExclude = ['c', 'h', 'm', 'a'];
+    wbExclude = ['n', 'v', 'w', 'q', 'r', 's', 't'];
+    ebExclude = ['c', 'h', 'm', 'a', 'e', 'd', 'b'];
 
     // checking if user selected eastbound then displaying
     // all eastbound entry and exit points
@@ -267,10 +267,10 @@ window.initMap = function () {
     // displayRoutes(directionValue);
 
     // filter the values and return respective exits
-    // if value === a,b,c or d display f,j,m,o,r,t,u,w
-    // if value === e display j,m,o,r,t,u,w
+    // if value === a,b,c or d display f,j,m,o,s,t,u,w
+    // if value === e display j,m,o,s,t,u,w
     // if value === f,g,h,i,j,k,l display t,u,w
-    // if value === m display r,t,u,w
+    // if value === m display s,t,u,w
     // if value === o,p display t,u,w
     // if value === q,r,s,t display no exit
     // if value === u display w
@@ -280,14 +280,14 @@ window.initMap = function () {
         case 'b':
         case 'c':
         case 'd':
-          exitPointsArr = ['f', 'j', 'm', 'o', 'r', 't', 'u', 'w'];
+          exitPointsArr = ['f', 'j', 'm', 'o', 's', 't', 'u', 'w'];
           removeAllChildNodes(domElements.exitPointStr);
           exitIterator(exitPointsArr);
           toggleMarkersFromMap(exitPointsArr);
           break;
 
         case 'e':
-          exitPointsArr = ['j', 'm', 'o', 'r', 't', 'u', 'w'];
+          exitPointsArr = ['j', 'm', 'o', 's', 't', 'u', 'w'];
           removeAllChildNodes(domElements.exitPointStr);
           exitIterator(exitPointsArr);
           toggleMarkersFromMap(exitPointsArr);
@@ -309,7 +309,7 @@ window.initMap = function () {
           break;
 
         case 'm':
-          exitPointsArr = ['r', 't', 'u', 'w'];
+          exitPointsArr = ['s', 't', 'u', 'w'];
           removeAllChildNodes(domElements.exitPointStr);
           exitIterator(exitPointsArr);
           toggleMarkersFromMap(exitPointsArr);
