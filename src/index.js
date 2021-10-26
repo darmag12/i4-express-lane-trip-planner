@@ -22,6 +22,7 @@ const domElements = {
   popupMapInstructionsStr: document.querySelector(
     '[data-instruction-popup-info]'
   ),
+  popupImageStr: document.querySelector('[data-instruction-popup-img]'),
 };
 
 let map;
@@ -516,6 +517,7 @@ window.initMap = function () {
 
   // function for displaying map instructions inside the popup
   function populatePopup(markerID) {
+    let eastBoundsEntInfo, westBoundsEntInfo, displayImg;
     // loop through the data
     // access the instruction object
     // loop the instruction object
@@ -528,48 +530,171 @@ window.initMap = function () {
       // console.log(instructionsData.title);
       // output all the titles
       if (markerID === instructionsData.id) {
+        // FOR EASTBOUND
+        // if dirVal === 1 loop entryEB else loop entryWB
+        if (directionValue === 1) {
+          for (eastBoundsEntInfo in instructionsData.entryEB) {
+            // console.log(instructionsData.entryEB[eastBoundsEntInfo]);
+            switch (eastBoundsEntInfo) {
+              case 'images':
+                instructionsData.entryEB[eastBoundsEntInfo].map(image => {
+                  if (selectedEntryPoint === instructionsData.id) {
+                    console.log(image.imgIn);
+                  }
+                  if (selectedExitPoint === instructionsData.id) {
+                    console.log(image.imgOut);
+                  }
+                });
+
+                break;
+              case 'entry':
+                // checks if the selected entry point matches the id of the current
+                // element in the loop
+                if (selectedEntryPoint === instructionsData.id) {
+                  // removes all elements then adds respective title
+                  removeAddElementsForPopup(
+                    instructionsData.title,
+                    domElements.popupMapInstructionsStr
+                  );
+
+                  // loops all the entry info then outputs them as html elements
+                  instructionsData.entryEB[eastBoundsEntInfo].map(ent => {
+                    domElements.popupMapInstructionsStr.insertAdjacentHTML(
+                      'beforeend',
+                      `
+                      <p><br><strong>ENTRY: </strong>${ent}</p>`
+                    );
+                    console.log(ent);
+                  });
+                }
+                break;
+              case 'exit':
+                // checks if the selected exit point matches the id of the current
+                // element in the loop
+                if (selectedExitPoint === instructionsData.id) {
+                  // removes all elements then adds respective title
+                  removeAddElementsForPopup(
+                    instructionsData.title,
+                    domElements.popupMapInstructionsStr
+                  );
+
+                  // loops all the exit info then outputs them as html elements
+                  instructionsData.entryEB[eastBoundsEntInfo].map(ext => {
+                    domElements.popupMapInstructionsStr.insertAdjacentHTML(
+                      'beforeend',
+                      `
+                      <p><br><strong>EXIT: </strong>${ext}</p>`
+                    );
+                    console.log(ext);
+                  });
+                }
+                break;
+            }
+          }
+        }
+
+        // FOR WESTBOUND
+        if (directionValue === 2) {
+          for (westBoundsEntInfo in instructionsData.entryWB) {
+            // console.log(instructionsData.entryWB[westBoundsEntInfo]);
+            switch (westBoundsEntInfo) {
+              case 'images':
+                instructionsData.entryWB[westBoundsEntInfo].map(image => {
+                  if (selectedEntryPoint === instructionsData.id) {
+                    console.log(image.imgIn);
+                  }
+                  if (selectedExitPoint === instructionsData.id) {
+                    console.log(image.imgOut);
+                  }
+                });
+                break;
+              case 'entry':
+                // checks if the selected entry point matches the id of the current
+                // element in the loop
+                if (selectedEntryPoint === instructionsData.id) {
+                  // removes all elements then adds respective title
+                  removeAddElementsForPopup(
+                    instructionsData.title,
+                    domElements.popupMapInstructionsStr
+                  );
+
+                  instructionsData.entryWB[westBoundsEntInfo].map(ent => {
+                    // loops all the entry info then outputs them as html elements
+                    domElements.popupMapInstructionsStr.insertAdjacentHTML(
+                      'beforeend',
+                      `
+                  <p><br><strong>ENTRY: </strong>${ent}</p>`
+                    );
+                    console.log(ent);
+                  });
+                }
+                break;
+              case 'exit':
+                // checks if the selected exit point matches the id of the current
+                // element in the loop
+                if (selectedExitPoint === instructionsData.id) {
+                  // removes all elements then adds respective title
+                  removeAddElementsForPopup(
+                    instructionsData.title,
+                    domElements.popupMapInstructionsStr
+                  );
+
+                  // loops all the exit info then outputs them as html elements
+                  instructionsData.entryWB[westBoundsEntInfo].map(ext => {
+                    domElements.popupMapInstructionsStr.insertAdjacentHTML(
+                      'beforeend',
+                      `
+                      <p><br><strong>EXIT: </strong>${ext}</p>`
+                    );
+                    console.log(ext);
+                  });
+                }
+                break;
+            }
+          }
+        }
+
         // checks if the selected entry point matches the id of the current
         // element in the loop
         if (selectedEntryPoint === instructionsData.id) {
           // removes all elements then adds respective title
-          removeAddElementsForPopup(
-            instructionsData.title,
-            domElements.popupMapInstructionsStr
-          );
-
+          // removeAddElementsForPopup(
+          //   instructionsData.title,
+          //   domElements.popupMapInstructionsStr
+          // );
           // loops all the entry info then outputs them as html elements
-          instructionsData.entry.map(ent => {
-            domElements.popupMapInstructionsStr.insertAdjacentHTML(
-              'beforeend',
-              `
-          <p><br><strong>ENTRY: </strong>${ent}</p>`
-            );
-          });
+          // instructionsData.entry.map(ent => {
+          //   domElements.popupMapInstructionsStr.insertAdjacentHTML(
+          //     'beforeend',
+          //     `
+          // <p><br><strong>ENTRY: </strong>${ent}</p>`
+          //   );
+          // });
         } else {
           console.log('No entry selected');
-        }
+        } // end of else OLDER CODE POTENTIAL CLEAN UP
         // checks if the selected exit point matches the id of the current
         // element in the loop
         if (selectedExitPoint === instructionsData.id) {
           // removes all elements then adds respective title
-          removeAddElementsForPopup(
-            instructionsData.title,
-            domElements.popupMapInstructionsStr
-          );
+          // removeAddElementsForPopup(
+          //   instructionsData.title,
+          //   domElements.popupMapInstructionsStr
+          // );
 
           // loops all the exit info then outputs them as html elements
-          instructionsData.exit.map(ext => {
-            domElements.popupMapInstructionsStr.insertAdjacentHTML(
-              'beforeend',
-              `
-              <p><br><strong>EXIT: </strong>${ext}</p>`
-            );
-          });
+          // instructionsData.exit.map(ext => {
+          //   domElements.popupMapInstructionsStr.insertAdjacentHTML(
+          //     'beforeend',
+          //     `
+          //     <p><br><strong>EXIT: </strong>${ext}</p>`
+          //   );
+          // });
           console.log(selectedExitPoint);
         } else {
           console.log('No selected exits');
           console.log(selectedExitPoint);
-        }
+        } // end of else OLDER CODE POTENTIAL CLEAN UP
       }
     }
   }
