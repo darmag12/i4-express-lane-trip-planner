@@ -15,7 +15,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgOut: ['Express-Lanes-Daytona-E-OFF-1.jpg'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],
@@ -27,7 +27,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-Daytona-W-ON-1.jpg'],
             imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
           },
         ],
@@ -103,7 +103,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgOut: ['Express-Lanes-CENTRAL-E-OFF-1.jpg'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],
@@ -115,7 +115,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-CENTRAL-W-ON-1.jpg'],
             imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
           },
         ],
@@ -148,7 +148,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgOut: ['Express-Lanes-436-E-OFF.jpg'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],
@@ -161,7 +161,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-436-W-ON.jpg'],
             imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
           },
         ],
@@ -196,8 +196,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-414-E-ON-1.jpg'],
+            imgOut: ['Express-Lanes-414-E-OFF-1.jpg'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],
@@ -209,8 +209,8 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-414-W-ON-1.jpg'],
+            imgOut: ['Express-Lanes-414-W-OFF-1.jpg'],
           },
         ],
         entry: [
@@ -245,7 +245,9 @@ export const eastWestBounds = [
             imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
           },
         ],
-        entry: ['No Available Entries :( (this is impossible)'],
+        entry: [
+          '[COLOR 2] From Lee Road to eastbound I-4, the nearest I-4 Express ramp is west of Maitland Blvd. (S.R. 414).',
+        ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
       // West
@@ -421,7 +423,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-Ivanhoe-E-ON-1.jpg'],
             imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
           },
         ],
@@ -435,7 +437,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgOut: ['Express-Lanes-Ivanhoe-W-OFF-1.jpg'],
           },
         ],
         entry: [
@@ -882,7 +884,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-Turnpike-E-ON-1.jpg'],
             imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
           },
         ],
@@ -896,7 +898,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgOut: ['Express-Lanes-Turnpike-W-OFF-1.jpg'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],
@@ -927,8 +929,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-GRANDNAT-E-ON-1.jpg'],
+            imgOut: ['Express-Lanes-GRANDNAT-E-OFF-1.jpg'],
           },
         ],
         entry: [
@@ -942,8 +944,8 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-GRANDNAT-W-ON-1.jpg'],
+            imgOut: ['Express-Lanes-GRANDNAT-W-OFF-1.jpg'],
           },
         ],
         entry: [
@@ -1020,7 +1022,11 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: [
+              'central-pkwy-and-434-entry-exit.png',
+              '4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png',
+              'SGL-AR2-8048-full-closure-of-SB-OBT-under-I4-for-punchout.png',
+            ],
             imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
           },
         ],

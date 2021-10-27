@@ -1,6 +1,7 @@
 import { eastWestBounds } from './data.js';
 import MarkerWithLabel from '@googlemaps/markerwithlabel';
 import { styles } from './mapstyles.js';
+import 'bootstrap';
 import './index.css';
 
 // This is set to an environment variable
@@ -23,7 +24,18 @@ const domElements = {
     '[data-instruction-popup-info]'
   ),
   popupImageStr: document.querySelector('[data-instruction-popup-img]'),
+  popupImageCarouselStr: document.querySelector(
+    '[data-instruction-popup-carousel]'
+  ),
 };
+
+// function created to specifiaclly loop all images
+function importAll(r) {
+  return r.keys().map(r);
+}
+const images = importAll(
+  require.context('./assets/', true, /\.(png|jpe?g|svg)$/)
+);
 
 let map;
 let directionValue;
@@ -517,7 +529,7 @@ window.initMap = function () {
 
   // function for displaying map instructions inside the popup
   function populatePopup(markerID) {
-    let eastBoundsEntInfo, westBoundsEntInfo, displayImg;
+    let eastBoundsEntInfo, westBoundsEntInfo, displayImg, activeImg;
     // loop through the data
     // access the instruction object
     // loop the instruction object
@@ -527,23 +539,33 @@ window.initMap = function () {
     });
 
     for (instructionsData of mapInstructions) {
-      // console.log(instructionsData.title);
-      // output all the titles
+      // check if marker id matches the current item
       if (markerID === instructionsData.id) {
         // FOR EASTBOUND
-        // if dirVal === 1 loop entryEB else loop entryWB
         if (directionValue === 1) {
           for (eastBoundsEntInfo in instructionsData.entryEB) {
             // console.log(instructionsData.entryEB[eastBoundsEntInfo]);
             switch (eastBoundsEntInfo) {
               case 'images':
                 instructionsData.entryEB[eastBoundsEntInfo].map(image => {
+                  // checks if the selected entry point matches the id of the current
+                  // element in the loop
                   if (selectedEntryPoint === instructionsData.id) {
-                    console.log(image.imgIn);
+                    // removes any present images first
+                    removeAllChildren(domElements.popupImageCarouselStr);
+                    // displays carousel images
+                    displayCarouselImages(image.imgIn, displayImg, activeImg);
                   }
+                  // checks if the selected exit point matches the id of the current
+                  // element in the loop
                   if (selectedExitPoint === instructionsData.id) {
-                    console.log(image.imgOut);
+                    // removes any present images first
+                    removeAllChildren(domElements.popupImageCarouselStr);
+                    // displays carousel images
+                    displayCarouselImages(image.imgOut, displayImg, activeImg);
                   }
+
+                  // console.log(images);
                 });
 
                 break;
@@ -589,9 +611,9 @@ window.initMap = function () {
                   });
                 }
                 break;
-            }
-          }
-        }
+            } // end of switch statement
+          } // end of for...in loop
+        } // end of 'if' eastbound checker
 
         // FOR WESTBOUND
         if (directionValue === 2) {
@@ -600,11 +622,21 @@ window.initMap = function () {
             switch (westBoundsEntInfo) {
               case 'images':
                 instructionsData.entryWB[westBoundsEntInfo].map(image => {
+                  // checks if the selected entry point matches the id of the current
+                  // element in the loop
                   if (selectedEntryPoint === instructionsData.id) {
-                    console.log(image.imgIn);
+                    // removes any present images first
+                    removeAllChildren(domElements.popupImageCarouselStr);
+                    // displays carousel images
+                    displayCarouselImages(image.imgIn, displayImg, activeImg);
                   }
+                  // checks if the selected exit point matches the id of the current
+                  // element in the loop
                   if (selectedExitPoint === instructionsData.id) {
-                    console.log(image.imgOut);
+                    // removes any present images first
+                    removeAllChildren(domElements.popupImageCarouselStr);
+                    // displays carousel images
+                    displayCarouselImages(image.imgOut, displayImg, activeImg);
                   }
                 });
                 break;
@@ -650,53 +682,11 @@ window.initMap = function () {
                   });
                 }
                 break;
-            }
-          }
-        }
-
-        // checks if the selected entry point matches the id of the current
-        // element in the loop
-        if (selectedEntryPoint === instructionsData.id) {
-          // removes all elements then adds respective title
-          // removeAddElementsForPopup(
-          //   instructionsData.title,
-          //   domElements.popupMapInstructionsStr
-          // );
-          // loops all the entry info then outputs them as html elements
-          // instructionsData.entry.map(ent => {
-          //   domElements.popupMapInstructionsStr.insertAdjacentHTML(
-          //     'beforeend',
-          //     `
-          // <p><br><strong>ENTRY: </strong>${ent}</p>`
-          //   );
-          // });
-        } else {
-          console.log('No entry selected');
-        } // end of else OLDER CODE POTENTIAL CLEAN UP
-        // checks if the selected exit point matches the id of the current
-        // element in the loop
-        if (selectedExitPoint === instructionsData.id) {
-          // removes all elements then adds respective title
-          // removeAddElementsForPopup(
-          //   instructionsData.title,
-          //   domElements.popupMapInstructionsStr
-          // );
-
-          // loops all the exit info then outputs them as html elements
-          // instructionsData.exit.map(ext => {
-          //   domElements.popupMapInstructionsStr.insertAdjacentHTML(
-          //     'beforeend',
-          //     `
-          //     <p><br><strong>EXIT: </strong>${ext}</p>`
-          //   );
-          // });
-          console.log(selectedExitPoint);
-        } else {
-          console.log('No selected exits');
-          console.log(selectedExitPoint);
-        } // end of else OLDER CODE POTENTIAL CLEAN UP
+            } // end of switch statement
+          } // end of for...in loop
+        } // end of 'if' westbound checker
       }
-    }
+    } // end of for..of loop
   }
 
   //===========REUSED FUNCTIONS==================//
@@ -891,6 +881,27 @@ window.initMap = function () {
   // function that resets drop downs to default
   function resetDropDown(item) {
     item.selectedIndex = 0;
+  }
+
+  // function that takes in an array and a className
+  function displayCarouselImages(arr, cName, imgSrc) {
+    arr.map((img, i) => {
+      imgSrc = images.filter(pic => pic.includes(img));
+      cName = i === 0 ? 'active' : '';
+      domElements.popupImageCarouselStr.insertAdjacentHTML(
+        'beforeend',
+        `
+        <div
+      class="carousel-item ${cName}"
+    >
+      <img
+        class="d-block w-100"
+        src="${imgSrc}"
+        alt="First slide"
+      />
+    </div>`
+      );
+    });
   }
 };
 
