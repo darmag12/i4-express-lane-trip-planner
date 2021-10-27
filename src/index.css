@@ -110,17 +110,6 @@ option {
   display: none;
 }
 
-/* Map header title styles */
-.map-header-title {
-  margin: 20px 0;
-}
-
-.map-header-title h1 {
-  color: var(--steps-icon-color);
-  font-size: 3em;
-  line-height: 1.4;
-}
-
 /* INFO SECTION STYLES */
 .info-section {
   display: flex;
