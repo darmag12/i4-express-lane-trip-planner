@@ -343,6 +343,23 @@ option {
   margin: 10px 0;
 }
 
+.popup-instructions .direction-text {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px 0;
+  margin: 10px 0;
+}
+
+.popup-instructions .direction-text img {
+  height: fit-content;
+  padding-right: 5px;
+}
+
+.popup-instructions .direction-text p {
+  line-height: 1.5;
+  font-style: italic;
+}
+
 /* The Close Button */
 .close {
   color: #aaa;

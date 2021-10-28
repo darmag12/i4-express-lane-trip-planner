@@ -27,6 +27,7 @@ const domElements = {
   popupImageCarouselStr: document.querySelector(
     '[data-instruction-popup-carousel]'
   ),
+  popupInstructionsChildrenStr: document.querySelectorAll('[direction-text]'),
 };
 
 // function created to specifiaclly loop all images
@@ -529,7 +530,16 @@ window.initMap = function () {
 
   // function for displaying map instructions inside the popup
   function populatePopup(markerID) {
-    let eastBoundsEntInfo, westBoundsEntInfo, displayImg, activeImg;
+    let eastBoundsEntInfo,
+      westBoundsEntInfo,
+      displayImg,
+      activeImg,
+      imgIcons,
+      imageIconsExits;
+
+    // filters all images that include 'number-'
+    imgIcons = images.filter(img => img.includes('number-'));
+    // console.log(imgIcons);
     // loop through the data
     // access the instruction object
     // loop the instruction object
@@ -544,7 +554,7 @@ window.initMap = function () {
         // FOR EASTBOUND
         if (directionValue === 1) {
           for (eastBoundsEntInfo in instructionsData.entryEB) {
-            // console.log(instructionsData.entryEB[eastBoundsEntInfo]);
+            // switch checking if the key match the case
             switch (eastBoundsEntInfo) {
               case 'images':
                 instructionsData.entryEB[eastBoundsEntInfo].map(image => {
@@ -580,13 +590,15 @@ window.initMap = function () {
                   );
 
                   // loops all the entry info then outputs them as html elements
-                  instructionsData.entryEB[eastBoundsEntInfo].map(ent => {
+                  instructionsData.entryEB[eastBoundsEntInfo].map((ent, i) => {
                     domElements.popupMapInstructionsStr.insertAdjacentHTML(
                       'beforeend',
                       `
-                      <p><br><strong>ENTRY: </strong>${ent}</p>`
+                        <div data-direction-text class="direction-text"><img
+                        src="${imgIcons[i]}"
+                        alt="First slide"
+                      /><p>${ent}</p></div>`
                     );
-                    console.log(ent);
                   });
                 }
                 break;
@@ -600,14 +612,19 @@ window.initMap = function () {
                     domElements.popupMapInstructionsStr
                   );
 
+                  // remove the first imgIcons for exits to show 4,5,6
+                  imageIconsExits = imgIcons.splice(0, 3);
+
                   // loops all the exit info then outputs them as html elements
-                  instructionsData.entryEB[eastBoundsEntInfo].map(ext => {
+                  instructionsData.entryEB[eastBoundsEntInfo].map((ext, i) => {
                     domElements.popupMapInstructionsStr.insertAdjacentHTML(
                       'beforeend',
                       `
-                      <p><br><strong>EXIT: </strong>${ext}</p>`
+                      <div data-direction-text class="direction-text"><img
+                        src="${imgIcons[i]}"
+                        alt="First slide"
+                      /><p>${ext}</p></div>`
                     );
-                    console.log(ext);
                   });
                 }
                 break;
@@ -650,14 +667,16 @@ window.initMap = function () {
                     domElements.popupMapInstructionsStr
                   );
 
-                  instructionsData.entryWB[westBoundsEntInfo].map(ent => {
+                  instructionsData.entryWB[westBoundsEntInfo].map((ent, i) => {
                     // loops all the entry info then outputs them as html elements
                     domElements.popupMapInstructionsStr.insertAdjacentHTML(
                       'beforeend',
                       `
-                  <p><br><strong>ENTRY: </strong>${ent}</p>`
+                      <div data-direction-text class="direction-text"><img
+                      src="${imgIcons[i]}"
+                      alt="First slide"
+                    /><p>${ent}</p></div>`
                     );
-                    console.log(ent);
                   });
                 }
                 break;
@@ -671,12 +690,18 @@ window.initMap = function () {
                     domElements.popupMapInstructionsStr
                   );
 
+                  // remove the first imgIcons for exits to show 4,5,6
+                  imageIconsExits = imgIcons.splice(0, 3);
+
                   // loops all the exit info then outputs them as html elements
-                  instructionsData.entryWB[westBoundsEntInfo].map(ext => {
+                  instructionsData.entryWB[westBoundsEntInfo].map((ext, i) => {
                     domElements.popupMapInstructionsStr.insertAdjacentHTML(
                       'beforeend',
                       `
-                      <p><br><strong>EXIT: </strong>${ext}</p>`
+                      <div data-direction-text class="direction-text"><img
+                      src="${imgIcons[i]}"
+                      alt="First slide"
+                    /><p>${ext}</p></div>`
                     );
                     console.log(ext);
                   });
