@@ -257,7 +257,7 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'From Lee Road to westbound I-4, the nearest I-4 Express ramp is west of Kaley St./Michigan St.',
+          'From Lee Road to westbound I-4, the nearest I-4 Express ramp is west of Kaley Ave./Michigan St.',
           'Or travel from Lee Road to northbound Wymore Road. Turn right onto Hope Road and then west on Maitland Blvd. (S.R. 414). Enter westbound I-4 and access the nearest I-4 Express ramp east of Lee Road.',
         ],
         exit: [
@@ -306,7 +306,7 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'From Fairbanks Ave. to westbound I-4, the nearest I-4 Express ramp is west of Kaley St./Michigan St.',
+          'From Fairbanks Ave. to westbound I-4, the nearest I-4 Express ramp is west of Kaley Ave./Michigan St.',
           'Or travel from Fairbanks Ave. to northbound Wymore Road. Turn right onto Hope Road and then west on Maitland Blvd. (S.R. 414). Enter westbound I-4 and access the nearest I-4 Express ramp east of Lee Road.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
@@ -486,7 +486,7 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'From westbound I-4, the nearest I-4 Express ramp is west of Kaley St./Michigan St.',
+          'From westbound I-4, the nearest I-4 Express ramp is west of Kaley Ave./Michigan St.',
           'Or travel from Colonial Drive to southbound Hughey Avenue to access the I-4 Direct Connect from South St.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
@@ -535,7 +535,7 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'From westbound I-4, the nearest I-4 Express ramp is west of Kaley St./Michigan St.',
+          'From westbound I-4, the nearest I-4 Express ramp is west of Kaley Ave./Michigan St.',
           'Or travel from Amelia Street to southbound Hughey Ave. to access the I-4 Direct Connect from South St.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
@@ -668,7 +668,7 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'From westbound I-4, the nearest I-4 Express ramp is west of Kaley St./Michigan St.',
+          'From westbound I-4, the nearest I-4 Express ramp is west of Kaley Ave./Michigan St.',
         ],
         exit: ['Use the westbound I-4 Express Direct Connect to S.R. 408.'],
       },
@@ -685,14 +685,14 @@ export const eastWestBounds = [
   },
   {
     id: 'p',
-    title: 'Michigan St./Kaley St. (Mile 81)',
+    title: 'Michigan St./Kaley Ave. (Mile 81)',
     coords: {
       east: { lat: 28.51697, lng: -81.38749 },
       west: { lat: 28.51675, lng: -81.38813 },
     },
     instructions: {
       id: 'p',
-      title: 'I-4 Express Access at Kaley St./Michigan St.',
+      title: 'I-4 Express Access at Kaley Ave./Michigan St.',
       // East
       entryEB: {
         images: [
@@ -705,7 +705,7 @@ export const eastWestBounds = [
           'From eastbound I-4, the nearest I-4 Express ramp is west of Maitland Blvd. (S.R. 414).',
         ],
         exit: [
-          'From eastbound I-4 Express, you can exit at the I-4 Express ramp west of Michigan St./Kaley St. then proceed to Michigan St/Kaley St. Exit 80.',
+          'From eastbound I-4 Express, you can exit at the I-4 Express ramp west of Michigan St./Kaley Ave. then proceed to Michigan St/Kaley Ave. Exit 80.',
         ],
       },
       // West
@@ -717,7 +717,7 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'From westbound I-4, the nearest I-4 Express ramp is west of Kaley St./Michigan St.',
+          'From westbound I-4, the nearest I-4 Express ramp is west of Kaley Ave./Michigan St.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
