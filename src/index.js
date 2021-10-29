@@ -27,7 +27,6 @@ const domElements = {
   popupImageCarouselStr: document.querySelector(
     '[data-instruction-popup-carousel]'
   ),
-  popupInstructionsChildrenStr: document.querySelectorAll('[direction-text]'),
 };
 
 // function created to specifiaclly loop all images
