@@ -213,6 +213,12 @@ option {
 
 .form-view {
   margin: 30px 0;
+  display: flex;
+  justify-content: start;
+}
+
+.form-view button[data-view] {
+  margin-right: 30px;
 }
 
 /* END OF FORM STYLES */
@@ -374,6 +380,41 @@ option {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+/* Map Styles */
+#map {
+  position: relative;
+}
+
+/* clear bottom map contents */
+/* .gm-style .gm-style-cc a, */
+.gm-style .gm-style-cc button,
+.gm-style .gm-style-cc span,
+.gm-style .gm-style-mtc div {
+  display: none !important;
+  background-color: transparent !important;
+}
+.gm-style .gm-style-cc a,
+.gm-style .gm-style-mtc div {
+  background-color: transparent !important;
+  background: none !important;
+}
+
+#map div div a div img {
+  display: none;
+}
+
+#map .i4-express-map-logo img {
+  position: absolute;
+  left: 5px;
+  bottom: 0px;
+  width: 100px;
+  height: 25px;
+  user-select: none;
+  border: 0px;
+  padding: 0px;
+  margin: 5px;
 }
 
 /* Media Queries */

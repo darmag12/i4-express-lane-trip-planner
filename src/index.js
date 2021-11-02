@@ -17,6 +17,7 @@ const domElements = {
   entryPointStr: document.querySelector('[data-entry]'),
   exitPointStr: document.querySelector('[data-exit]'),
   viewRouteStr: document.querySelector('[data-view]'),
+  clearFormStr: document.querySelector('[data-clear-form]'),
   popupContainerStr: document.querySelector('[data-instruction-popup]'),
   popupContentStr: document.querySelector('[data-instruction-popup-content]'),
   popupCloseStr: document.querySelector('[data-instruction-popup-close]'),
@@ -95,6 +96,7 @@ window.initMap = function () {
   domElements.entryPointStr.addEventListener('change', getEntry);
   domElements.exitPointStr.addEventListener('change', getExit);
   domElements.viewRouteStr.addEventListener('click', viewRoute);
+  domElements.clearFormStr.addEventListener('click', clearForm);
 
   function populateInfoWindow(marker) {
     if (marker) {
@@ -158,6 +160,8 @@ window.initMap = function () {
 
     // hide view route button
     domElements.viewRouteStr.classList.add('hide');
+    // hide clear form button
+    domElements.clearFormStr.classList.add('hide');
 
     let dirBound = '';
     if (directionVal === 1) {
@@ -270,6 +274,8 @@ window.initMap = function () {
 
     // hide view route button
     domElements.viewRouteStr.classList.add('hide');
+    // hide clear form button
+    domElements.clearFormStr.classList.add('hide');
 
     // change label color
     changeColor();
@@ -456,6 +462,8 @@ window.initMap = function () {
 
     // show view route button after user selects an exit
     domElements.viewRouteStr.classList.remove('hide');
+    // show clear form button after user selects an exit
+    domElements.clearFormStr.classList.remove('hide');
 
     // store the ids of the selected entry and exit point
     selectedEntryExit = [selectedEntryPoint, selectedExitPoint];
@@ -709,6 +717,37 @@ window.initMap = function () {
     } // end of for..of loop
   }
 
+  // function tied to an onclick handler that resets/reloads page
+  function clearForm() {
+    location.reload();
+  }
+
+  // Function that creates the map logo
+  function getMapLogo() {
+    let logoPath, logoImg;
+    // logo's path
+    logoPath = 'i4express-flyingE-logo.png';
+    // filter and get matching path
+    logoImg = images.filter(pic => pic.includes(logoPath));
+    // create logo element
+    const createLogo = `
+    <div class="i4-express-map-logo">
+      <a href="">
+        <img src="${logoImg}" alt="" />
+      </a>
+    </div>
+    `;
+    // insert the logo in the DOM
+    domElements.mapContainerStr.insertAdjacentHTML(
+      'beforeend',
+      `
+      ${createLogo}
+      `
+    );
+  }
+  getMapLogo();
+  // ================= END OF ALL FUNCTIONS THAT AREN'T REUSED==================//
+
   //===========REUSED FUNCTIONS==================//
   // removes all children elements then adds the road name
   function removeAddElementsForPopup(title, parent) {
@@ -907,6 +946,7 @@ window.initMap = function () {
   function displayCarouselImages(arr, cName, imgSrc) {
     arr.map((img, i) => {
       imgSrc = images.filter(pic => pic.includes(img));
+      // sets the first image of the carousel to active
       cName = i === 0 ? 'active' : '';
       domElements.popupImageCarouselStr.insertAdjacentHTML(
         'beforeend',

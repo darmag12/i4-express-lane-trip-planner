@@ -252,7 +252,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-LeeRd-W-ON.jpg'],
             imgOut: ['Express-Lanes-LeeRd-W-OFF-1.jpg'],
           },
         ],
@@ -301,7 +301,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-Fairbanks-Ave-W-ON.jpg'],
             imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
           },
         ],
@@ -345,7 +345,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-ParSt-W-ON.jpg'],
             imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
           },
         ],
@@ -389,7 +389,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-PrincetonSt-W-ON.jpg'],
             imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
           },
         ],
@@ -434,7 +434,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-Ivanhoe-W-ON.jpg'],
             imgOut: ['Express-Lanes-Ivanhoe-W-OFF-1.jpg'],
           },
         ],
