@@ -17,7 +17,7 @@ const domElements = {
   entryPointStr: document.querySelector('[data-entry]'),
   exitPointStr: document.querySelector('[data-exit]'),
   viewRouteStr: document.querySelector('[data-view]'),
-  clearFormStr: document.querySelector('[data-clear-form]'),
+  startOverStr: document.querySelector('[data-start-over]'),
   popupContainerStr: document.querySelector('[data-instruction-popup]'),
   popupContentStr: document.querySelector('[data-instruction-popup-content]'),
   popupCloseStr: document.querySelector('[data-instruction-popup-close]'),
@@ -96,7 +96,7 @@ window.initMap = function () {
   domElements.entryPointStr.addEventListener('change', getEntry);
   domElements.exitPointStr.addEventListener('change', getExit);
   domElements.viewRouteStr.addEventListener('click', viewRoute);
-  domElements.clearFormStr.addEventListener('click', clearForm);
+  domElements.startOverStr.addEventListener('click', startOver);
 
   function populateInfoWindow(marker) {
     if (marker) {
@@ -160,8 +160,8 @@ window.initMap = function () {
 
     // hide view route button
     domElements.viewRouteStr.classList.add('hide');
-    // hide clear form button
-    domElements.clearFormStr.classList.add('hide');
+    // hide start over button
+    domElements.startOverStr.classList.add('hide');
 
     let dirBound = '';
     if (directionVal === 1) {
@@ -274,8 +274,8 @@ window.initMap = function () {
 
     // hide view route button
     domElements.viewRouteStr.classList.add('hide');
-    // hide clear form button
-    domElements.clearFormStr.classList.add('hide');
+    // hide start over button
+    domElements.startOverStr.classList.add('hide');
 
     // change label color
     changeColor();
@@ -462,8 +462,8 @@ window.initMap = function () {
 
     // show view route button after user selects an exit
     domElements.viewRouteStr.classList.remove('hide');
-    // show clear form button after user selects an exit
-    domElements.clearFormStr.classList.remove('hide');
+    // show start over button after user selects an exit
+    domElements.startOverStr.classList.remove('hide');
 
     // store the ids of the selected entry and exit point
     selectedEntryExit = [selectedEntryPoint, selectedExitPoint];
@@ -718,8 +718,9 @@ window.initMap = function () {
   }
 
   // function tied to an onclick handler that resets/reloads page
-  function clearForm() {
-    location.reload();
+  function startOver() {
+    // location.reload doesn't work in firefox
+    window.location.href = window.location.href;
   }
 
   // Function that creates the map logo

@@ -133,7 +133,7 @@ option {
   content: '';
   display: block;
   position: absolute;
-  left: -18px;
+  left: -17.5px;
   top: 0;
   overflow: hidden;
   width: 0;
@@ -158,7 +158,7 @@ option {
   content: '';
   display: block;
   position: absolute;
-  right: -18px;
+  right: -17.5px;
   top: 0;
   overflow: hidden;
   width: 0;
@@ -208,7 +208,7 @@ option {
   line-height: 24px;
   text-align: center;
   width: 30px;
-  margin-right: 20px;
+  margin-right: 15px;
 }
 
 .form-view {
@@ -352,6 +352,7 @@ option {
 }
 
 .popup-instructions .direction-text img {
+  height: min-content;
   height: fit-content;
   padding-right: 5px;
 }
@@ -403,7 +404,6 @@ option {
   left: 5px;
   bottom: 0px;
   width: 100px;
-  height: 25px;
   user-select: none;
   border: 0px;
   padding: 0px;
