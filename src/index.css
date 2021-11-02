@@ -223,11 +223,6 @@ option {
 
 /* END OF FORM STYLES */
 
-#map {
-  height: 80vh;
-  /* width: 100%; */
-}
-
 /* Styles for eastbound labels */
 .eastlabels {
   color: var(--label-font-color);
@@ -385,21 +380,19 @@ option {
 /* Map Styles */
 #map {
   position: relative;
+  height: 80vh;
 }
 
 /* clear bottom map contents */
-/* .gm-style .gm-style-cc a, */
-.gm-style .gm-style-cc button,
-.gm-style .gm-style-cc span,
-.gm-style .gm-style-mtc div {
+/* .gm-style .gm-style-cc a {
   display: none !important;
   background-color: transparent !important;
-}
-.gm-style .gm-style-cc a,
+} */
+/* .gm-style .gm-style-cc a,
 .gm-style .gm-style-mtc div {
   background-color: transparent !important;
   background: none !important;
-}
+} */
 
 #map div div a div img {
   display: none;
