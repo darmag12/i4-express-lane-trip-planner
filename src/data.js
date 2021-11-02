@@ -70,7 +70,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-434-B-ON-1.jpg'],
             imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
           },
         ],
@@ -253,7 +253,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgOut: ['Express-Lanes-LeeRd-W-OFF-1.jpg'],
           },
         ],
         entry: [
