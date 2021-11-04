@@ -712,7 +712,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-Kaley-Michigan-W-ON.jpg'],
             imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
           },
         ],
@@ -841,7 +841,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgOut: ['Express-Lanes-Conroy-W-OFF.jpg'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],
