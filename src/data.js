@@ -1010,11 +1010,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: [
-              'central-pkwy-and-434-entry-exit.png',
-              '4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png',
-              'SGL-AR2-8048-full-closure-of-SB-OBT-under-I4-for-punchout.png',
-            ],
+            imgIn: ['Express-Lanes-Tampa-lakeland-Kissimmee--E-ON.jpg'],
             imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
           },
         ],
@@ -1028,7 +1024,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgOut: ['Express-Lanes-Tampa-lakeland-Kissimmee--W-OFF.jpg'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],

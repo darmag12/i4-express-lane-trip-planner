@@ -1,6 +1,5 @@
 /* Imports */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,600;1,200;1,300&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Poppins:ital,wght@0,300;0,500;0,600;1,200;1,300&display=swap');
 /* Basic CSS Reset */
 /* Box sizing rules */
 *,
@@ -91,23 +90,28 @@ select {
 
 html,
 body {
-  font-family: 'Poppins', sans-serif;
+  /* font-family: 'Poppins', sans-serif; */
+  font-family: 'Lato', sans-serif;
   line-height: 1.5;
 }
 
 h1,
 h2,
 h3 {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 p,
 option {
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .hide {
   display: none;
+}
+
+.container {
+  padding: 0;
 }
 
 /* INFO SECTION STYLES */
@@ -116,6 +120,7 @@ option {
   justify-content: start;
   font-size: 0.7em;
   margin: 30px 0;
+  display: none; /* hide info section */
 }
 
 .info-section .entry-icon {
@@ -183,6 +188,7 @@ option {
 .form-description {
   margin-bottom: 20px;
   padding: 10px;
+  display: none; /* Hide form description*/
 }
 
 .form-description h3 {
