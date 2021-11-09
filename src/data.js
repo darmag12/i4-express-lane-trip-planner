@@ -288,7 +288,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['dummy-map.jpg'],
+            imgIn: ['Express-Lanes-Fairbanks-Ave-E-ON.jpg'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
