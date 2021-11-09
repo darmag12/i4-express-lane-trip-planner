@@ -334,11 +334,13 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['dummy-map.jpg'],
+            imgIn: ['Express-Lanes-ParSt-E-ON.jpg'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
-        entry: ['No Available Entries :( (this is impossible)'],
+        entry: [
+          'Travel from Par St. to southbound Orange Ave. to access the I-4 Express Direct Connect from Ivanhoe Blvd.',
+        ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
       // West
@@ -698,7 +700,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['Express-Lanes-Kaley-Michigan-E-ON.jpg'],
-            imgOut: ['dummy-map.jpg'],
+            imgOut: ['Express-Lanes-Kaley-Michigan-E-OFF.jpg'],
           },
         ],
         entry: [

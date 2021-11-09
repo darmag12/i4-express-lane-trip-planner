@@ -200,7 +200,7 @@ window.initMap = function () {
     let boundPointsEntries, boundPointEntry, wbExclude, ebExclude;
 
     wbExclude = ['n', 'v', 'w', 'q', 'r', 's', 't'];
-    ebExclude = ['c', 'h', 'm', 'a', 'e', 'd', 'b'];
+    ebExclude = ['c', 'm', 'a', 'e', 'd', 'b'];
 
     // checking if user selected eastbound then displaying
     // all eastbound entry and exit points
@@ -372,6 +372,7 @@ window.initMap = function () {
         case 'i':
         case 'g':
         case 'f':
+        case 'h':
           exitPointsArr = ['d', 'c', 'a'];
           removeAllChildNodes(domElements.exitPointStr);
           exitIterator(exitPointsArr);
