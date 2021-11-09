@@ -285,14 +285,7 @@ window.initMap = function () {
 
     // displayRoutes(directionValue);
 
-    // filter the values and return respective exits
-    // if value === a,b,c or d display f,j,m,o,s,t,u,w
-    // if value === e display j,m,o,s,t,u,w
-    // if value === f,g,h,i,j,k,l display t,u,w
-    // if value === m display s,t,u,w
-    // if value === o,p display t,u,w
-    // if value === q,r,s,t display no exit
-    // if value === u display w
+    // filter the values and return respective exits for westbound
     if (directionValue === 2) {
       switch (selectedEntryPoint) {
         case 'a':
@@ -351,6 +344,7 @@ window.initMap = function () {
           break;
       }
     } else {
+      // filters for eastbound
       switch (selectedEntryPoint) {
         case 'w':
         case 'v':
