@@ -331,6 +331,12 @@ option {
   transition: all 0.7s ease-in-out;
 }
 
+/* Handles the order of popup content */
+.popup-img-text-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 /* Modal Content/Box */
 .instructionpopup-content {
   background-color: #fefefe;
@@ -438,6 +444,10 @@ option {
     font-size: 0.6em;
     padding: 0 30px;
   }
+
+  /* .popup-img-text-container {
+    flex-direction: row;
+  } */
 }
 
 /* CSS ANIMATION kEYFRAMES */

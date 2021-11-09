@@ -14,7 +14,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['dummy-map.jpg'],
             imgOut: ['Express-Lanes-Daytona-E-OFF-1.jpg'],
           },
         ],
@@ -28,7 +28,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['Express-Lanes-Daytona-W-ON-1.jpg'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -59,8 +59,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['dummy-map.jpg'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],
@@ -71,7 +71,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['Express-Lanes-434-B-ON-1.jpg'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -102,7 +102,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['dummy-map.jpg'],
             imgOut: ['Express-Lanes-CENTRAL-E-OFF-1.jpg'],
           },
         ],
@@ -114,7 +114,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['Express-Lanes-CENTRAL-W-ON-1.jpg'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -145,7 +145,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['dummy-map.jpg'],
             imgOut: ['Express-Lanes-436-E-OFF.jpg'],
           },
         ],
@@ -160,7 +160,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['Express-Lanes-436-W-ON.jpg'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -239,8 +239,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-LeeRd-E-ON.jpg'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -288,8 +288,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['dummy-map.jpg'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -302,7 +302,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['Express-Lanes-Fairbanks-Ave-W-ON.jpg'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -334,8 +334,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['dummy-map.jpg'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],
@@ -346,7 +346,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['Express-Lanes-ParSt-W-ON.jpg'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -375,8 +375,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['dummy-map.jpg'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -390,7 +390,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['Express-Lanes-PrincetonSt-W-ON.jpg'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -421,8 +421,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['Express-Lanes-Ivanhoe-E-ON-1.jpg'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-Ivanhoe-E-ON.jpg'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -435,7 +435,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['Express-Lanes-Ivanhoe-W-ON.jpg'],
-            imgOut: ['Express-Lanes-Ivanhoe-W-OFF-1.jpg'],
+            imgOut: ['Express-Lanes-Ivanhoe-W-OFF.jpg'],
           },
         ],
         entry: [
@@ -467,8 +467,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['dummy-map.jpg'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -482,7 +482,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['Express-Lanes-COLONIAL-W-ON.jpg'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -515,8 +515,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['dummy-map.jpg'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -531,7 +531,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['Express-Lanes-Amelia-W-ON.jpg'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -565,8 +565,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['dummy-map.jpg'],
+            imgOut: ['Express-Lanes-SR408-SouthSt-E-OFF-1.jpg'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],
@@ -609,8 +609,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['dummy-map.jpg'],
+            imgOut: ['Express-Lanes-SR408-Andersonson-E-OFF-1.jpg'],
           },
         ],
         entry: [
@@ -622,8 +622,8 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['dummy-map.jpg'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],
@@ -650,8 +650,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-408-E-ON.jpg'],
+            imgOut: ['Express-Lanes-Direct-connect-EW-SR408-E-OFF-1.jpg'],
           },
         ],
         entry: [
@@ -697,8 +697,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-Kaley-Michigan-E-ON.jpg'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -713,7 +713,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['Express-Lanes-Kaley-Michigan-W-ON.jpg'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -745,8 +745,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-LanesOBT-E-ON.jpg'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -758,8 +758,8 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['dummy-map.jpg'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],
@@ -786,8 +786,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-JohnYoung--E-ON.jpg'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -799,8 +799,8 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['dummy-map.jpg'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],
@@ -827,8 +827,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['Express-Lanes-Conroy-E-ON.jpg'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -840,7 +840,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['dummy-map.jpg'],
             imgOut: ['Express-Lanes-Conroy-W-OFF.jpg'],
           },
         ],
@@ -873,7 +873,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['Express-Lanes-Turnpike-E-ON-1.jpg'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -885,7 +885,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['dummy-map.jpg'],
             imgOut: ['Express-Lanes-Turnpike-W-OFF-1.jpg'],
           },
         ],
@@ -917,8 +917,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['Express-Lanes-GRANDNAT-E-ON-1.jpg'],
-            imgOut: ['Express-Lanes-GRANDNAT-E-OFF-1.jpg'],
+            imgIn: ['Express-Lanes-Grand-National--E-ON.jpg'],
+            imgOut: ['Express-Lanes-Grand-National--E-OFF.jpg'],
           },
         ],
         entry: [
@@ -968,8 +968,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['dummy-map.jpg'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -982,8 +982,8 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['dummy-map.jpg'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],
@@ -1011,7 +1011,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['Express-Lanes-Tampa-lakeland-Kissimmee--E-ON.jpg'],
-            imgOut: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -1023,7 +1023,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png'],
+            imgIn: ['dummy-map.jpg'],
             imgOut: ['Express-Lanes-Tampa-lakeland-Kissimmee--W-OFF.jpg'],
           },
         ],
