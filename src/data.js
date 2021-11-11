@@ -377,7 +377,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['dummy-map.jpg'],
+            imgIn: ['Express-Lanes-PrincetonSt-E-ON-1.jpg'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -469,7 +469,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['dummy-map.jpg'],
+            imgIn: ['Express-Lanes-ColonialAve-E-ON.jpg'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -970,7 +970,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['dummy-map.jpg'],
+            imgIn: ['Express-Lanes-Kirkman-E-ON-1.jpg'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
