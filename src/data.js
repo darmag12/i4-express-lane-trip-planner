@@ -234,7 +234,7 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'f',
-      title: 'I-4 Express Access at Lee Road (S.R. 423)',
+      title: 'I-4 Express Access from Lee Road (S.R. 423)',
       // East
       entryEB: {
         images: [
@@ -283,7 +283,7 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'g',
-      title: 'I-4 Express Access at Fairbanks Ave.',
+      title: 'I-4 Express Access from Fairbanks Ave.',
       // East
       entryEB: {
         images: [
@@ -329,7 +329,7 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'h',
-      title: 'I-4 Express Access at Par St.',
+      title: 'I-4 Express Access from Par St.',
       // East
       entryEB: {
         images: [
@@ -428,7 +428,7 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'Use the Ivanhoe Boulevard Direct Connect to eastbound I-4 Express.',
+          'Use the Ivanhoe Blvd Direct Connect to eastbound I-4 Express.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
@@ -464,7 +464,7 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'k',
-      title: 'I-4 Express Access at Colonial Drive (S.R. 50)',
+      title: 'I-4 Express Access from Colonial Drive (S.R. 50)',
       // East
       entryEB: {
         images: [
@@ -512,7 +512,7 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'l',
-      title: 'I-4 Express Access at Amelia St.',
+      title: 'I-4 Express Access from Amelia St.',
       // East
       entryEB: {
         images: [
@@ -647,7 +647,7 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'o',
-      title: 'I-4 Express Access at S.R. 408',
+      title: 'I-4 Express Access from S.R. 408',
       // East
       entryEB: {
         images: [
@@ -657,7 +657,7 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'From eastbound I-4, the nearest I-4 Express ramp is west of Maitland Blvd. (S.R. 414).',
+          'From S.R. 408 to eastbound I-4, the nearest I-4 Express ramp is west of Maitland Blvd. (S.R. 414).',
         ],
         exit: ['Use the eastbound I-4 Express Direct Connect to S.R. 408.'],
       },
@@ -694,7 +694,7 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'p',
-      title: 'I-4 Express Access at Kaley Ave./Michigan St.',
+      title: 'I-4 Express Access from Kaley Ave./Michigan St.',
       // East
       entryEB: {
         images: [
@@ -704,7 +704,7 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'From eastbound I-4, the nearest I-4 Express ramp is west of Maitland Blvd. (S.R. 414).',
+          'From Kaley Ave./Michigan St. to eastbound I-4, the nearest I-4 Express ramp is west of Maitland Blvd. (S.R. 414).',
         ],
         exit: [
           'From eastbound I-4 Express, you can exit at the I-4 Express ramp west of Michigan St./Kaley Ave. then proceed to Michigan St/Kaley Ave. Exit 80.',
@@ -735,14 +735,14 @@ export const eastWestBounds = [
   },
   {
     id: 'q',
-    title: 'Orange Blossom Trl. (US 441/17/92) (Mile 80)',
+    title: 'Orange Blossom Trail (U.S. 441/17-92) (Mile 80)',
     coords: {
       east: { lat: 28.50989, lng: -81.39773 },
       west: { lat: 28.51003, lng: -81.39879 },
     },
     instructions: {
       id: 'q',
-      title: 'I-4 Express Access at Orange Blossom Trl. (US 441/17/92)',
+      title: 'I-4 Express Access from Orange Blossom Trail (U.S. 441/17-92)',
       // East
       entryEB: {
         images: [
@@ -752,7 +752,7 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'From eastbound I-4, the nearest I-4 Express ramp is west of Maitland Blvd. (S.R. 414).',
+          'From Orange Blossom Trail to eastbound I-4, the nearest I-4 Express ramp is west of Maitland Blvd. (S.R. 414).',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
@@ -783,7 +783,7 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'r',
-      title: 'I-4 Express Access at John Young Pkwy.',
+      title: 'I-4 Express Access from John Young Pkwy.',
       // East
       entryEB: {
         images: [
@@ -793,7 +793,7 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'From eastbound I-4, the nearest I-4 Express ramp is west of Maitland Blvd. (S.R. 414).',
+          'From John Young Pkwy. to eastbound I-4, the nearest I-4 Express ramp is west of Maitland Blvd. (S.R. 414).',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
@@ -824,7 +824,7 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 's',
-      title: 'I-4 Express Access at Conroy Road',
+      title: 'I-4 Express Access from Conroy Road',
       // East
       entryEB: {
         images: [
@@ -834,7 +834,7 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'From eastbound I-4, the nearest I-4 Express ramp is east of Conroy Road.',
+          'From Conroy Road to eastbound I-4, the nearest I-4 Express ramp is east of Conroy Road.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
@@ -869,7 +869,7 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 't',
-      title: 'I-4 Express Access at Florida’s Turnpike',
+      title: 'I-4 Express Access from Florida’s Turnpike (Northbound Only)',
       // East
       entryEB: {
         images: [
@@ -879,7 +879,7 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'Use Florida’s Turnpike Direct Connect to eastbound I-4 Express.',
+          `From northbound Florida's Turnpike, use Florida’s Turnpike Direct Connect to eastbound I-4 Express.`,
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
@@ -965,7 +965,7 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'v',
-      title: 'I-4 Access at Kirkman Road (S.R. 435)',
+      title: 'I-4 Express Access from Kirkman Road (S.R. 435)',
       // East
       entryEB: {
         images: [
@@ -975,7 +975,7 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'From eastbound I-4, the nearest I-4 Express ramp is east of Conroy Road.',
+          'From Kirkman Road to eastbound I-4, the nearest I-4 Express ramp is east of Conroy Road.',
           'Travel from Kirkman Road to eastbound Major Blvd. to access the I-4 Express Direct Connect from Grand National Drive.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
@@ -1007,7 +1007,7 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'w',
-      title: 'I-4 Access to/from Tampa/Lakeland/Kissimmee',
+      title: 'I-4 Express Access to/from Tampa/Lakeland/Kissimmee',
       // East
       entryEB: {
         images: [
@@ -1017,7 +1017,7 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'From eastbound I-4, you can begin traveling east in I-4 Express.',
+          'From eastbound I-4, you can enter I-4 Express east of Sand Lake Road (S.R. 482).',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
