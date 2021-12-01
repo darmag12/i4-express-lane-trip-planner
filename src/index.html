@@ -20,24 +20,30 @@
   <body>
     <div class="container">
       <section class="row">
+        <!-- BEGINNING OF MAP KEY SECTION -->
+        <section class="map-key-section">
+          <img src="./assets/trip-planner-key-legend.png" alt="Map Key" />
+        </section>
+        <!-- END OF MAP KEY SECTION -->
+
         <!-- BEGINNING OF INFO SECTION -->
-        <section class="info-section">
+        <!-- <section class="info-section">
           <div class="entry-icon">Entry</div>
           <div class="exit-icon">Exit</div>
           <div class="route-icon">Your Route</div>
-        </section>
+        </section> -->
         <!-- END OF INFO SECTION -->
 
         <!---BEGINNING OF FORM-->
         <form class="col-md-6 col-sm-12 form-container">
-          <div class="form-description">
+          <!-- <div class="form-description">
             <h3>LEARN YOUR ROUTE</h3>
             <p>
               Select the direction you will be traveling then click on the
               access points to see detailed maps of the Express Lane's entries
               and exits.
             </p>
-          </div>
+          </div> -->
           <!----Beginning of direction selection--->
           <div class="col-lg-8 col-md-12 form__select-direction-one">
             <div class="step">
@@ -46,8 +52,8 @@
             </div>
             <select
               data-direction="direction"
-              class="form-select form-select-lg mb-3"
-              aria-label=".form-select-lg"
+              class="form-select form-select-md mb-3"
+              aria-label=".form-select-md"
             >
               <option value="0" selected>Select Direction...</option>
               <option value="1">Eastbound</option>
@@ -61,33 +67,48 @@
             <div class="step">
               <span class="step-number">2</span>
               <p>
-                Choose your <strong data-direction-text></strong> entry and exit
-                points
+                Choose your <strong>entry</strong> and
+                <strong>exit</strong> points (<strong
+                  data-direction-text
+                ></strong
+                >)
               </p>
             </div>
             <select
               data-entry
-              class="form-select form-select-lg mb-3"
-              aria-label=".form-select-lg"
+              class="form-select form-select-md mb-3"
+              aria-label=".form-select-md"
             >
               <option id="selectEntry" selected>Select Entry...</option>
             </select>
 
             <select
               data-exit
-              class="form-select form-select-lg mb-3"
-              aria-label=".form-select-lg"
+              class="form-select form-select-md mb-3"
+              aria-label=".form-select-md"
             >
               <option id="selectExit" selected>Select Exit...</option>
             </select>
           </div>
           <!---End of entry/exit points selections-->
 
+          <!-----Start of instructions for viewing maps-->
+          <div class="col-md-12 form__select-direction-three hide">
+            <div class="step">
+              <span class="step-number">3</span>
+              <p>
+                Click on interchanges to see maps of the nearest entry and exit
+                ramp locations.
+              </p>
+            </div>
+          </div>
+          <!-----End of instructions for viewing maps-->
+
           <!-- Start view routes button -->
           <div class="form-view">
             <button
               type="button"
-              class="btn btn-outline-primary btn-lg hide"
+              class="btn btn-outline-primary btn-md hide"
               data-view
             >
               View Route
@@ -95,13 +116,27 @@
 
             <button
               type="button"
-              class="btn btn-outline-warning btn-lg hide"
+              class="btn btn-outline-warning btn-md hide"
               data-start-over
             >
               Start Over
             </button>
           </div>
           <!-- End view routes button -->
+
+          <!-- Beginning of informational text -->
+          <div class="form-info-text hide">
+            <p>
+              Keep in mind, depending on your destination, you may need to exit
+              early or continue past the main interchange before you exit
+              <nobr>I-4 Express.</nobr>
+            </p>
+            <p>
+              If you miss your exit, don’t stop on I-4 Express or on Interstate
+              4. Continue to the next available ramp and then proceed to your
+              destination.
+            </p>
+          </div>
         </form>
         <!---END OF FORM-->
 
@@ -111,7 +146,10 @@
           <!-- Modal content -->
           <div data-instruction-popup-content class="instructionpopup-content">
             <span data-instruction-popup-close class="close">&times;</span>
-            <div class="row popup-img-text-container">
+            <div
+              data-instruction-popup-txt-img-container
+              class="row popup-img-text-container"
+            >
               <div
                 data-instruction-popup-img
                 class="col-md-7 col-sm-12 popup-img"

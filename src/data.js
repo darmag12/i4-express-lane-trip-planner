@@ -76,7 +76,7 @@ export const eastWestBounds = [
         ],
         entry: [
           'From S.R. 434 to westbound I-4, the nearest I-4 Express ramp is west of S.R. 436',
-          'Or travel from S.R. 434 to southbound Douglas Ave. to access the I-4 Express Direct Connect from Central Pkwy.',
+          'Travel from S.R. 434 to southbound Douglas Ave. to access the I-4 Express Direct Connect from Central Pkwy.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
@@ -152,7 +152,7 @@ export const eastWestBounds = [
         entry: ['No Available Entries :( (this is impossible)'],
         exit: [
           'Use the eastbound I-4 Express Direct Connect to Central Pkwy.',
-          'Or travel to the I-4 Express Direct Connect to Central Pkwy. Travel southbound on Douglas Ave. or Palm Springs Drive to S.R. 436.',
+          'Travel to the I-4 Express Direct Connect to Central Pkwy. Travel southbound on Douglas Ave. or Palm Springs Drive to S.R. 436.',
         ],
       },
       // West
@@ -165,7 +165,7 @@ export const eastWestBounds = [
         ],
         entry: [
           'From S.R. 436 to westbound I-4 , the nearest I-4 Express ramp is just past the S.R. 436 on-ramp to westbound I-4.',
-          'Or travel from S.R. 436 to northbound Douglas Ave. or Palm Springs Drive to access the I-4 Express Direct Connect from Central Pkwy.',
+          'Travel from S.R. 436 to northbound Douglas Ave. or Palm Springs Drive to access the I-4 Express Direct Connect from Central Pkwy.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
@@ -258,7 +258,7 @@ export const eastWestBounds = [
         ],
         entry: [
           'From Lee Road to westbound I-4, the nearest I-4 Express ramp is west of Kaley Ave./Michigan St.',
-          'Or travel from Lee Road to northbound Wymore Road. Turn right onto Hope Road and then west on Maitland Blvd. (S.R. 414). Enter westbound I-4 and access the nearest I-4 Express ramp east of Lee Road.',
+          'Travel from Lee Road to northbound Wymore Road. Turn right onto Hope Road and then west on Maitland Blvd. (S.R. 414). Enter westbound I-4 and access the nearest I-4 Express ramp east of Lee Road.',
         ],
         exit: [
           'From westbound I-4 Express, you can exit at the I-4 Express ramp west of Maitland Blvd. and then proceed to Lee Road Exit 88.',
@@ -383,7 +383,7 @@ export const eastWestBounds = [
         ],
         entry: [
           'From Princeton St. to eastbound I-4, the nearest I-4 Express ramp is west of Maitland Blvd. (S.R. 414).',
-          'Or travel from Princeton St. to southbound Orange Ave. to access the I-4 Express Direct Connect from Ivanhoe Blvd.',
+          'Travel from Princeton St. to southbound Orange Ave. to access the I-4 Express Direct Connect from Ivanhoe Blvd.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
@@ -475,7 +475,7 @@ export const eastWestBounds = [
         ],
         entry: [
           'From Colonial Drive to eastbound I-4, the nearest I-4 Express ramp is west of Maitland Blvd. (S.R. 414).',
-          'Or travel from Colonial Drive to northbound Magnolia Ave. to access the I-4 Express Direct Connect from Ivanhoe Blvd.',
+          'Travel from Colonial Drive to northbound Magnolia Ave. to access the I-4 Express Direct Connect from Ivanhoe Blvd.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
@@ -489,7 +489,7 @@ export const eastWestBounds = [
         ],
         entry: [
           'From westbound I-4, the nearest I-4 Express ramp is west of Kaley Ave./Michigan St.',
-          'Or travel from Colonial Drive to southbound Hughey Avenue to access the I-4 Direct Connect from South St.',
+          'Travel from Colonial Drive to southbound Hughey Avenue to access the I-4 Direct Connect from South St.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
@@ -523,8 +523,8 @@ export const eastWestBounds = [
         ],
         entry: [
           'From Amelia St. to eastbound I-4, the nearest I-4 Express ramp is west of Maitland Blvd. (S.R. 414).',
-          'Or travel from Amelia St. to northbound Magnolia Ave. to access the I-4 Express Direct Connect from Ivanhoe Blvd.',
-          'Or travel from Amelia St. to southbound Hughey Avenue. Turn right onto Central Ave and then turn left onto Division Ave. to access the I-4 Direct Connect from Anderson St.',
+          'Travel from Amelia St. to northbound Magnolia Ave. to access the I-4 Express Direct Connect from Ivanhoe Blvd.',
+          'Travel from Amelia St. to southbound Hughey Avenue. Turn right onto Central Ave and then turn left onto Division Ave. to access the I-4 Direct Connect from Anderson St.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
@@ -538,7 +538,7 @@ export const eastWestBounds = [
         ],
         entry: [
           'From westbound I-4, the nearest I-4 Express ramp is west of Kaley Ave./Michigan St.',
-          'Or travel from Amelia Street to southbound Hughey Ave. to access the I-4 Direct Connect from South St.',
+          'Travel from Amelia Street to southbound Hughey Ave. to access the I-4 Direct Connect from South St.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
@@ -976,7 +976,7 @@ export const eastWestBounds = [
         ],
         entry: [
           'From eastbound I-4, the nearest I-4 Express ramp is east of Conroy Road.',
-          'Or travel from Kirkman Road to eastbound Major Blvd. to access the I-4 Express Direct Connect from Grand National Drive.',
+          'Travel from Kirkman Road to eastbound Major Blvd. to access the I-4 Express Direct Connect from Grand National Drive.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },

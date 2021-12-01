@@ -11,9 +11,11 @@ const apiKey = process.env.API_KEY;
 // Contains All the DOM elements
 const domElements = {
   mapContainerStr: document.getElementById('map'),
+  mapSectionStr: document.querySelector('[data-map-key]'),
   directionStr: document.querySelector('[data-direction]'),
   directionTextStr: document.querySelector('[data-direction-text]'),
   secondStepStr: document.querySelector('.form__select-direction-two'),
+  thirdStepStr: document.querySelector('.form__select-direction-three'),
   entryPointStr: document.querySelector('[data-entry]'),
   exitPointStr: document.querySelector('[data-exit]'),
   viewRouteStr: document.querySelector('[data-view]'),
@@ -21,6 +23,9 @@ const domElements = {
   popupContainerStr: document.querySelector('[data-instruction-popup]'),
   popupContentStr: document.querySelector('[data-instruction-popup-content]'),
   popupCloseStr: document.querySelector('[data-instruction-popup-close]'),
+  popupTxtImgContainerStr: document.querySelector(
+    '[data-instruction-popup-txt-img-container]'
+  ),
   popupMapInstructionsStr: document.querySelector(
     '[data-instruction-popup-info]'
   ),
@@ -154,6 +159,9 @@ window.initMap = function () {
   function getRoutes(directionVal) {
     // display step number 2 by removing the class that's hiding it
     domElements.secondStepStr.classList.remove('hide');
+
+    // display step number 3 by removing the class that's hiding it
+    domElements.thirdStepStr.classList.remove('hide');
 
     // reset exit dropdown if there's any value
     resetDropDown(domElements.exitPointStr);
@@ -596,9 +604,26 @@ window.initMap = function () {
                           1
                             ? ''
                             : `<img src="${imgIcons[i]}" alt="First slide" />`
-                        }<p>${ent}</p></div>`
+                        }<p>${ent}</p></div>
+                        
+                        ${
+                          // CHECKS IF THERE IS MORE THAN ONE EXIT, IF SO ADD 'OR'
+                          instructionsData.entryEB[eastBoundsEntInfo].length <=
+                          1
+                            ? ''
+                            : `<p class="text-center">OR</p>`
+                        }
+                        `
                     );
                   });
+
+                  // Checks if the length of our array is less than 1, if so nothing happens
+                  // Else removes the last element of the popup map instructions, which in this case is '<p>OR</p>'
+                  instructionsData.entryEB[eastBoundsEntInfo].length <= 1
+                    ? null
+                    : domElements.popupMapInstructionsStr.removeChild(
+                        domElements.popupMapInstructionsStr.lastElementChild
+                      );
                 }
                 break;
               case 'exit':
@@ -620,9 +645,24 @@ window.initMap = function () {
                         instructionsData.entryEB[eastBoundsEntInfo].length <= 1
                           ? ''
                           : `<img src="${imgIcons[i]}" alt="First slide" />`
-                      }<p>${ext}</p></div>`
+                      }<p>${ext}</p></div>
+                      
+                      ${
+                        // CHECKS IF THERE IS MORE THAN ONE EXIT, IF SO ADD 'OR'
+                        instructionsData.entryEB[eastBoundsEntInfo].length <= 1
+                          ? ''
+                          : `<p class="text-center">OR</p>`
+                      }`
                     );
                   });
+
+                  // Checks if the length of our array is less than 1, if so nothing happens
+                  // Else removes the last element of the popup map instructions, which in this case is '<p>OR</p>'
+                  instructionsData.entryEB[eastBoundsEntInfo].length <= 1
+                    ? null
+                    : domElements.popupMapInstructionsStr.removeChild(
+                        domElements.popupMapInstructionsStr.lastElementChild
+                      );
                 }
                 break;
             } // end of switch statement
@@ -673,9 +713,24 @@ window.initMap = function () {
                         instructionsData.entryWB[westBoundsEntInfo].length <= 1
                           ? ''
                           : `<img src="${imgIcons[i]}" alt="First slide" />`
-                      }<p>${ent}</p></div>`
+                      }<p>${ent}</p></div>
+                      
+                      ${
+                        // CHECKS IF THERE IS MORE THAN ONE ENRTY, IF SO ADD 'OR'
+                        instructionsData.entryWB[westBoundsEntInfo].length <= 1
+                          ? ''
+                          : `<p class="text-center">OR</p>`
+                      }
+                      `
                     );
                   });
+                  // Checks if the length of our array is less than 1, if so nothing happens
+                  // Else removes the last element of the popup map instructions, which in this case is '<p>OR</p>'
+                  instructionsData.entryWB[westBoundsEntInfo].length <= 1
+                    ? null
+                    : domElements.popupMapInstructionsStr.removeChild(
+                        domElements.popupMapInstructionsStr.lastElementChild
+                      );
                 }
                 break;
               case 'exit':
@@ -699,10 +754,25 @@ window.initMap = function () {
                           ? ''
                           : `<img src="${imgIcons[i]}" alt="First slide" />`
                       }
-                      <p>${ext}</p></div>`
+                      <p>${ext}</p></div>
+                      
+                      ${
+                        // CHECKS IF THERE IS MORE THAN ONE EXIT, IF SO ADD 'OR'
+                        instructionsData.entryWB[westBoundsEntInfo].length <= 1
+                          ? ''
+                          : `<p class="text-center">OR</p>`
+                      }
+                      `
                     );
-                    console.log(ext);
                   });
+
+                  // Checks if the length of our array is less than 1, if so nothing happens
+                  // Else removes the last element of the popup map instructions, which in this case is '<p>OR</p>'
+                  instructionsData.entryWB[westBoundsEntInfo].length <= 1
+                    ? null
+                    : domElements.popupMapInstructionsStr.removeChild(
+                        domElements.popupMapInstructionsStr.lastElementChild
+                      );
                 }
                 break;
             } // end of switch statement
@@ -748,9 +818,17 @@ window.initMap = function () {
   // removes all children elements then adds the road name
   function removeAddElementsForPopup(title, parent) {
     removeAllChildren(parent);
-    domElements.popupMapInstructionsStr.insertAdjacentHTML(
-      'beforeend',
-      `<h5>${title} <br></h5>
+    // get title through ID
+    let titleID = document.getElementById('route-title');
+    // check if title exists
+    if (titleID) {
+      // remove title
+      titleID.remove();
+    }
+    // add the title
+    domElements.popupTxtImgContainerStr.insertAdjacentHTML(
+      'afterbegin',
+      `<h5 id="route-title">${title} <br></h5>
           `
     );
   }
