@@ -368,6 +368,9 @@ option {
 
 .popup-img {
   margin: 10px 0;
+}
+
+.popup-img .carousel-item {
   border: 2px solid rgb(207, 207, 207);
 }
 
@@ -391,6 +394,17 @@ option {
 .popup-instructions .direction-text p {
   line-height: 1.5;
   font-style: italic;
+}
+
+.popup-map-key {
+  display: flex;
+  justify-content: flex-start;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.popup-map-key img {
+  width: 50%;
 }
 
 /* The Close Button */
@@ -462,6 +476,10 @@ option {
     justify-content: center;
     font-size: 0.6em;
     padding: 0 30px;
+  }
+
+  .popup-map-key img {
+    width: 60%;
   }
 
   /* .popup-img-text-container {

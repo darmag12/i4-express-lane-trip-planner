@@ -540,7 +540,13 @@ window.initMap = function () {
 
   // function for displaying map instructions inside the popup
   function populatePopup(markerID) {
-    let eastBoundsEntInfo, westBoundsEntInfo, displayImg, activeImg, imgIcons;
+    let eastBoundsEntInfo,
+      westBoundsEntInfo,
+      displayImg,
+      activeImg,
+      imgIcons,
+      mapKeyPath,
+      mapKeyImage;
 
     // filters all images that include 'number-'
     imgIcons = images.filter(img => img.includes('number-'));
@@ -566,18 +572,34 @@ window.initMap = function () {
                   // checks if the selected entry point matches the id of the current
                   // element in the loop
                   if (selectedEntryPoint === instructionsData.id) {
+                    // map key path for entry
+                    mapKeyPath = 'trip-planner-popup-enter-key-legend.png';
+                    // filter and get matching path
+                    mapKeyImage = images.filter(img =>
+                      img.includes(mapKeyPath)
+                    );
                     // removes any present images first
                     removeAllChildren(domElements.popupImageCarouselStr);
                     // displays carousel images
                     displayCarouselImages(image.imgIn, displayImg, activeImg);
+                    // Add map key to popup
+                    addPopupMapKey(mapKeyImage);
                   }
                   // checks if the selected exit point matches the id of the current
                   // element in the loop
                   if (selectedExitPoint === instructionsData.id) {
+                    // map key path for exit
+                    mapKeyPath = 'trip-planner-popup-exit-key-legend.png';
+                    // filter and get matching path
+                    mapKeyImage = images.filter(img =>
+                      img.includes(mapKeyPath)
+                    );
                     // removes any present images first
                     removeAllChildren(domElements.popupImageCarouselStr);
                     // displays carousel images
                     displayCarouselImages(image.imgOut, displayImg, activeImg);
+                    // Add map key to popup
+                    addPopupMapKey(mapKeyImage);
                   }
 
                   // console.log(images);
@@ -611,7 +633,7 @@ window.initMap = function () {
                           instructionsData.entryEB[eastBoundsEntInfo].length <=
                           1
                             ? ''
-                            : `<p class="text-center">OR</p>`
+                            : `<p class="text-center">or</p>`
                         }
                         `
                     );
@@ -651,7 +673,7 @@ window.initMap = function () {
                         // CHECKS IF THERE IS MORE THAN ONE EXIT, IF SO ADD 'OR'
                         instructionsData.entryEB[eastBoundsEntInfo].length <= 1
                           ? ''
-                          : `<p class="text-center">OR</p>`
+                          : `<p class="text-center">or</p>`
                       }`
                     );
                   });
@@ -679,18 +701,34 @@ window.initMap = function () {
                   // checks if the selected entry point matches the id of the current
                   // element in the loop
                   if (selectedEntryPoint === instructionsData.id) {
+                    // map key path for entry
+                    mapKeyPath = 'trip-planner-popup-enter-key-legend.png';
+                    // filter and get matching path
+                    mapKeyImage = images.filter(img =>
+                      img.includes(mapKeyPath)
+                    );
                     // removes any present images first
                     removeAllChildren(domElements.popupImageCarouselStr);
                     // displays carousel images
                     displayCarouselImages(image.imgIn, displayImg, activeImg);
+                    // Add map key to popup
+                    addPopupMapKey(mapKeyImage);
                   }
                   // checks if the selected exit point matches the id of the current
                   // element in the loop
                   if (selectedExitPoint === instructionsData.id) {
+                    // map key path for exit
+                    mapKeyPath = 'trip-planner-popup-exit-key-legend.png';
+                    // filter and get matching path
+                    mapKeyImage = images.filter(img =>
+                      img.includes(mapKeyPath)
+                    );
                     // removes any present images first
                     removeAllChildren(domElements.popupImageCarouselStr);
                     // displays carousel images
                     displayCarouselImages(image.imgOut, displayImg, activeImg);
+                    // Add map key to popup
+                    addPopupMapKey(mapKeyImage);
                   }
                 });
                 break;
@@ -719,13 +757,13 @@ window.initMap = function () {
                         // CHECKS IF THERE IS MORE THAN ONE ENRTY, IF SO ADD 'OR'
                         instructionsData.entryWB[westBoundsEntInfo].length <= 1
                           ? ''
-                          : `<p class="text-center">OR</p>`
+                          : `<p class="text-center">or</p>`
                       }
                       `
                     );
                   });
                   // Checks if the length of our array is less than 1, if so nothing happens
-                  // Else removes the last element of the popup map instructions, which in this case is '<p>OR</p>'
+                  // Else removes the last element of the popup map instructions, which in this case is '<p>or</p>'
                   instructionsData.entryWB[westBoundsEntInfo].length <= 1
                     ? null
                     : domElements.popupMapInstructionsStr.removeChild(
@@ -760,14 +798,14 @@ window.initMap = function () {
                         // CHECKS IF THERE IS MORE THAN ONE EXIT, IF SO ADD 'OR'
                         instructionsData.entryWB[westBoundsEntInfo].length <= 1
                           ? ''
-                          : `<p class="text-center">OR</p>`
+                          : `<p class="text-center">or</p>`
                       }
                       `
                     );
                   });
 
                   // Checks if the length of our array is less than 1, if so nothing happens
-                  // Else removes the last element of the popup map instructions, which in this case is '<p>OR</p>'
+                  // Else removes the last element of the popup map instructions, which in this case is '<p>or</p>'
                   instructionsData.entryWB[westBoundsEntInfo].length <= 1
                     ? null
                     : domElements.popupMapInstructionsStr.removeChild(
@@ -818,17 +856,17 @@ window.initMap = function () {
   // removes all children elements then adds the road name
   function removeAddElementsForPopup(title, parent) {
     removeAllChildren(parent);
-    // get title through ID
-    let titleID = document.getElementById('route-title');
+    // get popup title through ID
+    let titleID = document.getElementById('RouteTitle');
     // check if title exists
     if (titleID) {
-      // remove title
+      // remove popup title
       titleID.remove();
     }
-    // add the title
+    // add popup title
     domElements.popupTxtImgContainerStr.insertAdjacentHTML(
       'afterbegin',
-      `<h5 id="route-title">${title} <br></h5>
+      `<h5 id="RouteTitle">${title} <br></h5>
           `
     );
   }
@@ -1033,9 +1071,29 @@ window.initMap = function () {
         src="${imgSrc}"
         alt="First slide"
       />
-    </div>`
+    </div>
+    `
       );
     });
+  }
+
+  // Adds Map key to the popup
+  function addPopupMapKey(mapKeyImg) {
+    // get popup title by ID
+    let PopupMapKeyID = document.getElementById('PopupMapKey');
+    // check if title exists
+    if (PopupMapKeyID) {
+      // remove popup title
+      PopupMapKeyID.remove();
+    }
+    domElements.popupImageStr.insertAdjacentHTML(
+      'beforeend',
+      `
+    <div id="PopupMapKey" class="popup-map-key">
+        <img class="d-block" src="${mapKeyImg}"/>
+    </div>
+    `
+    );
   }
 };
 
