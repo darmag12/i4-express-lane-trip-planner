@@ -546,7 +546,8 @@ window.initMap = function () {
       activeImg,
       imgIcons,
       mapKeyPath,
-      mapKeyImage;
+      mapKeyImage,
+      dynamicTitle;
 
     // filters all images that include 'number-'
     imgIcons = images.filter(img => img.includes('number-'));
@@ -610,9 +611,11 @@ window.initMap = function () {
                 // checks if the selected entry point matches the id of the current
                 // element in the loop
                 if (selectedEntryPoint === instructionsData.id) {
+                  // check if title includes to then replace with from
+                  dynamicTitle = instructionsData.title.replace('to', 'from');
                   // removes all elements then adds respective title
                   removeAddElementsForPopup(
-                    instructionsData.title,
+                    dynamicTitle,
                     domElements.popupMapInstructionsStr
                   );
 
@@ -652,9 +655,11 @@ window.initMap = function () {
                 // checks if the selected exit point matches the id of the current
                 // element in the loop
                 if (selectedExitPoint === instructionsData.id) {
+                  // check if title includes from then replace with to
+                  dynamicTitle = instructionsData.title.replace('from', 'to');
                   // removes all elements then adds respective title
                   removeAddElementsForPopup(
-                    instructionsData.title,
+                    dynamicTitle,
                     domElements.popupMapInstructionsStr
                   );
 
@@ -736,9 +741,11 @@ window.initMap = function () {
                 // checks if the selected entry point matches the id of the current
                 // element in the loop
                 if (selectedEntryPoint === instructionsData.id) {
+                  // check if title includes to then replace with from
+                  dynamicTitle = instructionsData.title.replace('to', 'from');
                   // removes all elements then adds respective title
                   removeAddElementsForPopup(
-                    instructionsData.title,
+                    dynamicTitle,
                     domElements.popupMapInstructionsStr
                   );
 
@@ -775,9 +782,11 @@ window.initMap = function () {
                 // checks if the selected exit point matches the id of the current
                 // element in the loop
                 if (selectedExitPoint === instructionsData.id) {
+                  // check if title includes from then replace with to
+                  dynamicTitle = instructionsData.title.replace('from', 'to');
                   // removes all elements then adds respective title
                   removeAddElementsForPopup(
-                    instructionsData.title,
+                    dynamicTitle,
                     domElements.popupMapInstructionsStr
                   );
 
@@ -827,17 +836,29 @@ window.initMap = function () {
   }
 
   // Function that creates the map logo
-  function getMapLogo() {
-    let logoPath, logoImg;
+  function getMapLogoAndShield() {
+    let logoPath, logoImg, mapShieldPath, mapShieldImg;
     // logo's path
     logoPath = 'i4express-flyingE-logo.png';
     // filter and get matching path
     logoImg = images.filter(pic => pic.includes(logoPath));
+
+    // map shield logo path
+    mapShieldPath = 'I4-Shield-with-Arrows-400.png';
+    // filter and get matching path
+    mapShieldImg = images.filter(pic => pic.includes(mapShieldPath));
+
     // create logo element
     const createLogo = `
     <div class="i4-express-map-logo">
       <a href="">
         <img src="${logoImg}" alt="" />
+      </a>
+    </div>
+
+    <div class="i4-express-shield-logo">
+      <a href="">
+        <img src="${mapShieldImg}" alt="" />
       </a>
     </div>
     `;
@@ -849,26 +870,30 @@ window.initMap = function () {
       `
     );
   }
-  getMapLogo();
+  getMapLogoAndShield();
   // ================= END OF ALL FUNCTIONS THAT AREN'T REUSED==================//
 
   //===========REUSED FUNCTIONS==================//
   // removes all children elements then adds the road name
   function removeAddElementsForPopup(title, parent) {
+    //===***** SOMETHING TO NOTE *****===//
+    // title comes in mutated so insted of having for instance
+    // 'Daytona to/form' we have Daytona from/from or to/to
     let newTitle, titleChecker;
     // check if eastbound
     if (directionValue === 1) {
       // check if title includes Tampa
       titleChecker = title.includes('Tampa');
       newTitle = titleChecker
-        ? title.replace('to/from', 'from')
-        : title.replace('to/from', 'to');
+        ? title.replace('from/from', 'from')
+        : title.replace('to/to', 'to');
+      // check if titles include from then replace with to
     } else {
       // check if title includes Daytona
       titleChecker = title.includes('Daytona');
       newTitle = titleChecker
-        ? title.replace('to/from', 'from')
-        : title.replace('to/from', 'to');
+        ? title.replace('from/from', 'from')
+        : title.replace('to/to', 'to');
     }
     // remove all children elements
     removeAllChildren(parent);

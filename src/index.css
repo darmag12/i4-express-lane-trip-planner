@@ -450,9 +450,17 @@ option {
   bottom: 0px;
   width: 100px;
   user-select: none;
-  border: 0px;
-  padding: 0px;
   margin: 10px;
+}
+
+#map .i4-express-shield-logo img {
+  position: absolute;
+  left: 0;
+  top: 90px;
+  width: 80px;
+  user-select: none;
+  margin: 10px;
+  /* transform: translate(50%, -50%); */
 }
 
 /* Media Queries */
