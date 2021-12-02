@@ -239,7 +239,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['Express-Lanes-LeeRd-E-ON.jpg'],
+            imgIn: ['Express-Lanes-LeeRd-E-ON-1.jpg'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -334,7 +334,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['Express-Lanes-ParSt-E-ON.jpg'],
+            imgIn: ['Express-Lanes-ParSt-E-ON-1.jpg'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -423,7 +423,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['Express-Lanes-Ivanhoe-E-ON.jpg'],
+            imgIn: ['Express-Lanes-Ivanhoe-E-ON-1.jpg'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -872,7 +872,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['Express-Lanes-Turnpike-E-ON-1.jpg'],
+            imgIn: ['Express-Lanes-Turnpike--E-ON.jpg'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -886,7 +886,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['dummy-map.jpg'],
-            imgOut: ['Express-Lanes-Turnpike-W-OFF-1.jpg'],
+            imgOut: ['Express-Lanes-Turnpike--W-OFF.jpg'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],
