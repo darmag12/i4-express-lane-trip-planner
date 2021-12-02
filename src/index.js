@@ -855,6 +855,22 @@ window.initMap = function () {
   //===========REUSED FUNCTIONS==================//
   // removes all children elements then adds the road name
   function removeAddElementsForPopup(title, parent) {
+    let newTitle, titleChecker;
+    // check if eastbound
+    if (directionValue === 1) {
+      // check if title includes Tampa
+      titleChecker = title.includes('Tampa');
+      newTitle = titleChecker
+        ? title.replace('to/from', 'from')
+        : title.replace('to/from', 'to');
+    } else {
+      // check if title includes Daytona
+      titleChecker = title.includes('Daytona');
+      newTitle = titleChecker
+        ? title.replace('to/from', 'from')
+        : title.replace('to/from', 'to');
+    }
+    // remove all children elements
     removeAllChildren(parent);
     // get popup title through ID
     let titleID = document.getElementById('RouteTitle');
@@ -866,7 +882,7 @@ window.initMap = function () {
     // add popup title
     domElements.popupTxtImgContainerStr.insertAdjacentHTML(
       'afterbegin',
-      `<h5 id="RouteTitle">${title} <br></h5>
+      `<h5 id="RouteTitle">${newTitle} <br></h5>
           `
     );
   }

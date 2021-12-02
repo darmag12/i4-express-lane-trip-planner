@@ -20,7 +20,7 @@ export const eastWestBounds = [
         ],
         entry: ['No Available Entries :( (this is impossible)'],
         exit: [
-          'Eastbound I-4 Express ends. All traffic merges with eastbound I-4 general use lanes.',
+          'Eastbound I-4 Express ends east of S.R. 434. All traffic merges with the eastbound I-4 general use lanes.',
         ],
       },
       // West
@@ -54,7 +54,7 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'b',
-      title: 'I-4 Express Access at S.R. 434',
+      title: 'I-4 Express Access from S.R. 434',
       // East
       entryEB: {
         images: [
@@ -75,7 +75,7 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'From S.R. 434 to westbound I-4, the nearest I-4 Express ramp is west of S.R. 436',
+          'From S.R. 434 to westbound I-4, the nearest I-4 Express ramp is west of S.R. 436.',
           'Travel from S.R. 434 to southbound Douglas Ave. to access the I-4 Express Direct Connect from Central Pkwy.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
@@ -140,7 +140,7 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'd',
-      title: 'I-4 Express Access at S.R. 436',
+      title: 'I-4 Express Access from S.R. 436',
       // East
       entryEB: {
         images: [
@@ -151,8 +151,8 @@ export const eastWestBounds = [
         ],
         entry: ['No Available Entries :( (this is impossible)'],
         exit: [
-          'Use the eastbound I-4 Express Direct Connect to Central Pkwy.',
-          'Travel to the I-4 Express Direct Connect to Central Pkwy. Travel southbound on Douglas Ave. or Palm Springs Drive to S.R. 436.',
+          'From eastbound I-4 Express, use the ramp west of S.R. 436 to merge onto eastbound I-4, then proceed to S.R. 436 (Exit 92).',
+          'Use the eastbound I-4 Express Direct Connect to Central Pkwy, then travel south on Douglas Ave. or Palm Springs Drive to S.R. 436.',
         ],
       },
       // West
@@ -189,7 +189,7 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'e',
-      title: 'I-4 Express Access at Maitland Boulevard (S.R. 414)',
+      title: 'I-4 Express Access from Maitland Boulevard (S.R. 414)',
       // East
       entryEB: {
         images: [
@@ -200,7 +200,7 @@ export const eastWestBounds = [
         ],
         entry: ['No Available Entries :( (this is impossible)'],
         exit: [
-          'From eastbound I-4 Express, you can exit at the I-4 Express ramp east of Lee Road (S.R. 423) then proceed to Maitland Blvd. Exit 90 A-B.',
+          'From eastbound I-4 Express, use the ramp east of Lee Road (S.R. 423) to merge onto eastbound I-4, then proceed to Maitland Blvd. (Exit 90 A-B).',
         ],
       },
       // West
@@ -261,7 +261,7 @@ export const eastWestBounds = [
           'Travel from Lee Road to northbound Wymore Road. Turn right onto Hope Road and then west on Maitland Blvd. (S.R. 414). Enter westbound I-4 and access the nearest I-4 Express ramp east of Lee Road.',
         ],
         exit: [
-          'From westbound I-4 Express, you can exit at the I-4 Express ramp west of Maitland Blvd. and then proceed to Lee Road Exit 88.',
+          'From westbound I-4 Express, use the ramp west of Maitland Blvd. (S.R. 414) to merge onto westbound I-4, then proceed to Lee Road (Exit 88).',
         ],
       },
 
@@ -352,7 +352,7 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'From Par St. to westbound I-4, the nearest I-4 Express ramp is west of Kaley St./Michigan St.',
+          'From Par St. to westbound I-4, the nearest I-4 Express ramp is west of Michigan St./Kaley Ave.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
@@ -418,7 +418,7 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'j',
-      title: 'I-4 Express Access at Ivanhoe Blvd.',
+      title: 'I-4 Express Access from Ivanhoe Blvd.',
       // East
       entryEB: {
         images: [
@@ -441,7 +441,7 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'From Ivanhoe Blvd. to westbound I-4, the nearest I-4 Express ramp is west of Kaley St./Michigan St.',
+          'From Ivanhoe Blvd. to westbound I-4, the nearest I-4 Express ramp is west of Michigan St./Kaley Ave.',
         ],
         exit: ['Use the westbound I-4 Express Direct Connect to Ivanhoe Blvd.'],
       },
@@ -488,8 +488,8 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'From westbound I-4, the nearest I-4 Express ramp is west of Kaley Ave./Michigan St.',
-          'Travel from Colonial Drive to southbound Hughey Avenue to access the I-4 Direct Connect from South St.',
+          'From Colonial Drive to westbound I-4, the nearest I-4 Express ramp is west of Michigan St./Kaley Ave.',
+          'Travel from Colonial Drive to southbound Hughey Ave. to access the I-4 Direct Connect from South St.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
@@ -537,7 +537,7 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'From westbound I-4, the nearest I-4 Express ramp is west of Kaley Ave./Michigan St.',
+          'From Amelia St. to westbound I-4, the nearest I-4 Express ramp is west of Michigan St./Kaley Ave.',
           'Travel from Amelia Street to southbound Hughey Ave. to access the I-4 Direct Connect from South St.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
@@ -582,10 +582,8 @@ export const eastWestBounds = [
             imgOut: ['Express-Lanes-SouthSt-W-Off-1.jpg'],
           },
         ],
-        entry: [
-          'Use the South Street Direct Connect to westbound I-4 Express.',
-        ],
-        exit: ['Use the westbound I-4 Express Direct Connect to South St'],
+        entry: ['Use the South St. Direct Connect to westbound I-4 Express.'],
+        exit: ['Use the westbound I-4 Express Direct Connect to South St.'],
       },
 
       // entry: [
@@ -670,7 +668,7 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'From westbound I-4, the nearest I-4 Express ramp is west of Kaley Ave./Michigan St.',
+          'From S.R. 408 to westbound I-4, the nearest I-4 Express ramp is west of Michigan St./Kaley Ave.',
         ],
         exit: ['Use the westbound I-4 Express Direct Connect to S.R. 408.'],
       },
@@ -694,7 +692,7 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'p',
-      title: 'I-4 Express Access from Kaley Ave./Michigan St.',
+      title: 'I-4 Express Access from Michigan St./Kaley Ave.',
       // East
       entryEB: {
         images: [
@@ -707,7 +705,7 @@ export const eastWestBounds = [
           'From Kaley Ave./Michigan St. to eastbound I-4, the nearest I-4 Express ramp is west of Maitland Blvd. (S.R. 414).',
         ],
         exit: [
-          'From eastbound I-4 Express, you can exit at the I-4 Express ramp west of Michigan St./Kaley Ave. then proceed to Michigan St/Kaley Ave. Exit 80.',
+          'From eastbound I-4 Express,use the ramp west of Kaley Ave./Michigan St. to merge onto eastbound I-4, then proceed to Kaley Ave./Michigan St. (Exit 81).',
         ],
       },
       // West
@@ -719,7 +717,7 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'From westbound I-4, the nearest I-4 Express ramp is west of Kaley Ave./Michigan St.',
+          'From Michigan St./Kaley Ave. to westbound I-4, the nearest I-4 Express ramp is west of Michigan St./Kaley Ave.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
@@ -848,7 +846,7 @@ export const eastWestBounds = [
         ],
         entry: ['No Available Entries :( (this is impossible)'],
         exit: [
-          'From westbound I-4 Express, you can exit at the I-4 Express ramp east of Conroy Road then proceed to Conroy Road Exit 78.',
+          'From westbound I-4 Express, use the ramp east of Conroy Road to merge onto westbound I-4, then proceed to Conroy Road (Exit 78).',
         ],
       },
 
@@ -893,7 +891,7 @@ export const eastWestBounds = [
         ],
         entry: ['No Available Entries :( (this is impossible)'],
         exit: [
-          'Use the westbound I-4 Express Direct Connect to Florida’s Turnpike.',
+          'Use the westbound I-4 Express Direct Connect to southbound Florida’s Turnpike.',
         ],
       },
 
@@ -914,7 +912,7 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'u',
-      title: 'I-4 Access at Grand National Drive',
+      title: 'I-4 Express Access at Grand National Drive',
       // East
       entryEB: {
         images: [
@@ -1031,7 +1029,7 @@ export const eastWestBounds = [
         ],
         entry: ['No Available Entries :( (this is impossible)'],
         exit: [
-          'Westbound I-4 Express ends. All traffic merges with westbound I-4 general use lanes',
+          'Westbound I-4 Express ends east of the Beachline Expressway (S.R. 528). All traffic merges with the westbound I-4 general use lanes.',
         ],
       },
 
