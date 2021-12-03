@@ -623,14 +623,11 @@ window.initMap = function () {
                   instructionsData.entryEB[eastBoundsEntInfo].map((ent, i) => {
                     domElements.popupMapInstructionsStr.insertAdjacentHTML(
                       'beforeend',
-                      `
-                        <div data-direction-text class="direction-text">${
-                          instructionsData.entryEB[eastBoundsEntInfo].length <=
-                          1
-                            ? ''
-                            : `<img src="${imgIcons[i]}" alt="First slide" />`
-                        }<p>${ent}</p></div>
-                        
+                      `<div data-direction-text class="direction-text">${
+                        instructionsData.entryEB[eastBoundsEntInfo].length <= 1
+                          ? ''
+                          : `<img src="${imgIcons[i]}" alt="First slide" />`
+                      }<p>${ent}</p></div>
                         ${
                           // CHECKS IF THERE IS MORE THAN ONE EXIT, IF SO ADD 'OR'
                           instructionsData.entryEB[eastBoundsEntInfo].length <=
@@ -753,13 +750,11 @@ window.initMap = function () {
                     // loops all the entry info then outputs them as html elements
                     domElements.popupMapInstructionsStr.insertAdjacentHTML(
                       'beforeend',
-                      `
-                      <div data-direction-text class="direction-text">${
+                      `<div data-direction-text class="direction-text">${
                         instructionsData.entryWB[westBoundsEntInfo].length <= 1
                           ? ''
                           : `<img src="${imgIcons[i]}" alt="First slide" />`
                       }<p>${ent}</p></div>
-                      
                       ${
                         // CHECKS IF THERE IS MORE THAN ONE ENRTY, IF SO ADD 'OR'
                         instructionsData.entryWB[westBoundsEntInfo].length <= 1
@@ -794,15 +789,12 @@ window.initMap = function () {
                   instructionsData.entryWB[westBoundsEntInfo].map((ext, i) => {
                     domElements.popupMapInstructionsStr.insertAdjacentHTML(
                       'beforeend',
-                      `
-                      <div data-direction-text class="direction-text">
+                      `<div data-direction-text class="direction-text">
                       ${
                         instructionsData.entryWB[westBoundsEntInfo].length <= 1
                           ? ''
                           : `<img src="${imgIcons[i]}" alt="First slide" />`
-                      }
-                      <p>${ext}</p></div>
-                      
+                      }<p>${ext}</p></div>
                       ${
                         // CHECKS IF THERE IS MORE THAN ONE EXIT, IF SO ADD 'OR'
                         instructionsData.entryWB[westBoundsEntInfo].length <= 1
@@ -907,8 +899,7 @@ window.initMap = function () {
     // add popup title
     domElements.popupTxtImgContainerStr.insertAdjacentHTML(
       'afterbegin',
-      `<h5 id="RouteTitle">${newTitle} <br></h5>
-          `
+      `<h5 id="RouteTitle">${newTitle} <br></h5>`
     );
   }
 
@@ -1008,28 +999,41 @@ window.initMap = function () {
   // function that loops all the markers and filters it's ids to match
   // the items in the array in the argument
   function toggleMarkersFromMap(arr) {
+    let entryMarker, newFilteredMarkers;
     if (arr) {
       allMarkers = removeDuplicates(
         eastMarkers.concat(westMarkers),
         it => it.id
       );
+
+      // display only the entry marker
+      // loop all markers and filter
+      entryMarker = allMarkers.filter(mark =>
+        selectedEntryPoint.includes(mark.id)
+      );
       // let allMarkersFiltered = uniqChar(allMarkers, it => it.id);
       filteredMarkers = allMarkers.filter(mark => arr.includes(mark.id));
-      // console.log(filteredMarkers);
+      newFilteredMarkers = removeDuplicates(
+        entryMarker.concat(filteredMarkers),
+        it => it.id
+      );
+
       if (directionValue === 1) {
         // delete current markers
         deleteMarkers(eastMarkers);
         // show new markers
-        showMarkers(filteredMarkers);
+        // showMarkers(entryMarker);
+        showMarkers(newFilteredMarkers);
         // reset filtered markers
-        filteredMarkers = [];
+        newFilteredMarkers = [];
       } else {
         // delete current markers
         deleteMarkers(westMarkers);
         // show new markers
-        showMarkers(filteredMarkers);
+        // showMarkers(entryMarker);
+        showMarkers(newFilteredMarkers);
         // reset filtered markers
-        filteredMarkers = [];
+        newFilteredMarkers = [];
       }
     } else {
       // don't display any markers
