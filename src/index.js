@@ -119,7 +119,8 @@ window.initMap = function () {
         function setExitPointOnClick() {
           domElements.exitPointStr.value = marker.id;
           selectedExitPoint = marker.id;
-          getExit();
+          // If the selected entry point does not match the marker's id, call getExit() else, call getEntry()
+          selectedEntryPoint !== marker.id ? getExit() : getEntry();
         }
 
         // this function only runs the code inside it once
@@ -144,7 +145,6 @@ window.initMap = function () {
 
       // display map instructions
       populatePopup(marker.id);
-      // console.log(marker.id);
     }
   }
 
