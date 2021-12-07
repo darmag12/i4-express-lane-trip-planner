@@ -9,13 +9,13 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'a',
-      title: 'I-4 Express Access to/from Daytona Beach/DeLand/Lake Mary',
+      title: 'I-4 Express Access from Daytona Beach/DeLand/Lake Mary',
       // East
       entryEB: {
         images: [
           {
             imgIn: ['dummy-map.jpg'],
-            imgOut: ['Express-Lanes-Daytona-E-OFF-1.jpg'],
+            imgOut: ['Express-Lanes-Daytona-E-OFF-1.png'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],
@@ -27,7 +27,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['Express-Lanes-Daytona-W-ON-1.jpg'],
+            imgIn: ['Express-Lanes-Daytona-W-ON-1.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -70,7 +70,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['Express-Lanes-434-B-ON-1.jpg'],
+            imgIn: ['Express-Lanes-434-B-ON-1.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -97,13 +97,13 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'c',
-      title: 'I-4 Express Access at Central Pkwy.',
+      title: 'I-4 Express Access from Central Pkwy.',
       // East
       entryEB: {
         images: [
           {
             imgIn: ['dummy-map.jpg'],
-            imgOut: ['Express-Lanes-CENTRAL-E-OFF-1.jpg'],
+            imgOut: ['Express-Lanes-CENTRAL-E-OFF-1.png'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],
@@ -113,7 +113,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['Express-Lanes-CENTRAL-W-ON-1.jpg'],
+            imgIn: ['Express-Lanes-CENTRAL-W-ON-1.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -146,7 +146,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['dummy-map.jpg'],
-            imgOut: ['Express-Lanes-436-E-OFF.jpg'],
+            imgOut: ['Express-Lanes-436-E-OFF.png'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],
@@ -159,7 +159,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['Express-Lanes-436-W-ON.jpg'],
+            imgIn: ['Express-Lanes-436-W-ON.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -194,8 +194,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['Express-Lanes-414-E-ON-1.jpg'],
-            imgOut: ['Express-Lanes-414-E-OFF-1.jpg'],
+            imgIn: ['Express-Lanes-414-E-ON-1.png'],
+            imgOut: ['Express-Lanes-414-E-OFF-1.png'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],
@@ -207,8 +207,8 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['Express-Lanes-414-W-ON-1.jpg'],
-            imgOut: ['Express-Lanes-414-W-OFF-1.jpg'],
+            imgIn: ['Express-Lanes-414-W-ON-1.png'],
+            imgOut: ['Express-Lanes-414-W-OFF-1.png'],
           },
         ],
         entry: [
@@ -239,7 +239,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['Express-Lanes-LeeRd-E-ON-1.jpg'],
+            imgIn: ['Express-Lanes-LeeRd-E-ON-1.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -252,8 +252,8 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['Express-Lanes-LeeRd-W-ON.jpg'],
-            imgOut: ['Express-Lanes-LeeRd-W-OFF-1.jpg'],
+            imgIn: ['Express-Lanes-LeeRd-W-ON-1.png'],
+            imgOut: ['Express-Lanes-LeeRd-W-OFF-1.png'],
           },
         ],
         entry: [
@@ -288,7 +288,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['Express-Lanes-Fairbanks-Ave-E-ON.jpg'],
+            imgIn: ['Express-Lanes-Fairbanks-Ave-E-ON-1.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -301,7 +301,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['Express-Lanes-Fairbanks-Ave-W-ON.jpg'],
+            imgIn: ['Express-Lanes-Fairbanks-Ave-W-ON.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -334,7 +334,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['Express-Lanes-ParSt-E-ON-1.jpg'],
+            imgIn: ['Express-Lanes-ParSt-E-ON-1.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -347,7 +347,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['Express-Lanes-ParSt-W-ON.jpg'],
+            imgIn: ['Express-Lanes-ParSt-W-ON.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -372,12 +372,12 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'i',
-      title: 'I-4 Express Access at Princeton St.',
+      title: 'I-4 Express Access from Princeton St.',
       // East
       entryEB: {
         images: [
           {
-            imgIn: ['Express-Lanes-PrincetonSt-E-ON-1.jpg'],
+            imgIn: ['Express-Lanes-PrincetonSt-E-ON-1.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -391,12 +391,12 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['Express-Lanes-PrincetonSt-W-ON.jpg'],
+            imgIn: ['Express-Lanes-PrincetonSt-W-ON.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
-          'From Princeton St. to westbound I-4, the nearest I-4 Express ramp is west of Kaley St./Michigan St.',
+          'From Princeton St. to westbound I-4, the nearest I-4 Express ramp is west of Kaley Ave./Michigan St.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
@@ -423,12 +423,12 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['Express-Lanes-Ivanhoe-E-ON-1.jpg'],
+            imgIn: ['Express-Lanes-Ivanhoe-E-ON-1.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
-          'Use the Ivanhoe Blvd Direct Connect to eastbound I-4 Express.',
+          'Use the Ivanhoe Blvd. Direct Connect to eastbound I-4 Express.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
@@ -436,8 +436,8 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['Express-Lanes-Ivanhoe-W-ON.jpg'],
-            imgOut: ['Express-Lanes-Ivanhoe-W-OFF.jpg'],
+            imgIn: ['Express-Lanes-Ivanhoe-W-ON.png'],
+            imgOut: ['Express-Lanes-Ivanhoe-W-OFF.png'],
           },
         ],
         entry: [
@@ -469,7 +469,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['Express-Lanes-ColonialAve-E-ON.jpg'],
+            imgIn: ['Express-Lanes-ColonialAve-E-ON-1.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -483,7 +483,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['Express-Lanes-COLONIAL-W-ON.jpg'],
+            imgIn: ['Express-Lanes-COLONIAL-W-ON.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -517,7 +517,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['dummy-map.jpg'],
+            imgIn: ['Express-Lanes-Amelia-St-E-ON.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -532,7 +532,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['Express-Lanes-Amelia-W-ON.jpg'],
+            imgIn: ['Express-Lanes-Amelia-W-ON.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -562,13 +562,13 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'm',
-      title: 'I-4 Express Access at South St.',
+      title: 'I-4 Express Access from South St.',
       // East
       entryEB: {
         images: [
           {
             imgIn: ['dummy-map.jpg'],
-            imgOut: ['Express-Lanes-SR408-SouthSt-E-OFF-1.jpg'],
+            imgOut: ['Express-Lanes-SR408-SouthSt-E-OFF-1.png'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],
@@ -578,8 +578,8 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['Express-Lanes-SouthSt-W-ON-1.jpg'],
-            imgOut: ['Express-Lanes-SouthSt-W-Off-1.jpg'],
+            imgIn: ['Express-Lanes-SouthSt-W-ON-1.png'],
+            imgOut: ['Express-Lanes-SouthSt-W-Off-1.png'],
           },
         ],
         entry: ['Use the South St. Direct Connect to westbound I-4 Express.'],
@@ -609,8 +609,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['dummy-map.jpg'],
-            imgOut: ['Express-Lanes-SR408-Andersonson-E-OFF-1.jpg'],
+            imgIn: ['Express-Lanes-SR408-Andersonson-E-ON-1.png'],
+            imgOut: ['dummy-map.jpg'],
           },
         ],
         entry: [
@@ -650,8 +650,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['Express-Lanes-408-E-ON.jpg'],
-            imgOut: ['Express-Lanes-Direct-connect-EW-SR408-E-OFF-1.jpg'],
+            imgIn: ['Express-Lanes-408-E-ON.p'],
+            imgOut: ['Express-Lanes-Direct-connect-EW-SR408-E-OFF-1.png'],
           },
         ],
         entry: [
@@ -663,8 +663,8 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['Express-Lanes-SR408-W-ON-1.jpg'],
-            imgOut: ['Express-Lanes-SR408-W-OFF-1.jpg'],
+            imgIn: ['Express-Lanes-SR408-W-ON-1.png'],
+            imgOut: ['Express-Lanes-SR408-W-OFF-1.png'],
           },
         ],
         entry: [
@@ -697,8 +697,8 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['Express-Lanes-Kaley-Michigan-E-ON.jpg'],
-            imgOut: ['Express-Lanes-Kaley-Michigan-E-OFF.jpg'],
+            imgIn: ['Express-Lanes-Kaley-Michigan-E-ON.png'],
+            imgOut: ['Express-Lanes-Kaley-Michigan-E-OFF.png'],
           },
         ],
         entry: [
@@ -712,7 +712,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['Express-Lanes-Kaley-Michigan-W-ON.jpg'],
+            imgIn: ['Express-Lanes-Kaley-Michigan-W-ON.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -745,7 +745,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['Express-LanesOBT-E-ON.jpg'],
+            imgIn: ['Express-LanesOBT-E-ON.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -786,7 +786,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['Express-Lanes-JohnYoung--E-ON.jpg'],
+            imgIn: ['Express-Lanes-JohnYoung--E-ON.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -827,7 +827,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['Express-Lanes-Conroy-E-ON.jpg'],
+            imgIn: ['Express-Lanes-Conroy-E-ON.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -841,7 +841,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['dummy-map.jpg'],
-            imgOut: ['Express-Lanes-Conroy-W-OFF.jpg'],
+            imgOut: ['Express-Lanes-Conroy-W-OFF.png'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],
@@ -872,7 +872,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['Express-Lanes-Turnpike--E-ON.jpg'],
+            imgIn: ['Express-Lanes-Turnpike--E-ON.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -886,7 +886,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['dummy-map.jpg'],
-            imgOut: ['Express-Lanes-Turnpike--W-OFF.jpg'],
+            imgOut: ['Express-Lanes-Turnpike--W-OFF.png'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],
@@ -912,13 +912,13 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'u',
-      title: 'I-4 Express Access at Grand National Drive',
+      title: 'I-4 Express Access from Grand National Drive',
       // East
       entryEB: {
         images: [
           {
-            imgIn: ['Express-Lanes-Grand-National--E-ON.jpg'],
-            imgOut: ['Express-Lanes-Grand-National--E-OFF.jpg'],
+            imgIn: ['Express-Lanes-Grand-National--E-ON.png'],
+            imgOut: ['Express-Lanes-Grand-National--E-OFF.png'],
           },
         ],
         entry: [
@@ -932,8 +932,8 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['Express-Lanes-GRANDNAT-W-ON-1.jpg'],
-            imgOut: ['Express-Lanes-GRANDNAT-W-OFF-1.jpg'],
+            imgIn: ['Express-Lanes-Grand-National--W-ON.png'],
+            imgOut: ['Express-Lanes-Grand-National--W-OFF.png'],
           },
         ],
         entry: [
@@ -968,7 +968,7 @@ export const eastWestBounds = [
       entryEB: {
         images: [
           {
-            imgIn: ['Express-Lanes-Kirkman-E-ON-1.jpg'],
+            imgIn: ['Express-Lanes-Kirkman-E-ON-1.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -1005,12 +1005,12 @@ export const eastWestBounds = [
     },
     instructions: {
       id: 'w',
-      title: 'I-4 Express Access to/from Tampa/Lakeland/Kissimmee',
+      title: 'I-4 Express Access from Tampa/Lakeland/Kissimmee',
       // East
       entryEB: {
         images: [
           {
-            imgIn: ['Express-Lanes-Tampa-lakeland-Kissimmee--E-ON.jpg'],
+            imgIn: ['Express-Lanes-Tampa-lakeland-Kissimmee--E-ON.png'],
             imgOut: ['dummy-map.jpg'],
           },
         ],
@@ -1024,7 +1024,7 @@ export const eastWestBounds = [
         images: [
           {
             imgIn: ['dummy-map.jpg'],
-            imgOut: ['Express-Lanes-Tampa-lakeland-Kissimmee--W-OFF.jpg'],
+            imgOut: ['Express-Lanes-Tampa-lakeland-Kissimmee--W-OFF.png'],
           },
         ],
         entry: ['No Available Entries :( (this is impossible)'],

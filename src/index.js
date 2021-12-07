@@ -612,7 +612,11 @@ window.initMap = function () {
                 // element in the loop
                 if (selectedEntryPoint === instructionsData.id) {
                   // check if title includes to then replace with from
-                  dynamicTitle = instructionsData.title.replace('to', 'from');
+                  if (instructionsData.title.includes('Princeton')) {
+                    dynamicTitle = instructionsData.title;
+                  } else {
+                    dynamicTitle = instructionsData.title.replace('to', 'from');
+                  }
                   // removes all elements then adds respective title
                   removeAddElementsForPopup(
                     dynamicTitle,
@@ -739,7 +743,11 @@ window.initMap = function () {
                 // element in the loop
                 if (selectedEntryPoint === instructionsData.id) {
                   // check if title includes to then replace with from
-                  dynamicTitle = instructionsData.title.replace('to', 'from');
+                  if (instructionsData.title.includes('Princeton')) {
+                    dynamicTitle = instructionsData.title;
+                  } else {
+                    dynamicTitle = instructionsData.title.replace('to', 'from');
+                  }
                   // removes all elements then adds respective title
                   removeAddElementsForPopup(
                     dynamicTitle,
@@ -871,21 +879,26 @@ window.initMap = function () {
     //===***** SOMETHING TO NOTE *****===//
     // title comes in mutated so insted of having for instance
     // 'Daytona to/form' we have Daytona from/from or to/to
-    let newTitle, titleChecker;
-    // check if eastbound
+    let newTitle;
+
+    // check if EASTBOUND
     if (directionValue === 1) {
+      // if title has southbound replace it to northbound
+      newTitle = title.replace('Southbound', 'Northbound');
       // check if title includes Tampa
-      titleChecker = title.includes('Tampa');
-      newTitle = titleChecker
-        ? title.replace('from/from', 'from')
-        : title.replace('to/to', 'to');
+      // titleChecker = title.includes('Tampa');
+      // newTitle = titleChecker
+      //   ? toggleNorthSouthBound.replace('from/from', 'from')
+      //   : toggleNorthSouthBound.replace('to/to', 'to');
       // check if titles include from then replace with to
     } else {
+      // if title has northbound replace it to southbound
+      newTitle = title.replace('Northbound', 'Southbound');
       // check if title includes Daytona
-      titleChecker = title.includes('Daytona');
-      newTitle = titleChecker
-        ? title.replace('from/from', 'from')
-        : title.replace('to/to', 'to');
+      // titleChecker = title.includes('Daytona');
+      // newTitle = titleChecker
+      //   ? toggleNorthSouthBound.replace('from/from', 'from')
+      //   : toggleNorthSouthBound.replace('to/to', 'to');
     }
     // remove all children elements
     removeAllChildren(parent);
@@ -923,7 +936,7 @@ window.initMap = function () {
     const svgMarker = {
       path: 'M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z',
       fillColor: iconColor,
-      fillOpacity: 0.8,
+      fillOpacity: 0,
       strokeWeight: 0,
       rotation: 0,
       scale: 1,
@@ -936,7 +949,7 @@ window.initMap = function () {
       clickable: true,
       title: title,
       labelContent: title, // can also be HTMLElement
-      labelClass: `${eastLabels} ${westLabels} ${labelExitColor}`, // the CSS class for the label
+      labelClass: `${eastLabels} ${westLabels} ${labelExitColor} ${id}`, // the CSS class for the label
       labelStyle: { opacity: 1.0 },
       icon: svgMarker,
       id: id,
@@ -1087,6 +1100,8 @@ window.initMap = function () {
         ? (labelExitColor = 'exitwest')
         : (labelExitColor = '');
     }
+
+    fixMarkerColorBug();
   }
 
   // function that removes duplicate objects from an array
@@ -1139,6 +1154,55 @@ window.initMap = function () {
     </div>
     `
     );
+  }
+
+  // patching up bug for entry markers
+  // **** //
+  // For some reason, some entry points retain their exitpoint styles even when selected as an entry.
+  // This mainly affects points that are used both in entry and exit
+  // WILL REVIST THIS MATTER!
+  // **** //
+  function fixMarkerColorBug() {
+    let elementMarkerO,
+      elementMarkerP,
+      elementMarkerM,
+      elementMarkerF,
+      elementMarkerU,
+      elementMarkerJ;
+    // IF MARKER IS TRUE, GET MARKER ELEMENTS FROM THE DOM
+    if (marker) {
+      elementMarkerO = document.querySelector(`.o`);
+      elementMarkerP = document.querySelector(`.p`);
+      elementMarkerM = document.querySelector(`.m`);
+      elementMarkerF = document.querySelector(`.f`);
+      elementMarkerU = document.querySelector(`.u`);
+      elementMarkerJ = document.querySelector(`.j`);
+    }
+
+    // S.R 408
+    if (selectedEntryPoint && elementMarkerO) {
+      elementMarkerO.classList.remove(labelExitColor);
+    }
+    // MICHIGAN
+    if (selectedEntryPoint && elementMarkerP) {
+      elementMarkerP.classList.remove(labelExitColor);
+    }
+    // SOUTH ST.
+    if (selectedEntryPoint && elementMarkerM) {
+      elementMarkerM.classList.remove(labelExitColor);
+    }
+    // LEE ROAD
+    if (selectedEntryPoint && elementMarkerF) {
+      elementMarkerF.classList.remove(labelExitColor);
+    }
+    // GRAND NATIONAL
+    if (selectedEntryPoint && elementMarkerU) {
+      elementMarkerU.classList.remove(labelExitColor);
+    }
+    // IVANHOE
+    if (selectedEntryPoint && elementMarkerJ) {
+      elementMarkerJ.classList.remove(labelExitColor);
+    }
   }
 };
 

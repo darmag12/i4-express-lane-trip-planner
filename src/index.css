@@ -184,12 +184,16 @@ option {
 
 /* MAP KEY STYLES */
 .map-key-section {
-  margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 /* END OF INFO SECTION STYLES */
 
 /* BEGINNING OF FORM STYLES */
+.form-container {
+  margin-top: 65px;
+}
+
 .form-description {
   margin-bottom: 20px;
   padding: 10px;
@@ -456,8 +460,8 @@ option {
 #map .i4-express-shield-logo img {
   position: absolute;
   left: 0;
-  top: 90px;
-  width: 80px;
+  top: 70px;
+  width: 50px;
   user-select: none;
   margin: 10px;
   /* transform: translate(50%, -50%); */
@@ -488,6 +492,15 @@ option {
 
   .popup-map-key img {
     width: 60%;
+  }
+
+  .form-container {
+    margin-top: 25px;
+  }
+
+  /* MAP KEY STYLES */
+  .map-key-section {
+    margin-top: 20px;
   }
 
   /* .popup-img-text-container {
