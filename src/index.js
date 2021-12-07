@@ -832,7 +832,7 @@ window.initMap = function () {
   // function tied to an onclick handler that resets/reloads page
   function startOver() {
     // location.reload doesn't work in firefox
-    window.location.href = window.location.href;
+    window.location.href = '';
   }
 
   // Function that creates the map logo
