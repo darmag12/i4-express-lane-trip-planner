@@ -252,7 +252,7 @@ export const eastWestBounds = [
       entryWB: {
         images: [
           {
-            imgIn: ['Express-Lanes-LeeRd-W-ON-1.png'],
+            imgIn: ['Express-Lanes-LeeRd-W-ON.png'],
             imgOut: ['Express-Lanes-LeeRd-W-OFF-1.png'],
           },
         ],

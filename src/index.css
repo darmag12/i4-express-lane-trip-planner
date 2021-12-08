@@ -427,6 +427,15 @@ option {
   cursor: pointer;
 }
 
+/* Share btn styles */
+#shareBtn {
+  margin: 15px 0;
+}
+
+.share-map-button {
+  margin: 20px 0;
+}
+
 /* Map Styles */
 #map {
   position: relative;

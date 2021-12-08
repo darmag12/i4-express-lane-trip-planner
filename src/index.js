@@ -1135,6 +1135,9 @@ window.initMap = function () {
     `
       );
     });
+
+    // Add Share button
+    shareMap(imgSrc);
   }
 
   // Adds Map key to the popup
@@ -1155,6 +1158,67 @@ window.initMap = function () {
     `
     );
   }
+
+  // *********************** TO BE REVISED *****************//
+  // Adds the share feature
+  function shareMap(mapUrl) {
+    let arrImgStr = mapUrl.toString();
+    // const blob = await fetch(arrImgStr).then(r => r.blob());
+    // get shareBtn Container through ID
+    let shareBtnID = document.getElementById('shareBtn');
+
+    // check if shareBtn container exists
+    if (shareBtnID) {
+      // remove shareBtn container
+      shareBtnID.remove();
+    }
+    // insert shareBtn container to the DOM
+    domElements.popupTxtImgContainerStr.insertAdjacentHTML(
+      'beforeend',
+      `
+    <div id="shareBtn" class="text-center">
+    <button class="btn btn-outline-info share-map-button">Share Map</button>
+    <p class="alert share-map-result" role="alert"></p>
+    </div>
+    `
+    );
+
+    // const shareData = {
+    //   url: arrImgStr,
+    // };
+
+    const btnShare = document.querySelector('.share-map-button');
+    const resultPara = document.querySelector('.share-map-result');
+
+    // Share must be triggered by "user activation"
+    btnShare.addEventListener('click', () => {
+      try {
+        navigator.share({
+          url: arrImgStr,
+        });
+        // toggle between classes
+        resultPara.classList.toggle('alert-success');
+        // add success message
+        resultPara.textContent = 'Map shared successfully!';
+      } catch (err) {
+        // toggle between classes
+        resultPara.classList.toggle('alert-danger');
+        // add error message
+        resultPara.textContent = 'Error: ' + err;
+      }
+      if (navigator.share) {
+        // we can use web share!
+        console.log('we can use web share!');
+        resultPara.textContent = 'Map shared successfully!';
+      } else {
+        // provide a fallback here
+        console.log('we CANNOT use web share!');
+      }
+    });
+
+    // console.log(mapUrl);
+  }
+  // *********************** TO BE REVISED *****************//
 
   // patching up bug for entry markers
   // **** //
