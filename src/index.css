@@ -217,6 +217,30 @@ option {
   margin: 40px 0;
 }
 
+/* ======= IMPROVE UX BY CHANGING FORM BORDER COLOR BASED ON WHETHER IT'S AN ENTRY OR EXIT ======= */
+/* ENTRY SELECT FORM */
+[data-entry] {
+  border: 1px solid var(--label-entry-color);
+}
+
+[data-entry]:focus {
+  border-color: var(--label-entry-color);
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #36b77025;
+}
+/* EXIT SELECT FORM */
+[data-exit] {
+  border: 1px solid var(--label-exit-color);
+}
+
+[data-exit]:focus {
+  border-color: var(--label-exit-color);
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #41bddf25;
+}
+
+/* ======= END OF UX SELECT FROM CSS ======= */
+
 .step-number {
   border: 3px solid var(--steps-icon-color);
   color: var(--steps-icon-color);
@@ -476,6 +500,14 @@ option {
   /* transform: translate(50%, -50%); */
 }
 
+/* Heartbeat animation class */
+.heart {
+  animation: heartbeat 0.4s infinite alternate;
+  transform-origin: center;
+  border: 3px solid var(--label-entry-color);
+  color: var(--label-entry-color);
+}
+
 /* Media Queries */
 /* FOR SMALLER LAPTOPS */
 @media screen and (max-width: 1100px) {
@@ -488,6 +520,44 @@ option {
 @media screen and (max-width: 900px) {
   .instructionpopup-content {
     width: 100%; /* Could be more or less, depending on screen size */
+  }
+}
+
+/* FOR SMALLER TABLETS */
+@media screen and (max-width: 767.5px) {
+  /* A HACK TO HIDE THE ORIGINAL VIEW ROUTE BTN ON MOBILE AND SHOW GO TO MAP */
+  .form-view a button {
+    visibility: hidden;
+    position: relative;
+  }
+
+  .form-view a button:after {
+    content: 'Go to Map';
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border-color: #0d6efd;
+  }
+
+  .form-view a button:hover {
+    color: #0d6efd;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
   }
 }
 
@@ -524,5 +594,11 @@ option {
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes heartbeat {
+  to {
+    transform: scale(1.15);
   }
 }

@@ -165,7 +165,7 @@ export const eastWestBounds = [
         ],
         entry: [
           'From S.R. 436 to westbound I-4 , the nearest I-4 Express ramp is just past the S.R. 436 on-ramp to westbound I-4.',
-          'Travel from S.R. 436 to northbound Douglas Ave. or Palm Springs Drive to access the I-4 Express Direct Connect from Central Pkwy.',
+          'Travel from S.R. 436 to N. Westmonte Dr. Travel from N. Westmonte Dr. to northbound Douglas Ave. to access the I-4 Express Direct Connect from Central Pkwy.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },

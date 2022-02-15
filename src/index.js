@@ -12,6 +12,9 @@ const apiKey = process.env.API_KEY;
 const domElements = {
   mapContainerStr: document.getElementById('map'),
   mapSectionStr: document.querySelector('[data-map-key]'),
+  stepNumberOneStr: document.querySelector('[data-step-one]'),
+  stepNumberTwoStr: document.querySelector('[data-step-two]'),
+  stepNumberThreeStr: document.querySelector('[data-step-three]'),
   directionStr: document.querySelector('[data-direction]'),
   directionTextStr: document.querySelector('[data-direction-text]'),
   secondStepStr: document.querySelector('.form__select-direction-two'),
@@ -160,11 +163,19 @@ window.initMap = function () {
     // display step number 2 by removing the class that's hiding it
     domElements.secondStepStr.classList.remove('hide');
 
-    // display step number 3 by removing the class that's hiding it
-    domElements.thirdStepStr.classList.remove('hide');
+    /* ==========FOR BETTER UX============== */
+    // Remove 'heart' class from step number 1
+    domElements.stepNumberOneStr.classList.remove('heart');
+
+    // Add 'heart' class to the step number 2 for better UX
+    domElements.stepNumberTwoStr.classList.add('heart');
+    /* ==========FOR BETTER UX============== */
 
     // reset exit dropdown if there's any value
     resetDropDown(domElements.exitPointStr);
+
+    // hide step number 3 by adding the class 'hide'
+    domElements.thirdStepStr.classList.add('hide');
 
     // hide view route button
     domElements.viewRouteStr.classList.add('hide');
@@ -279,6 +290,15 @@ window.initMap = function () {
 
     // reset previous routes
     directionsRenderer.setMap(null);
+
+    /* ==========FOR BETTER UX============== */
+    // ADD 'heart' class from step number 2
+    domElements.stepNumberTwoStr.classList.add('heart');
+
+    /* ==========FOR BETTER UX============== */
+
+    // hide step number 3 by adding the class 'hide'
+    domElements.thirdStepStr.classList.add('hide');
 
     // hide view route button
     domElements.viewRouteStr.classList.add('hide');
@@ -463,10 +483,21 @@ window.initMap = function () {
     // reset previous routes
     directionsRenderer.setMap(null);
 
+    // display step number 3 by removing the class that's hiding it
+    domElements.thirdStepStr.classList.remove('hide');
+
     // show view route button after user selects an exit
     domElements.viewRouteStr.classList.remove('hide');
     // show start over button after user selects an exit
     domElements.startOverStr.classList.remove('hide');
+
+    /* ==========FOR BETTER UX============== */
+    // Remove 'heart' class from step number 2
+    domElements.stepNumberTwoStr.classList.remove('heart');
+
+    // Add 'heart' class to the step number 3 for better UX
+    domElements.stepNumberThreeStr.classList.add('heart');
+    /* ==========FOR BETTER UX============== */
 
     // store the ids of the selected entry and exit point
     selectedEntryExit = [selectedEntryPoint, selectedExitPoint];
@@ -960,9 +991,12 @@ window.initMap = function () {
     // markers.push(marker);
     directionValue === 1 ? eastMarkers.push(marker) : westMarkers.push(marker);
 
+    // triggers when marker gets clicked
     marker.addListener('click', function () {
       populateInfoWindow(this);
     });
+
+    // tri
   }
 
   // clears then sets bounds of the markers
@@ -1206,14 +1240,6 @@ window.initMap = function () {
         // add error message
         resultPara.textContent = 'Error: ' + err;
       }
-      if (navigator.share) {
-        // we can use web share!
-        console.log('we can use web share!');
-        resultPara.textContent = 'Map shared successfully!';
-      } else {
-        // provide a fallback here
-        console.log('we CANNOT use web share!');
-      }
     });
 
     // console.log(mapUrl);
@@ -1268,6 +1294,12 @@ window.initMap = function () {
       elementMarkerJ.classList.remove(labelExitColor);
     }
   }
+
+  // gets the map of the current selected entry
+  function getEntryMaps() {}
+
+  // gets the map of the current selected exit
+  function getExitMaps() {}
 };
 
 // Appended the 'script' element to 'head'
