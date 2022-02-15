@@ -862,7 +862,8 @@ export const eastWestBounds = [
     id: 't',
     title: "Florida's Turnpike (Mile 77)",
     coords: {
-      east: { lat: 28.47882, lng: -81.44896 },
+      east: { lat: 28.47878, lng: -81.4489 },
+
       west: { lat: 28.47919, lng: -81.44922 },
     },
     instructions: {
@@ -878,6 +879,7 @@ export const eastWestBounds = [
         ],
         entry: [
           `From northbound Florida's Turnpike, use Florida’s Turnpike Direct Connect to eastbound I-4 Express.`,
+          `From southbound Florida’s Turnpike, the nearest eastbound I-4 Express ramp is east of Conroy Road from the eastbound I-4 general use lanes.`,
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
