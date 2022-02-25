@@ -774,7 +774,10 @@ window.initMap = function () {
                 // element in the loop
                 if (selectedEntryPoint === instructionsData.id) {
                   // check if title includes to then replace with from
-                  if (instructionsData.title.includes('Princeton')) {
+                  if (
+                    instructionsData.title.includes('Princeton') ||
+                    instructionsData.title.includes('Daytona')
+                  ) {
                     dynamicTitle = instructionsData.title;
                   } else {
                     dynamicTitle = instructionsData.title.replace('to', 'from');
