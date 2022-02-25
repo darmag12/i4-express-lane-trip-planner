@@ -773,7 +773,7 @@ window.initMap = function () {
                 // checks if the selected entry point matches the id of the current
                 // element in the loop
                 if (selectedEntryPoint === instructionsData.id) {
-                  // check if title includes to then replace with from
+                  // check if title includes to then replace with from (I WILL REVISIT THIS)
                   if (
                     instructionsData.title.includes('Princeton') ||
                     instructionsData.title.includes('Daytona')
