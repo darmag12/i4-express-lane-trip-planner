@@ -8,13 +8,13 @@ This application lets you select your desired entry point (after selecting the d
 
 # Technologies
 
-HTML<br>
-CSS<br>
-BOOTSTRAP<br>
-JAVASCRIPT<br>
-WEBPACK<br>
-BABEL<br>
-Google Maps API
+[x] HTML<br>
+[x] CSS<br>
+[x] BOOTSTRAP<br>
+[x] JAVASCRIPT<br>
+[x] WEBPACK<br>
+[x] BABEL<br>
+[x] Google Maps API
 
 # Author/Developer
 
