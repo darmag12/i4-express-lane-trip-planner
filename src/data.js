@@ -907,14 +907,14 @@ export const eastWestBounds = [
   },
   {
     id: 'u',
-    title: 'Grand National Drive (Mile 75)',
+    title: 'Kirkman Road via Grand National Drive (Mile 75)',
     coords: {
       east: { lat: 28.47341, lng: -81.45553 },
       west: { lat: 28.4737, lng: -81.45619 },
     },
     instructions: {
       id: 'u',
-      title: 'I-4 Express Access from Grand National Drive',
+      title: 'I-4 Express Access from Kirkman Road via Grand National Drive',
       // East
       entryEB: {
         images: [
@@ -924,10 +924,10 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'Use the Grand National Drive Direct Connect to eastbound I-4 Express.',
+          'Use the Kirkman Road via Grand National Drive Direct Connect to eastbound I-4 Express.',
         ],
         exit: [
-          'Use the eastbound I-4 Express Direct Connect to Grand National Drive',
+          'Use the eastbound I-4 Express Direct Connect to Kirkman Road via Grand National Drive',
         ],
       },
       // West
@@ -939,20 +939,20 @@ export const eastWestBounds = [
           },
         ],
         entry: [
-          'Use the Grand National Drive Direct Connect to westbound I-4 Express.',
+          'Use the Kirkman Road via Grand National Drive Direct Connect to westbound I-4 Express.',
         ],
         exit: [
-          'Use the westbound I-4 Express Direct Connect to Grand National Drive.',
+          'Use the westbound I-4 Express Direct Connect to Kirkman Road via Grand National Drive.',
         ],
       },
 
       // entry: [
-      //   '• [COLOR 1] Use the Grand National Drive Direct Connect to westbound I-4 Express.',
-      //   '• [COLOR 2] Use the Grand National Drive Direct Connect to eastbound I-4 Express.',
+      //   '• [COLOR 1] Use the Kirkman Road via Grand National Drive Direct Connect to westbound I-4 Express.',
+      //   '• [COLOR 2] Use the Kirkman Road via Grand National Drive Direct Connect to eastbound I-4 Express.',
       // ],
       // exit: [
-      //   '•	[COLOR 3] Use the westbound I-4 Express Direct Connect to Grand National Drive.',
-      //   '• [COLOR 4] Use the eastbound I-4 Express Direct Connect to Grand National Drive.',
+      //   '•	[COLOR 3] Use the westbound I-4 Express Direct Connect to Kirkman Road via Grand National Drive.',
+      //   '• [COLOR 4] Use the eastbound I-4 Express Direct Connect to Kirkman Road via Grand National Drive.',
       // ],
     },
   },
@@ -976,7 +976,7 @@ export const eastWestBounds = [
         ],
         entry: [
           'From Kirkman Road to eastbound I-4, the nearest I-4 Express ramp is east of Conroy Road.',
-          'Travel from Kirkman Road to eastbound Major Blvd. to access the I-4 Express Direct Connect from Grand National Drive.',
+          'Travel from Kirkman Road to eastbound Major Blvd. to access the I-4 Express Direct Connect from Kirkman Road via Grand National Drive.',
         ],
         exit: ['No Available Exits :( (this is impossible)'],
       },
