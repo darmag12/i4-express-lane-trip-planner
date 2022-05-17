@@ -860,7 +860,7 @@ export const eastWestBounds = [
   },
   {
     id: 't',
-    title: "Florida's Turnpike (Mile 77)",
+    title: "Florida's Turnpike (Southbound Only) (Mile 77)",
     coords: {
       east: { lat: 28.47878, lng: -81.4489 },
 

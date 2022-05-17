@@ -245,20 +245,27 @@ window.initMap = function () {
 
     // A function that contains a for..of loop
     function boundsIterator(points) {
+      let modifyTurnpikeTitle;
       for (boundPointEntry of points) {
+        // Turnpike's title is already pre defined as 'Southbound' in 'data.js' so all we're doing is replacing 'Southbound' with 'Northbound'
+        modifyTurnpikeTitle =
+          directionValue === 1
+            ? boundPointEntry.title.replace('Southbound', 'Northbound')
+            : boundPointEntry.title;
+        // Insert entrypoints in form of options tags in the DOM
         domElements.entryPointStr.insertAdjacentHTML(
           'beforeend',
           `
-        <option value="${boundPointEntry.id}">${boundPointEntry.title}</option>
+        <option value="${boundPointEntry.id}">${modifyTurnpikeTitle}</option>
         
         `
         );
-
         if (directionValue === 1) {
           allEntryCoords = boundPointEntry.coords.east;
           // hides, shows then displays markers by calling two different functions
+          console.log(boundPointEntry.title);
           hideCreateShowMarkers(
-            boundPointEntry.title,
+            modifyTurnpikeTitle,
             allEntryCoords,
             boundPointEntry.id
           );
@@ -266,7 +273,7 @@ window.initMap = function () {
         } else {
           allEntryCoords = boundPointEntry.coords.west;
           hideCreateShowMarkers(
-            boundPointEntry.title,
+            modifyTurnpikeTitle,
             allEntryCoords,
             boundPointEntry.id
           );
