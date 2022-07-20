@@ -1231,10 +1231,6 @@ window.initMap = function () {
       </div>`
     );
 
-    // const shareData = {
-    //   url: arrImgStr,
-    // };
-
     const btnShare = document.querySelector('.share-map-button');
     const resultPara = document.querySelector('.share-map-result');
 
@@ -1318,10 +1314,3 @@ window.initMap = function () {
 
 // Appended the 'script' element to 'head'
 document.head.appendChild(script);
-
-//NOTES
-
-// this method takes in 2 arguments:
-// 1. Where to open the info window
-// 2. Precise place we want the info window to display.
-// infoWindow.open(map, marker);

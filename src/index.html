@@ -97,7 +97,36 @@
             </div>
           </div>
           <!-----End of instructions for viewing maps-->
-
+          <!-- Beginning of mini-maps container -->
+          <div class="mini-maps">
+            <!-- Beginning of Entry point mini-map -->
+            <div class="card entry heart-mini" data-mini-map-entry>
+              <img
+                src="./assets/Express-Lanes-408-E-ON.png"
+                class="card-img-top"
+                alt="Entry Mini Map"
+              />
+              <div class="card-body">
+                <p class="card-text">
+                  Click To View Entry Point <nobr>Mini Map.</nobr>
+                </p>
+              </div>
+            </div>
+            <!-- Beginning of Exit point mini-map -->
+            <div class="card exit" data-mini-map-exit>
+              <img
+                src="./assets/Express-Lanes-414-E-OFF-1.png"
+                class="card-img-top"
+                alt="Exit Mini Map"
+              />
+              <div class="card-body">
+                <p class="card-text">
+                  Click To View Exit Point <nobr>Mini Map.</nobr>
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- End of mini-maps container -->
           <!-- Start view routes button -->
           <div class="form-view">
             <a href="#map">
@@ -141,6 +170,56 @@
         <div data-instruction-popup id="instructionalPopup" class="popup">
           <!-- Modal content -->
           <div data-instruction-popup-content class="instructionpopup-content">
+            <span data-instruction-popup-close class="close">×</span>
+            <p></p>
+            <div
+              data-instruction-popup-txt-img-container=""
+              class="row popup-img-text-container"
+            >
+              <div
+                data-instruction-popup-img
+                class="col-md-7 col-sm-12 popup-img"
+              >
+                <div
+                  id="carouselControls"
+                  class="carousel carousel-dark slide"
+                  data-bs-ride="carousel"
+                >
+                  <div class="carousel-inner">
+                    <div
+                      data-instruction-popup-carousel
+                      class="carousel-inner"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+              <div
+                data-instruction-popup-info
+                class="col-md-5 col-sm-12 popup-instructions"
+              ></div>
+            </div>
+          </div>
+        </div>
+        <!-- END MODAL -->
+        <section class="col-md-6 col-sm-12">
+          <!-- BEGINNING OF MAP KEY SECTION -->
+          <section class="map-key-section">
+            <img
+              src="https://i4express.com/wp-content/themes/vega/plan-your-trip/images/trip-planner-key-legend.png"
+              alt="Map Key"
+            />
+          </section>
+          <!-- END OF MAP KEY SECTION -->
+          <!---BEGINING OF MAP-->
+          <div id="map"></div>
+          <!---END OF MAP-->
+        </section>
+      </section>
+    </div>
+  </body>
+</html>
+
+<!-- <div data-instruction-popup-content class="instructionpopup-content">
             <span data-instruction-popup-close class="close">&times;</span>
             <div
               data-instruction-popup-txt-img-container
@@ -186,33 +265,14 @@
                     <span class="visually-hidden">Next</span>
                   </button>
                 </div>
-                <!-- <img
+                <img
                   src="./assets/4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png"
                   alt=""
-                /> -->
+                />
               </div>
               <div
                 data-instruction-popup-info
                 class="col-md-5 col-sm-12 popup-instructions"
               ></div>
             </div>
-          </div>
-        </div>
-        <!-- END MODAL -->
-        <section class="col-md-6 col-sm-12">
-          <!-- BEGINNING OF MAP KEY SECTION -->
-          <section class="map-key-section">
-            <img
-              src="https://i4express.com/wp-content/themes/vega/plan-your-trip/images/trip-planner-key-legend.png"
-              alt="Map Key"
-            />
-          </section>
-          <!-- END OF MAP KEY SECTION -->
-          <!---BEGINING OF MAP-->
-          <div id="map"></div>
-          <!---END OF MAP-->
-        </section>
-      </section>
-    </div>
-  </body>
-</html>
+          </div> -->

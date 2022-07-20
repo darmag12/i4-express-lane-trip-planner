@@ -507,6 +507,51 @@ option {
   border: 3px solid var(--label-entry-color);
   color: var(--label-entry-color);
 }
+.heart-mini {
+  animation: heartbeat 0.5s infinite alternate;
+  transform-origin: center;
+}
+
+/* MINI MAPS */
+.mini-maps {
+  display: flex;
+}
+@media screen and (max-width: 401px) {
+  .mini-maps {
+    flex-wrap: wrap;
+  }
+}
+.mini-maps .card {
+  width: 40%;
+  margin: 2%;
+  color: #fefefe;
+  cursor: pointer;
+}
+@media screen and (max-width: 992px) {
+  .mini-maps .card {
+    width: 45%;
+    margin: 2%;
+  }
+}
+@media screen and (max-width: 401px) {
+  .mini-maps .card {
+    width: 100%;
+  }
+}
+
+.mini-maps .card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card.entry {
+  background-color: var(--label-entry-color);
+}
+
+.card.exit {
+  background-color: var(--label-exit-color);
+}
 
 /* Media Queries */
 /* FOR SMALLER LAPTOPS */
@@ -599,6 +644,12 @@ option {
 
 @keyframes heartbeat {
   to {
-    transform: scale(1.15);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes heartbeat-mini {
+  to {
+    transform: scale(1.05);
   }
 }
