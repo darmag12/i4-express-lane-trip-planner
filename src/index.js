@@ -35,7 +35,12 @@ const domElements = {
   popupImageStr: document.querySelector('[data-instruction-popup-img]'),
   popupImageCarouselStr: document.querySelector(
     '[data-instruction-popup-carousel]'
-  )
+  ),
+  miniMapContainerStr: document.querySelector('[data-mini-map-container]'),
+  miniMapEntryContainerStr: document.querySelector('[data-mini-map-entry]'),
+  miniMapExitContainerStr: document.querySelector('[data-mini-map-exit]'),
+  miniMapEntryImgStr: document.querySelector('[data-mini-map-entry] img'),
+  miniMapExitImgStr: document.querySelector('[data-mini-map-exit] img')
 };
 
 // function created to specifiaclly loop all images
@@ -100,11 +105,20 @@ window.initMap = function() {
   directionsService = new google.maps.DirectionsService();
   directionsRenderer = new google.maps.DirectionsRenderer();
 
+  // Event Listenters
   domElements.directionStr.addEventListener('change', getDirection);
   domElements.entryPointStr.addEventListener('change', getEntry);
   domElements.exitPointStr.addEventListener('change', getExit);
   domElements.viewRouteStr.addEventListener('click', viewRoute);
   domElements.startOverStr.addEventListener('click', startOver);
+  domElements.miniMapEntryContainerStr.addEventListener(
+    'click',
+    getEntryMiniMaps
+  );
+  domElements.miniMapExitContainerStr.addEventListener(
+    'click',
+    getExitMiniMaps
+  );
 
   function populateInfoWindow(marker) {
     if (marker) {
@@ -311,6 +325,8 @@ window.initMap = function() {
     domElements.viewRouteStr.classList.add('hide');
     // hide start over button
     domElements.startOverStr.classList.add('hide');
+    // hide mini maps
+    domElements.miniMapContainerStr.classList.add('hide');
 
     // change label color
     changeColor();
@@ -497,14 +513,16 @@ window.initMap = function() {
     domElements.viewRouteStr.classList.remove('hide');
     // show start over button after user selects an exit
     domElements.startOverStr.classList.remove('hide');
+    // show mini maps after user selects an exit
+    domElements.miniMapContainerStr.classList.remove('hide');
 
-    /* ==========FOR BETTER UX============== */
+    /* ==========Begin FOR BETTER UX============== */
     // Remove 'heart' class from step number 2
     domElements.stepNumberTwoStr.classList.remove('heart');
 
     // Add 'heart' class to the step number 3 for better UX
     domElements.stepNumberThreeStr.classList.add('heart');
-    /* ==========FOR BETTER UX============== */
+    /* ==========End FOR BETTER UX============== */
 
     // store the ids of the selected entry and exit point
     selectedEntryExit = [selectedEntryPoint, selectedExitPoint];
@@ -912,6 +930,20 @@ window.initMap = function() {
     );
   }
   getMapLogoAndShield();
+
+  // ***** MINI MAPS ***** //
+  // gets the map of the current selected entry
+  function getEntryMiniMaps() {
+    displayPopup();
+    populatePopup(selectedEntryPoint);
+  }
+
+  // gets the map of the current selected exit
+  function getExitMiniMaps() {
+    displayPopup();
+    populatePopup(selectedExitPoint);
+  }
+
   // ================= END OF ALL FUNCTIONS THAT AREN'T REUSED==================//
 
   //===========REUSED FUNCTIONS==================//
@@ -1006,8 +1038,6 @@ window.initMap = function() {
     marker.addListener('click', function() {
       populateInfoWindow(this);
     });
-
-    // tri
   }
 
   // clears then sets bounds of the markers
@@ -1305,12 +1335,6 @@ window.initMap = function() {
       elementMarkerJ.classList.remove(labelExitColor);
     }
   }
-
-  // gets the map of the current selected entry
-  function getEntryMaps() {}
-
-  // gets the map of the current selected exit
-  function getExitMaps() {}
 };
 
 // Appended the 'script' element to 'head'
