@@ -1,0 +1,655 @@
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Poppins:ital,wght@0,300;0,500;0,600;1,200;1,300&display=swap');
+/* Basic CSS Reset */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* END OF CSS RESET */
+
+/* STYLES BEGIN HERE! */
+:root {
+  --route-icon-color: #1e90ff;
+  --steps-icon-color: #0857c3;
+  --label-entry-color: #36b76f;
+  --label-exit-color: #41bedf;
+  --label-entry-border-color: #36b77060;
+  --label-exit-border-color: #41bddf60;
+  --label-font-color: rgb(255, 255, 255);
+}
+
+html,
+body {
+  /* font-family: 'Poppins', sans-serif; */
+  font-family: 'Lato', sans-serif;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+}
+
+p,
+option {
+  font-weight: 400;
+}
+
+.hide {
+  display: none;
+}
+
+/* .container {
+  padding: 0;
+} */
+
+/* INFO SECTION STYLES */
+.info-section {
+  display: flex;
+  justify-content: start;
+  font-size: 0.7em;
+  margin: 30px 0;
+  display: none; /* hide info section */
+}
+
+.info-section .entry-icon {
+  color: var(--label-font-color);
+  background-color: var(--label-entry-color);
+  border-top: 0.5px solid var(--label-entry-border-color);
+  border-bottom: 0.5px solid var(--label-entry-border-color);
+  border-right: 0.5px solid var(--label-entry-border-color);
+  padding: 10px 20px;
+  margin: 15px;
+  position: relative;
+}
+
+.info-section .entry-icon::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -17.5px;
+  top: 0;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  border-top: 18px solid transparent;
+  border-bottom: 18px solid transparent;
+  border-right: 18px solid var(--label-entry-color);
+}
+
+.info-section .exit-icon {
+  color: var(--label-font-color);
+  background-color: var(--label-exit-color);
+  border-top: 0.5px solid var(--label-exit-border-color);
+  border-bottom: 0.5px solid var(--label-exit-border-color);
+  border-left: 0.5px solid var(--label-exit-border-color);
+  padding: 10px 20px;
+  margin: 15px;
+  position: relative;
+}
+
+.info-section .exit-icon::before {
+  content: '';
+  display: block;
+  position: absolute;
+  right: -17.5px;
+  top: 0;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  border-top: 18px solid transparent;
+  border-bottom: 18px solid transparent;
+  border-left: 18px solid var(--label-exit-color);
+}
+
+.info-section .route-icon {
+  color: var(--label-font-color);
+  background-color: var(--route-icon-color);
+  border-radius: 25px;
+  padding: 10px 20px;
+  margin: 15px;
+  position: relative;
+}
+
+/* MAP KEY STYLES */
+.map-key-section {
+  margin-top: 15px;
+}
+
+/* END OF INFO SECTION STYLES */
+
+/* BEGINNING OF FORM STYLES */
+.form-container {
+  margin-top: 65px;
+}
+
+.form-description {
+  margin-bottom: 20px;
+  padding: 10px;
+  display: none; /* Hide form description*/
+}
+
+.form-description h3 {
+  padding-bottom: 5px;
+  color: var(--steps-icon-color);
+}
+
+.form__select-direction-one .step,
+.form__select-direction-two .step,
+.form__select-direction-three .step {
+  display: flex;
+  margin: 10px 0;
+}
+
+.form__select-direction-two,
+.form__select-direction-three {
+  margin: 40px 0;
+}
+
+/* ======= IMPROVE UX BY CHANGING FORM BORDER COLOR BASED ON WHETHER IT'S AN ENTRY OR EXIT ======= */
+/* ENTRY SELECT FORM */
+[data-entry] {
+  border: 1px solid var(--label-entry-color);
+}
+
+[data-entry]:focus {
+  border-color: var(--label-entry-color);
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #36b77025;
+}
+/* EXIT SELECT FORM */
+[data-exit] {
+  border: 1px solid var(--label-exit-color);
+}
+
+[data-exit]:focus {
+  border-color: var(--label-exit-color);
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #41bddf25;
+}
+
+/* ======= END OF UX SELECT FROM CSS ======= */
+
+.step-number {
+  border: 3px solid var(--steps-icon-color);
+  color: var(--steps-icon-color);
+  display: block;
+  height: 30px;
+  line-height: 24px;
+  text-align: center;
+  width: 30px;
+  margin-right: 15px;
+}
+
+/* Mod for step 3 */
+.form__select-direction-one .step .step-number,
+.form__select-direction-two .step .step-number,
+.form__select-direction-three .step .step-number {
+  flex: 0 0 auto;
+}
+
+.form-view {
+  margin: 30px 0;
+  display: flex;
+  justify-content: start;
+}
+
+.form-view button[data-view] {
+  margin-right: 30px;
+}
+
+.form-info-text p {
+  margin-bottom: 20px;
+}
+
+/* END OF FORM STYLES */
+
+/* Styles for eastbound labels */
+.eastlabels {
+  color: var(--label-font-color);
+  background-color: var(--label-entry-color);
+  border-top: 0.5px solid var(--label-entry-border-color);
+  border-bottom: 0.5px solid var(--label-entry-border-color);
+  border-right: 0.5px solid var(--label-entry-border-color);
+  font-size: 12px;
+  text-align: start;
+  white-space: nowrap;
+  padding: 5px;
+  margin: -12px 0 30px 15px;
+  position: relative;
+  /* transform: rotate(180deg); */
+}
+
+.eastlabels::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -12px;
+  top: 0;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+
+  border-right: 12px solid var(--label-entry-color);
+}
+
+/* Styles for westbound labels */
+.westlabels {
+  color: var(--label-font-color);
+  background-color: var(--label-entry-color);
+  border-top: 0.5px solid var(--label-entry-border-color);
+  border-bottom: 0.5px solid var(--label-entry-border-color);
+  border-left: 0.5px solid var(--label-entry-border-color);
+  font-size: 12px;
+  text-align: start;
+  white-space: nowrap;
+  padding: 5px;
+  margin: -12px 0 30px -10px;
+  position: relative;
+  transform: translateX(-100%);
+}
+
+.westlabels::before {
+  content: '';
+  display: block;
+  position: absolute;
+  right: -11.4px;
+  top: 0;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 12px solid var(--label-entry-color);
+}
+
+/* styles for the exit labels eastbound */
+.exiteast {
+  background-color: var(--label-exit-color) !important;
+  border-top: 0.5px solid var(--label-exit-border-color) !important;
+  border-bottom: 0.5px solid var(--label-exit-border-color) !important;
+  border-right: 0.5px solid var(--label-exit-border-color) !important;
+}
+
+.exiteast::before {
+  border-right: 12px solid var(--label-exit-color);
+}
+
+/* styles for the exit labels westbound */
+.exitwest {
+  background-color: var(--label-exit-color) !important;
+  border-top: 0.5px solid var(--label-exit-border-color) !important;
+  border-bottom: 0.5px solid var(--label-exit-border-color) !important;
+  border-left: 0.5px solid var(--label-exit-border-color) !important;
+}
+
+.exitwest::before {
+  border-left: 12px solid var(--label-exit-color);
+}
+
+/* Pop up styles */
+/* The Modal (background) */
+.popup {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  animation: popup 0.7s;
+  transition: all 0.7s ease-in-out;
+}
+
+/* Handles the order of popup content */
+.popup-img-text-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+/* Modal Content/Box */
+.instructionpopup-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 0.5px solid #ededed;
+  box-shadow: 0px 0px 2px 3px #ededed;
+  overflow: none;
+  width: 60%; /* Could be more or less, depending on screen size */
+}
+
+.popup-img {
+  margin: 10px 0;
+}
+
+.popup-img .carousel-item {
+  border: 2px solid rgb(207, 207, 207);
+}
+
+.popup-instructions {
+  margin: 10px 0;
+}
+
+.popup-instructions .direction-text {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px 0;
+  margin: 10px 0;
+}
+
+.popup-instructions .direction-text img {
+  height: min-content;
+  height: fit-content;
+  padding-right: 5px;
+}
+
+.popup-instructions .direction-text p {
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.popup-map-key {
+  display: flex;
+  justify-content: flex-start;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.popup-map-key img {
+  width: 50%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  font-size: 30px;
+  font-weight: bold;
+  display: flex;
+  justify-content: end;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Share btn styles */
+#shareBtn {
+  margin: 15px 0;
+}
+
+.share-map-button {
+  margin: 20px 0;
+}
+
+/* Map Styles */
+#map {
+  position: relative;
+  height: 80vh;
+}
+
+/* clear bottom map contents */
+/* .gm-style .gm-style-cc a {
+  display: none !important;
+  background-color: transparent !important;
+} */
+/* .gm-style .gm-style-cc a,
+.gm-style .gm-style-mtc div {
+  background-color: transparent !important;
+  background: none !important;
+} */
+
+#map div div a div img {
+  display: none;
+}
+
+#map .i4-express-map-logo img {
+  position: absolute;
+  left: 5px;
+  bottom: 0px;
+  width: 100px;
+  user-select: none;
+  margin: 10px;
+}
+
+#map .i4-express-shield-logo img {
+  position: absolute;
+  left: 0;
+  top: 70px;
+  width: 50px;
+  user-select: none;
+  margin: 10px;
+  /* transform: translate(50%, -50%); */
+}
+
+/* Heartbeat animation class */
+.heart {
+  animation: heartbeat 0.4s infinite alternate;
+  transform-origin: center;
+  border: 3px solid var(--label-entry-color);
+  color: var(--label-entry-color);
+}
+.heart-mini {
+  animation: heartbeat 0.5s infinite alternate;
+  transform-origin: center;
+}
+
+/* MINI MAPS */
+.mini-maps {
+  display: flex;
+}
+@media screen and (max-width: 401px) {
+  .mini-maps {
+    flex-wrap: wrap;
+  }
+}
+.mini-maps .card {
+  width: 40%;
+  margin: 2%;
+  color: #fefefe;
+  cursor: pointer;
+}
+@media screen and (max-width: 992px) {
+  .mini-maps .card {
+    width: 45%;
+    margin: 2%;
+  }
+}
+@media screen and (max-width: 401px) {
+  .mini-maps .card {
+    width: 100%;
+  }
+}
+
+.mini-maps .card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card.entry {
+  background-color: var(--label-entry-color);
+}
+
+.card.exit {
+  background-color: var(--label-exit-color);
+}
+
+/* Media Queries */
+/* FOR SMALLER LAPTOPS */
+@media screen and (max-width: 1100px) {
+  .instructionpopup-content {
+    width: 70%; /* Could be more or less, depending on screen size */
+  }
+}
+
+/* FOR BIGGER TABLETS */
+@media screen and (max-width: 900px) {
+  .instructionpopup-content {
+    width: 100%; /* Could be more or less, depending on screen size */
+  }
+}
+
+/* FOR SMALLER TABLETS */
+@media screen and (max-width: 767.5px) {
+  /* A HACK TO HIDE THE ORIGINAL VIEW ROUTE BTN ON MOBILE AND SHOW GO TO MAP */
+  .form-view a button {
+    visibility: hidden;
+    position: relative;
+  }
+
+  .form-view a button:after {
+    content: 'Go to Map';
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border-color: #0d6efd;
+  }
+
+  .form-view a button:hover {
+    color: #0d6efd;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+  }
+}
+
+/* FOR MOBILE PHONES */
+@media screen and (max-width: 450px) {
+  .info-section {
+    justify-content: center;
+    font-size: 0.6em;
+    padding: 0 30px;
+  }
+
+  .popup-map-key img {
+    width: 60%;
+  }
+
+  .form-container {
+    margin-top: 25px;
+  }
+
+  /* MAP KEY STYLES */
+  .map-key-section {
+    margin-top: 20px;
+  }
+
+  /* .popup-img-text-container {
+    flex-direction: row;
+  } */
+}
+
+/* CSS ANIMATION kEYFRAMES */
+@keyframes popup {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes heartbeat {
+  to {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes heartbeat-mini {
+  to {
+    transform: scale(1.05);
+  }
+}

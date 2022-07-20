@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trip Planner</title>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <section class="row">
+        <!-- BEGINNING OF INFO SECTION -->
+        <!-- <section class="info-section">
+          <div class="entry-icon">Entry</div>
+          <div class="exit-icon">Exit</div>
+          <div class="route-icon">Your Route</div>
+        </section> -->
+        <!-- END OF INFO SECTION -->
+
+        <!---BEGINNING OF FORM-->
+        <form class="col-md-6 col-sm-12 form-container">
+          <!-- <div class="form-description">
+            <h3>LEARN YOUR ROUTE</h3>
+            <p>
+              Select the direction you will be traveling then click on the
+              access points to see detailed maps of the Express Lane's entries
+              and exits.
+            </p>
+          </div> -->
+          <!----Beginning of direction selection--->
+          <div class="col-lg-8 col-md-12 form__select-direction-one">
+            <div class="step">
+              <span data-step-one class="step-number heart">1</span>
+              <p>Which direction will you be traveling?</p>
+            </div>
+            <select
+              data-direction="direction"
+              class="form-select form-select-md mb-3"
+              aria-label=".form-select-md"
+            >
+              <option value="0" selected>Select Direction...</option>
+              <option value="1">Eastbound</option>
+              <option value="2">Westbound</option>
+            </select>
+          </div>
+          <!----End of direction selection--->
+
+          <!---Beginning of entry/exit points selections-->
+          <div class="col-lg-8 col-md-12 form__select-direction-two hide">
+            <div class="step">
+              <span data-step-two class="step-number">2</span>
+              <p>
+                Choose your <strong>entry</strong> and
+                <strong>exit</strong> points (<strong
+                  data-direction-text
+                ></strong
+                >)
+              </p>
+            </div>
+            <select
+              data-entry
+              class="form-select form-select-md mb-3"
+              aria-label=".form-select-md"
+            >
+              <option id="selectEntry" selected>Select Entry...</option>
+            </select>
+
+            <select
+              data-exit
+              class="form-select form-select-md mb-3"
+              aria-label=".form-select-md"
+            >
+              <option id="selectExit" selected>Select Exit...</option>
+            </select>
+          </div>
+          <!---End of entry/exit points selections-->
+
+          <!-----Start of instructions for viewing maps-->
+          <div class="col-md-12 form__select-direction-three hide">
+            <div class="step">
+              <span data-step-three class="step-number">3</span>
+              <p>
+                Click on the labeled entry and exit points
+                <strong>on the map</strong> to see more detail.
+              </p>
+            </div>
+          </div>
+          <!-----End of instructions for viewing maps-->
+          <!-- Beginning of mini-maps container -->
+          <div class="mini-maps">
+            <!-- Beginning of Entry point mini-map -->
+            <div class="card entry heart-mini" data-mini-map-entry>
+              <img
+                src="./assets/Express-Lanes-408-E-ON.png"
+                class="card-img-top"
+                alt="Entry Mini Map"
+              />
+              <div class="card-body">
+                <p class="card-text">
+                  Click To View Entry Point <nobr>Mini Map.</nobr>
+                </p>
+              </div>
+            </div>
+            <!-- Beginning of Exit point mini-map -->
+            <div class="card exit" data-mini-map-exit>
+              <img
+                src="./assets/Express-Lanes-414-E-OFF-1.png"
+                class="card-img-top"
+                alt="Exit Mini Map"
+              />
+              <div class="card-body">
+                <p class="card-text">
+                  Click To View Exit Point <nobr>Mini Map.</nobr>
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- End of mini-maps container -->
+          <!-- Start view routes button -->
+          <div class="form-view">
+            <a href="#map">
+              <button
+                type="button"
+                class="btn btn-outline-primary btn-md hide"
+                data-view
+              >
+                View Route
+              </button>
+            </a>
+
+            <button
+              type="button"
+              class="btn btn-outline-warning btn-md hide"
+              data-start-over
+            >
+              Start Over
+            </button>
+          </div>
+          <!-- End view routes button -->
+
+          <!-- Beginning of informational text -->
+          <div class="form-info-text hide">
+            <p>
+              Keep in mind, depending on your destination, you may need to exit
+              early or continue past the main interchange before you exit
+              <nobr>I-4 Express.</nobr>
+            </p>
+            <p>
+              If you miss your exit, don’t stop on I-4 Express or on Interstate
+              4. Continue to the next available ramp and then proceed to your
+              destination.
+            </p>
+          </div>
+        </form>
+        <!---END OF FORM-->
+
+        <!-- BEGIN MODAL -->
+        <!-- The Modal -->
+        <div data-instruction-popup id="instructionalPopup" class="popup">
+          <!-- Modal content -->
+          <div data-instruction-popup-content class="instructionpopup-content">
+            <span data-instruction-popup-close class="close">×</span>
+            <p></p>
+            <div
+              data-instruction-popup-txt-img-container=""
+              class="row popup-img-text-container"
+            >
+              <div
+                data-instruction-popup-img
+                class="col-md-7 col-sm-12 popup-img"
+              >
+                <div
+                  id="carouselControls"
+                  class="carousel carousel-dark slide"
+                  data-bs-ride="carousel"
+                >
+                  <div class="carousel-inner">
+                    <div
+                      data-instruction-popup-carousel
+                      class="carousel-inner"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+              <div
+                data-instruction-popup-info
+                class="col-md-5 col-sm-12 popup-instructions"
+              ></div>
+            </div>
+          </div>
+        </div>
+        <!-- END MODAL -->
+        <section class="col-md-6 col-sm-12">
+          <!-- BEGINNING OF MAP KEY SECTION -->
+          <section class="map-key-section">
+            <img
+              src="https://i4express.com/wp-content/themes/vega/plan-your-trip/images/trip-planner-key-legend.png"
+              alt="Map Key"
+            />
+          </section>
+          <!-- END OF MAP KEY SECTION -->
+          <!---BEGINING OF MAP-->
+          <div id="map"></div>
+          <!---END OF MAP-->
+        </section>
+      </section>
+    </div>
+  </body>
+</html>
+
+<!-- <div data-instruction-popup-content class="instructionpopup-content">
+            <span data-instruction-popup-close class="close">&times;</span>
+            <div
+              data-instruction-popup-txt-img-container
+              class="row popup-img-text-container"
+            >
+              <div
+                data-instruction-popup-img
+                class="col-md-7 col-sm-12 popup-img"
+              >
+                <div
+                  id="carouselControls"
+                  class="carousel carousel-dark slide"
+                  data-bs-ride="carousel"
+                >
+                  <div class="carousel-inner">
+                    <div
+                      data-instruction-popup-carousel
+                      class="carousel-inner"
+                    ></div>
+                  </div>
+                  <button
+                    class="carousel-control-prev hide"
+                    type="button"
+                    data-bs-target="#carouselControls"
+                    data-bs-slide="prev"
+                  >
+                    <span
+                      class="carousel-control-prev-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button
+                    class="carousel-control-next hide"
+                    type="button"
+                    data-bs-target="#carouselControls"
+                    data-bs-slide="next"
+                  >
+                    <span
+                      class="carousel-control-next-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+                <img
+                  src="./assets/4ba220a7-c1c5-4f9b-bef2-73c093cfd1ec.png"
+                  alt=""
+                />
+              </div>
+              <div
+                data-instruction-popup-info
+                class="col-md-5 col-sm-12 popup-instructions"
+              ></div>
+            </div>
+          </div> -->
