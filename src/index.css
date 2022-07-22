@@ -521,6 +521,10 @@ option {
     flex-wrap: wrap;
   }
 }
+
+.mini-maps .card-body {
+  padding: 5px 10px !important;
+}
 .mini-maps .card {
   width: 40%;
   margin: 2%;

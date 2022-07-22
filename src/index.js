@@ -71,6 +71,8 @@ let directionsService;
 let directionsRenderer;
 let mapInstructions;
 let instructionsData;
+let miniMapEntryImageSrc;
+let miniMapExitImageSrc;
 const orlandoCod = { lat: 28.5384, lng: -81.3789 };
 
 // Created the script tag & set the appropriate attributes
@@ -195,6 +197,8 @@ window.initMap = function() {
     domElements.viewRouteStr.classList.add('hide');
     // hide start over button
     domElements.startOverStr.classList.add('hide');
+    // hide mini maps
+    domElements.miniMapContainerStr.classList.add('hide');
 
     let dirBound = '';
     if (directionVal === 1) {
@@ -527,6 +531,10 @@ window.initMap = function() {
     // store the ids of the selected entry and exit point
     selectedEntryExit = [selectedEntryPoint, selectedExitPoint];
 
+    // TEST
+    switchMiniMapImage(selectedEntryPoint);
+    switchMiniMapImage(selectedExitPoint);
+
     // display only markers for the entry and exit point selected
     // loop all markers and filter
     directionPoints = allMarkers.filter(mark =>
@@ -773,6 +781,7 @@ window.initMap = function() {
                     removeAllChildren(domElements.popupImageCarouselStr);
                     // displays carousel images
                     displayCarouselImages(image.imgIn, displayImg, activeImg);
+                    console.log(image.imgIn);
                     // Add map key to popup
                     addPopupMapKey(mapKeyImage);
                   }
@@ -942,6 +951,143 @@ window.initMap = function() {
   function getExitMiniMaps() {
     displayPopup();
     populatePopup(selectedExitPoint);
+  }
+
+  // toggles mini map placeholders
+  function switchMiniMapImage(selectedPoint) {
+    let eastBoundsEntInfo,
+      westBoundsEntInfo,
+      miniImgSrc,
+      mapInstructions = eastWestBounds.map(inst => {
+        return inst.instructions;
+      });
+
+    for (instructionsData of mapInstructions) {
+      // check if marker id matches the current item
+      if (selectedPoint === instructionsData.id) {
+        // FOR EASTBOUND MINI MAP
+        if (directionValue === 1) {
+          for (eastBoundsEntInfo in instructionsData.entryEB) {
+            // switch checking if the key match the case
+            switch (eastBoundsEntInfo) {
+              case 'images':
+                instructionsData.entryEB[eastBoundsEntInfo].map(image => {
+                  // checks if the selected entry point matches the id of the current
+                  // element in the loop
+                  if (selectedEntryPoint === instructionsData.id) {
+                    // gets the image with the full url if it matches
+                    miniImgSrc = images.filter(pic =>
+                      pic.includes(image.imgIn)
+                    );
+                    // removes any present elements first
+                    removeAllChildren(domElements.miniMapEntryContainerStr);
+                    // display entry minimap placeholder
+                    domElements.miniMapEntryContainerStr.insertAdjacentHTML(
+                      'beforeend',
+                      `
+                    <img
+                      src="${miniImgSrc}"
+                      class="card-img-top"
+                      alt="Entry Mini Map"
+                    />
+                    <div class="card-body">
+                    <p class="card-text">Click To View Entry Point <nobr>Mini Map.</nobr></p>
+                    </div>
+                    `
+                    );
+                  }
+                  // checks if the selected exit point matches the id of the current
+                  // element in the loop
+                  if (selectedExitPoint === instructionsData.id) {
+                    // gets the image with the full url if it matches
+                    miniImgSrc = images.filter(pic =>
+                      pic.includes(image.imgOut)
+                    );
+                    // removes any present elements first
+                    removeAllChildren(domElements.miniMapExitContainerStr);
+                    // display exit minimap placeholder
+                    domElements.miniMapExitContainerStr.insertAdjacentHTML(
+                      'afterbegin',
+                      `
+                    <img
+                      src="${miniImgSrc}"
+                      class="card-img-top"
+                      alt="Exit Mini Map"
+                    />
+                    <div class="card-body">
+                      <p class="card-text">Click To View Exit Point <nobr>Mini Map.</nobr></p>
+                    </div>
+                     `
+                    );
+                  }
+                });
+                break;
+            } // end of switch statement
+          } // end of for...in loop
+        } // end of 'if' eastbound checker
+
+        // FOR WESTBOUND MINI MAP
+        if (directionValue === 2) {
+          for (westBoundsEntInfo in instructionsData.entryWB) {
+            // console.log(instructionsData.entryWB[westBoundsEntInfo]);
+            switch (westBoundsEntInfo) {
+              case 'images':
+                instructionsData.entryWB[westBoundsEntInfo].map(image => {
+                  // checks if the selected entry point matches the id of the current
+                  // element in the loop
+                  if (selectedEntryPoint === instructionsData.id) {
+                    // gets the image with the full url if it matches
+                    miniImgSrc = images.filter(pic =>
+                      pic.includes(image.imgIn)
+                    );
+                    // removes any present elements first
+                    removeAllChildren(domElements.miniMapEntryContainerStr);
+                    // display entry minimap placeholder
+                    domElements.miniMapEntryContainerStr.insertAdjacentHTML(
+                      'beforeend',
+                      `
+                    <img
+                      src="${miniImgSrc}"
+                      class="card-img-top"
+                      alt="Entry Mini Map"
+                    />
+                    <div class="card-body">
+                    <p class="card-text">Click To View Entry Point <nobr>Mini Map.</nobr></p>
+                    </div>
+                    `
+                    );
+                  }
+                  // checks if the selected exit point matches the id of the current
+                  // element in the loop
+                  if (selectedExitPoint === instructionsData.id) {
+                    // gets the image with the full url if it matches
+                    miniImgSrc = images.filter(pic =>
+                      pic.includes(image.imgOut)
+                    );
+                    // removes any present elements first
+                    removeAllChildren(domElements.miniMapExitContainerStr);
+                    // display exit minimap placeholder
+                    domElements.miniMapExitContainerStr.insertAdjacentHTML(
+                      'afterbegin',
+                      `
+                    <img
+                      src="${miniImgSrc}"
+                      class="card-img-top"
+                      alt="Exit Mini Map"
+                    />
+                    <div class="card-body">
+                      <p class="card-text">Click To View Exit Point <nobr>Mini Map.</nobr></p>
+                    </div>
+                     `
+                    );
+                  }
+                });
+                break;
+            } // end of switch statement
+          } // end of for...in loop
+        } // end of 'if' westbound checker
+      }
+    } // end of for..of loop
   }
 
   // ================= END OF ALL FUNCTIONS THAT AREN'T REUSED==================//
@@ -1209,6 +1355,9 @@ window.initMap = function() {
     </div>
     `
       );
+
+      // domElements.miniMapEntryImgStr.src = `${imgSrc}`;
+      return imgSrc;
     });
 
     // Add Share button
