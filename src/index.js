@@ -1398,11 +1398,9 @@ window.initMap = function() {
     }
     domElements.popupImageStr.insertAdjacentHTML(
       'beforeend',
-      `
-    <div id="PopupMapKey" class="popup-map-key">
+      `<div id="PopupMapKey" class="popup-map-key">
         <img class="d-block" src="${mapKeyImg}"/>
-    </div>
-    `
+      </div>`
     );
   }
 
