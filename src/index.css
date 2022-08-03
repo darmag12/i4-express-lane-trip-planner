@@ -406,6 +406,11 @@ option {
   margin: 10px 0;
 }
 
+.popup-instructions h6 {
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
 .popup-instructions .direction-text {
   display: flex;
   justify-content: flex-start;

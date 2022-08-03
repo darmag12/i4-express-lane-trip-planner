@@ -691,7 +691,14 @@ window.initMap = function() {
                   instructionsData.entryEB[eastBoundsEntInfo].map((ent, i) => {
                     domElements.popupMapInstructionsStr.insertAdjacentHTML(
                       'beforeend',
-                      `<div data-direction-text class="direction-text">${
+                      `${
+                        // Only displays text once and if there are more than one option
+                        i === 0 &&
+                        instructionsData.entryEB[eastBoundsEntInfo].length !== 1
+                          ? '<h6><strong>Choose your entry point:</strong></h6>'
+                          : ''
+                      }
+                      <div data-direction-text class="direction-text">${
                         instructionsData.entryEB[eastBoundsEntInfo].length <= 1
                           ? ''
                           : `<img src="${imgIcons[i]}" alt="First slide" />`
@@ -732,7 +739,13 @@ window.initMap = function() {
                   instructionsData.entryEB[eastBoundsEntInfo].map((ext, i) => {
                     domElements.popupMapInstructionsStr.insertAdjacentHTML(
                       'beforeend',
-                      `
+                      `${
+                        // Only displays text once and if there are more than one option
+                        i === 0 &&
+                        instructionsData.entryEB[eastBoundsEntInfo].length !== 1
+                          ? '<h6><strong>Choose your exit point:</strong></h6>'
+                          : ''
+                      }
                       <div data-direction-text class="direction-text">${
                         instructionsData.entryEB[eastBoundsEntInfo].length <= 1
                           ? ''
@@ -826,7 +839,13 @@ window.initMap = function() {
                     // loops all the entry info then outputs them as html elements
                     domElements.popupMapInstructionsStr.insertAdjacentHTML(
                       'beforeend',
-                      `<div data-direction-text class="direction-text">${
+                      `${
+                        // Only displays text once and if there are more than one option
+                        i === 0 &&
+                        instructionsData.entryWB[westBoundsEntInfo].length !== 1
+                          ? '<h6><strong>Choose your entry point:</strong></h6>'
+                          : ''
+                      }<div data-direction-text class="direction-text">${
                         instructionsData.entryWB[westBoundsEntInfo].length <= 1
                           ? ''
                           : `<img src="${imgIcons[i]}" alt="First slide" />`
@@ -865,7 +884,13 @@ window.initMap = function() {
                   instructionsData.entryWB[westBoundsEntInfo].map((ext, i) => {
                     domElements.popupMapInstructionsStr.insertAdjacentHTML(
                       'beforeend',
-                      `<div data-direction-text class="direction-text">
+                      `${
+                        // Only displays text once and if there are more than one option
+                        i === 0 &&
+                        instructionsData.entryWB[westBoundsEntInfo].length !== 1
+                          ? '<h6><strong>Choose your exit point:</strong></h6>'
+                          : ''
+                      }<div data-direction-text class="direction-text">
                       ${
                         instructionsData.entryWB[westBoundsEntInfo].length <= 1
                           ? ''
@@ -1194,7 +1219,6 @@ window.initMap = function() {
     } else {
       showMarkers(westMarkers);
     }
-    // map.fitBounds(bounds);
   }
 
   // Loops and displays markers (created to practice DRY)
@@ -1206,7 +1230,6 @@ window.initMap = function() {
       mark.setMap(map);
       bounds.extend(mark.position);
     });
-
     map.fitBounds(bounds);
   }
 
